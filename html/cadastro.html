@@ -199,10 +199,10 @@
                     <option value="" disabled selected>Selecione sua escola</option>
                     <optgroup label="Rede Municipal de Itaboraí">
                       <option value="emas">E.M. Antônio Santos da Silva</option>
-                      <option value="outra_ita">Outra escola de Itaboraí</option>
+                      <option value="outra_ita">Outra escola de Itaboraí/RJ</option>
                     </optgroup>
                     <optgroup label="Outras redes">
-                      <option value="estadual">Escola Estadual – RJ</option>
+                      <option value="estadual">Escola Estadual</option>
                       <option value="federal">Escola Federal</option>
                       <option value="particular">Escola Particular</option>
                       <option value="outra">Outra instituição</option>
@@ -312,7 +312,7 @@
     <div class="section-header">
       <div class="section-label"><i class="fa-solid fa-lightbulb"></i> Você sabia?</div>
       <h2 class="section-title" id="curio-title">Curiosidades sobre educação</h2>
-      <p>Fatos e dados interessantes sobre ensino, aprendizado e tecnologia na educação que inspiraram a criação da C.E.I.</p>
+      <p>Fatos e dados interessantes sobre ensino, aprendizado e tecnologia na educação que inspiraram a criação da plataforma.</p>
     </div>
     <div class="curio-grid">
 
@@ -562,7 +562,7 @@
     .then(r => r.json())
     .then(d => {
       this.classList.remove('loading'); this.disabled = false;
-      if (d.ok) window.location.href = d.redirect || 'index.html';
+      if (d.ok) window.location.href = d.redirect || '/html/dashboard.html';
       else al.classList.add('show');
     })
     .catch(() => { this.classList.remove('loading'); this.disabled = false; al.classList.add('show'); });
