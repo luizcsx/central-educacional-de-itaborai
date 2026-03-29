@@ -534,7 +534,7 @@
       if (d.ok) {
         al.className = 'auth-alert auth-alert-ok show';
         document.getElementById('alert-reg-msg').textContent = 'Conta criada! Aguarde um momento...';
-        setTimeout(() => window.location.href = d.redirect || '/html/dashboard.html', 1500);
+        setTimeout(() => window.location.href = d.redirect || 'dashboard.html', 1500);
       } else {
         document.getElementById('alert-reg-msg').textContent = d.message || 'Erro ao criar conta.';
         al.classList.add('show');
@@ -562,7 +562,7 @@
     .then(r => r.json())
     .then(d => {
       this.classList.remove('loading'); this.disabled = false;
-      if (d.ok) window.location.href = d.redirect || '/html/dashboard.html';
+      if (d.ok) window.location.href = d.redirect || 'dashboard.html';
       else al.classList.add('show');
     })
     .catch(() => { this.classList.remove('loading'); this.disabled = false; al.classList.add('show'); });
@@ -649,7 +649,7 @@ async function cadastrarUsuario(event) {
 
     if (resultado.ok) {
       alert("Sucesso!");
-      window.location.href = '/html/dashboard.html';
+      window.location.href = 'dashboard.html';
     } else {
       alert("Ops: " + resultado.message);
     }
