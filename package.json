@@ -1,0 +1,18 @@
+{
+  "name": "centro-educacional-de-itaborai",
+  "version": "1.0.0",
+  "description": "Plataforma educacional do Centro Educacional de Itaboraí",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vercel dev"
+  },
+  "keywords": [],
+  "author": "Luiz Miguel",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
