@@ -75,7 +75,70 @@
     </p>
 </div>
 
-<script src="login-script.js"></script>
+<script>
+    
+document.getElementById('btn-entrar').addEventListener('click', async function () {
+
+  const email = document.getElementById('l-email')?.value.trim()
+              || document.getElementById('email-login')?.value.trim()
+              || '';
+  const senha = document.getElementById('l-senha')?.value
+              || document.getElementById('senha-login')?.value
+              || '';
+
+  const alertEl  = document.getElementById('alert-log')
+                || document.getElementById('alert-login');
+  const alertMsg = document.getElementById('alert-log-msg')
+                || document.getElementById('alert-login-msg');
+
+  if (alertEl) alertEl.classList.remove('show');
+
+  if (!email || !senha) {
+    if (alertMsg) alertMsg.textContent = 'Preencha o e-mail e a senha.';
+    if (alertEl)  alertEl.classList.add('show');
+    return;
+  }
+
+  this.classList.add('loading');
+  this.disabled = true;
+
+  try {
+    const resposta = await fetch('/api/auth/login', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ email, senha }),
+    });
+
+    const dados = await resposta.json();
+
+    if (dados.ok && dados.usuario) {
+      localStorage.setItem(
+        'usuario_logado',
+        JSON.stringify({
+          nome:     dados.usuario.nome,
+          username: dados.usuario.username,
+          escola:   dados.usuario.escola,
+        })
+      );
+
+      window.location.href = 'dashboard.html';
+
+    } else {
+      if (alertMsg) alertMsg.textContent = dados.message || 'E-mail ou senha incorretos.';
+      if (alertEl)  alertEl.classList.add('show');
+    }
+
+  } catch (erro) {
+    console.error('[CEI] Erro no login:', erro);
+    if (alertMsg) alertMsg.textContent = 'Erro de conexão. Tente novamente.';
+    if (alertEl)  alertEl.classList.add('show');
+
+  } finally {
+    this.classList.remove('loading');
+    this.disabled = false;
+  }
+});
+</script>
 
 </body>
 </html>
