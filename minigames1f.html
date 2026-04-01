@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minigames – Centro Educacional de Itaboraí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/minigames1f.css" />
+
+</head>
+<body>
+
+<div class="topbar" role="banner">
+  <div class="container">
+    <div class="topbar-left">
+      <span><i class="fa-solid fa-triangle-exclamation"></i> Esta plataforma se encontra em construção.</span>
+    </div>
+    <div class="topbar-right">
+      <div class="accessibility-bar" aria-label="Ferramentas de acessibilidade">
+        <button aria-label="Aumentar fonte" onclick="changeFontSize(1)"><i class="fa-solid fa-a"></i> A+</button>
+        <button aria-label="Diminuir fonte" onclick="changeFontSize(-1)"><i class="fa-solid fa-a"></i> A-</button>
+        <button aria-label="Alto contraste" onclick="toggleContrast()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      </div>
+      <a href="#"><i class="fa-solid fa-envelope"></i> Contato</a>
+      <a href="#"><i class="fa-solid fa-circle-question"></i> Ajuda</a>
+    </div>
+  </div>
+</div>
+
+<header class="header" role="navigation" aria-label="Menu principal">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="C.E.I. – Centro Educacional de Itaboraí">
+      <div class="logo-emblem" aria-hidden="true"></div>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html" class="active"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="login.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-bar" role="search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" placeholder="Pesquisar..." aria-label="Pesquisar" />
+      </div>
+      <a href="login.html" class="btn btn-outline btn-login"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a>
+      <a href="cadastro.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Cadastrar</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <div class="logo">
+        <div class="logo-emblem" style="width:38px;height:38px;" aria-hidden="true"></div>
+        <div class="logo-text"><span class="abbr">C.E.I.</span></div>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Fechar menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="login.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="drawer-footer">
+      <a href="cadastro.html" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fa-solid fa-right-to-bracket"></i> Junte-se a nós!</a>
+    </div>
+  </div>
+</div>
+
+<section class="mg-hero" aria-label="Minigames">
+  <div class="container">
+    <div class="mg-hero-inner">
+      <div class="mg-hero-text">
+        <div class="section-label"><i class="fa-solid fa-gamepad"></i> Minigames</div>
+        <h1>Aprenda jogando!</h1>
+        <p>Jogos educativos criados por professores, coordenadores e alunos para testar e consolidar os conteúdos estudados em sala de aula.</p>
+        <div class="mg-hero-actions">
+          <a href="cadastro.html" class="btn btn-gold"><i class="fa-solid fa-plus"></i> Criar Minigame</a>
+          <a href="sobre.html#minigames" class="btn" style="background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25);"><i class="fa-solid fa-circle-info"></i> Saiba mais</a>
+        </div>
+      </div>
+      <div class="mg-hero-stats" aria-label="Estatísticas">
+        <div class="mg-hstat">
+          <div class="mg-hstat-num" id="statTotal">0</div>
+          <div class="mg-hstat-lbl">Minigames</div>
+        </div>
+        <div class="mg-hstat">
+          <div class="mg-hstat-num" id="statJogadas">0</div>
+          <div class="mg-hstat-lbl">Partidas jogadas</div>
+        </div>
+        <div class="mg-hstat">
+          <div class="mg-hstat-num" id="statCriadores">0</div>
+          <div class="mg-hstat-lbl">Criadores</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mg-filters" role="navigation" aria-label="Filtrar por disciplina">
+  <div class="container">
+    <button class="mg-filter-btn active" data-filter="todos"><i class="fa-solid fa-border-all"></i> Todos</button>
+    <button class="mg-filter-btn" data-filter="matematica"><i class="fa-solid fa-square-root-variable"></i> Matemática</button>
+    <button class="mg-filter-btn" data-filter="historia"><i class="fa-solid fa-scroll"></i> História</button>
+    <button class="mg-filter-btn" data-filter="ciencias"><i class="fa-solid fa-flask"></i> Ciências</button>
+    <button class="mg-filter-btn" data-filter="portugues"><i class="fa-solid fa-book"></i> Português</button>
+    <button class="mg-filter-btn" data-filter="geografia"><i class="fa-solid fa-earth-americas"></i> Geografia</button>
+    <button class="mg-filter-btn" data-filter="artes"><i class="fa-solid fa-palette"></i> Artes</button>
+    <button class="mg-filter-btn" data-filter="ed-fisica"><i class="fa-solid fa-person-running"></i> Ed. Física</button>
+  </div>
+</div>
+
+<section class="mg-section" id="minigames">
+  <div class="container">
+
+    <div class="mg-toolbar">
+      <div class="mg-search-wrap" role="search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" id="mgSearch" placeholder="Buscar por nome ou disciplina..." aria-label="Buscar Minigame" />
+      </div>
+      <div class="mg-sort">
+        <i class="fa-solid fa-arrow-up-wide-short" aria-hidden="true"></i>
+        <select id="mgSort" aria-label="Ordenar por">
+          <option value="recentes">Mais recentes</option>
+          <option value="jogados">Mais jogados</option>
+          <option value="az">A–Z</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mg-grid" id="mgGrid" aria-live="polite"></div>
+
+    <div class="mg-empty" id="mgEmpty" style="display:none;" aria-live="polite">
+      <div class="mg-empty-icon" aria-hidden="true"><i class="fa-solid fa-gamepad"></i></div>
+      <h3 id="mgEmptyTitle">Nenhum Minigame disponível ainda</h3>
+      <p id="mgEmptyDesc">Esta seção será preenchida assim que professores e coordenadores começarem a criar os primeiros Minigames da plataforma.</p>
+      <div class="mg-empty-actions">
+        <a href="cadastro.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Cadastrar e criar</a>
+        <a href="sobre.html#minigames" class="btn btn-outline"><i class="fa-solid fa-circle-info"></i> Saiba mais</a>
+      </div>
+    </div>
+
+    <div class="mg-load-more" id="mgLoadMore" style="display:none;">
+      <button class="btn btn-outline" id="btnLoadMore"><i class="fa-solid fa-chevron-down"></i> Carregar mais</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-banner" aria-label="Cadastre-se na plataforma">
+  <div class="container">
+    <div class="cta-text">
+      <h2><i class="fa-solid fa-rocket"></i> Faça parte do Centro Educacional de Itaboraí!</h2>
+      <p>Professores, coordenadores e alunos — a plataforma educacional de Itaboraí é para todos.</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a href="cadastro.html" class="btn btn-dark"><i class="fa-solid fa-user-plus"></i> Criar conta gratuita</a>
+      <a href="sobre.html" class="btn" style="background:rgba(15,31,21,.12);color:var(--cei-dark);border:2px solid rgba(15,31,21,.25);"><i class="fa-solid fa-circle-info"></i> Saiba mais</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-emblem" aria-hidden="true"></div>
+            <div class="logo-text">
+              <span class="abbr">C.E.I.</span>
+              <span class="full">Onde o jogo vira aprendizado.</span>
+            </div>
+          </div>
+          <p>Plataforma pedagógica digital desenvolvida para fortalecer o ensino e a aprendizagem nas escolas municipais de Itaboraí, Rio de Janeiro.</p>
+          <div class="footer-socials" aria-label="Redes sociais">
+            <a href="https://www.youtube.com/@luiz_csx" aria-label="YouTube da C.E.I."><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://instagram.com/luiz.csx" aria-label="Instagram da C.E.I."><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="WhatsApp da C.E.I."><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Plataforma</h5>
+          <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
+            <li><a href="minigames.html"><i class="fa-solid fa-gamepad"></i> Minigames</a></li>
+            <li><a href="forum.html"><i class="fa-solid fa-comments"></i> Fórum</a></li>
+            <li><a href="ranking.html"><i class="fa-solid fa-trophy"></i> Ranking</a></li>
+            <li><a href="usuarios.html"><i class="fa-solid fa-user-circle"></i> Usuários</a></li>
+            <li><a href="calendario.html"><i class="fa-solid fa-calendar-days"></i> Calendário</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Acesso</h5>
+          <ul>
+            <li><a href="login.html"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a></li>
+            <li><a href="cadastro.html"><i class="fa-solid fa-user-plus"></i> Cadastrar</a></li>
+            <li><a href="recuperar-senha.html"><i class="fa-solid fa-key"></i> Recuperar senha</a></li>
+            <li><a href="privacidade.html"><i class="fa-solid fa-shield-halved"></i> Privacidade</a></li>
+            <li><a href="termos.html"><i class="fa-solid fa-file-contract"></i> Termos de uso</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Institucional</h5>
+          <ul>
+            <li><a href="sobre.html"><i class="fa-solid fa-circle-info"></i> Sobre a C.E.I.</a></li>
+            <li><a href="#"><i class="fa-solid fa-school"></i> Secretaria de Educação</a></li>
+            <li><a href="#"><i class="fa-solid fa-landmark"></i> Prefeitura de Itaboraí</a></li>
+            <li><a href="#"><i class="fa-solid fa-universal-access"></i> Acessibilidade</a></li>
+            <li><a href="#"><i class="fa-solid fa-envelope"></i> Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> <span class="gold">Centro Educacional de Itaboraí</span>. Todos os direitos reservados.</p>
+      <div class="footer-badges">
+        <span class="footer-badge"><i class="fa-solid fa-universal-access"></i> Acessível</span>
+        <span class="footer-badge"><i class="fa-solid fa-mobile-screen"></i> Responsivo</span>
+        <span class="footer-badge"><i class="fa-brands fa-html5"></i> Feito com HTML5</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="vlibras-btn" id="vlibrasBtn" aria-label="Ativar VLibras – Tradução em Libras">
+  <i class="fa-solid fa-hands"></i>
+</button>
+<div class="vlibras-tooltip" aria-hidden="true">VLibras – Libras</div>
+
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<script>
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  const hamburger = document.getElementById('hamburgerBtn');
+  const drawer    = document.getElementById('navDrawer');
+  const overlay   = document.getElementById('drawerOverlay');
+  const closeBtn  = document.getElementById('drawerClose');
+
+  function openDrawer()  { drawer.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeDrawer() { drawer.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+
+  hamburger.addEventListener('click', openDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  let fontSize = 15;
+  function changeFontSize(delta) {
+    fontSize = Math.min(20, Math.max(12, fontSize + delta));
+    document.body.style.fontSize = fontSize + 'px';
+  }
+
+  function toggleContrast() {
+    document.documentElement.classList.toggle('high-contrast');
+    const hc = document.documentElement.classList.contains('high-contrast');
+    if (hc) {
+      document.documentElement.style.setProperty('--cei-white','#000');
+      document.documentElement.style.setProperty('--cei-text','#fff');
+      document.documentElement.style.setProperty('--cei-gray','#111');
+      document.documentElement.style.setProperty('--cei-border','#555');
+      document.documentElement.style.setProperty('--cei-muted','#ccc');
+    } else {
+      ['--cei-white','--cei-text','--cei-gray','--cei-border','--cei-muted'].forEach(v =>
+        document.documentElement.style.removeProperty(v)
+      );
+    }
+  }
+
+  document.getElementById('vlibrasBtn').addEventListener('click', function() {
+    const accessBtn = document.querySelector('[vw-access-button]');
+    if (accessBtn) {
+      accessBtn.style.display = 'flex';
+      accessBtn.click();
+      accessBtn.style.display = 'none';
+    }
+  });
+
+  const THUMB_MAP = {
+    matematica:  { cls: 'math',    icon: 'fa-square-root-variable', label: 'Matemática'  },
+    historia:    { cls: 'history', icon: 'fa-scroll',               label: 'História'     },
+    ciencias:    { cls: 'science', icon: 'fa-flask',                label: 'Ciências'     },
+    portugues:   { cls: 'lit',     icon: 'fa-book',                 label: 'Português'    },
+    geografia:   { cls: 'geo',     icon: 'fa-earth-americas',       label: 'Geografia'    },
+    artes:       { cls: 'arts',    icon: 'fa-palette',              label: 'Artes'        },
+    'ed-fisica': { cls: 'phys',    icon: 'fa-person-running',       label: 'Ed. Física'   },
+  };
+
+  const DIFF_LABELS = { 1: 'Fácil', 2: 'Médio', 3: 'Difícil' };
+
+  let allGames     = [];
+  let activeFilter = 'todos';
+  let searchQuery  = '';
+  let activeSortFn = (a, b) => new Date(b.criado_em) - new Date(a.criado_em);
+  const PAGE_SIZE  = 9;
+  let visibleCount = PAGE_SIZE;
+
+  function esc(str) {
+    return String(str)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function buildCard(g) {
+    const map  = THUMB_MAP[g.disciplina] || { cls: 'def', icon: 'fa-gamepad', label: g.disciplina || 'Geral' };
+    const diff = Math.min(3, Math.max(1, g.dificuldade || 1));
+    const dots = [1,2,3].map(n => `<span class="diff-dot${n <= diff ? ' on' : ''}"></span>`).join('');
+    return `
+      <article class="game-card" data-id="${esc(g.id)}">
+        <div class="game-thumb ${map.cls}" aria-hidden="true">
+          <i class="fa-solid ${map.icon}"></i>
+        </div>
+        <div class="game-card-body">
+          <div class="game-meta">
+            <span class="tag"><i class="fa-solid ${map.icon}"></i> ${esc(map.label)}</span>
+          </div>
+          <h3>${esc(g.titulo)}</h3>
+          <p>${esc(g.descricao || '')}</p>
+        </div>
+        <div class="game-card-footer">
+          <div class="game-difficulty">
+            <div class="diff-dots" aria-label="Dificuldade: ${DIFF_LABELS[diff]}">${dots}</div>
+            <span>${DIFF_LABELS[diff]}</span>
+          </div>
+          <span class="game-plays"><i class="fa-solid fa-play" aria-hidden="true"></i> ${g.partidas || 0}</span>
+          <button class="btn-play" onclick="window.location.href='jogo.html?id=${esc(g.id)}'">
+            <i class="fa-solid fa-play"></i> Jogar
+          </button>
+        </div>
+      </article>`;
+  }
+
+  function getFiltered() {
+    return allGames
+      .filter(g => activeFilter === 'todos' || g.disciplina === activeFilter)
+      .filter(g => {
+        if (!searchQuery) return true;
+        const q = searchQuery.toLowerCase();
+        return g.titulo.toLowerCase().includes(q)
+          || (g.descricao || '').toLowerCase().includes(q)
+          || (THUMB_MAP[g.disciplina]?.label || '').toLowerCase().includes(q);
+      })
+      .sort(activeSortFn);
+  }
+
+  function renderGrid() {
+    const filtered = getFiltered();
+    const grid     = document.getElementById('mgGrid');
+    const empty    = document.getElementById('mgEmpty');
+    const loadMore = document.getElementById('mgLoadMore');
+
+    document.getElementById('statTotal').textContent     = allGames.length;
+    document.getElementById('statJogadas').textContent   = allGames.reduce((s, g) => s + (g.partidas || 0), 0);
+    document.getElementById('statCriadores').textContent = [...new Set(allGames.map(g => g.criador_id))].length;
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '';
+      empty.style.display = 'block';
+      loadMore.style.display = 'none';
+      if (searchQuery || activeFilter !== 'todos') {
+        document.getElementById('mgEmptyTitle').textContent = 'Nenhum resultado encontrado';
+        document.getElementById('mgEmptyDesc').textContent  = 'Tente outro termo de busca ou selecione uma disciplina diferente.';
+      } else {
+        document.getElementById('mgEmptyTitle').textContent = 'Nenhum Minigame disponível ainda';
+        document.getElementById('mgEmptyDesc').textContent  = 'Esta seção será preenchida assim que professores e coordenadores começarem a criar os primeiros Minigames da plataforma.';
+      }
+      return;
+    }
+
+    empty.style.display = 'none';
+    grid.innerHTML = filtered.slice(0, visibleCount).map(buildCard).join('');
+    loadMore.style.display = filtered.length > visibleCount ? 'block' : 'none';
+  }
+
+  async function fetchGames() {
+    try {
+      const res  = await fetch('/api/minigames');
+      const data = await res.json();
+      if (data.ok && Array.isArray(data.minigames)) allGames = data.minigames;
+    } catch { allGames = []; }
+    renderGrid();
+  }
+
+  document.querySelectorAll('.mg-filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.mg-filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      activeFilter = this.dataset.filter;
+      visibleCount = PAGE_SIZE;
+      renderGrid();
+    });
+  });
+
+  document.getElementById('mgSearch').addEventListener('input', function() {
+    searchQuery = this.value.trim();
+    visibleCount = PAGE_SIZE;
+    renderGrid();
+  });
+
+  document.getElementById('mgSort').addEventListener('change', function() {
+    if (this.value === 'jogados')  activeSortFn = (a, b) => (b.partidas || 0) - (a.partidas || 0);
+    else if (this.value === 'az')  activeSortFn = (a, b) => a.titulo.localeCompare(b.titulo);
+    else                           activeSortFn = (a, b) => new Date(b.criado_em) - new Date(a.criado_em);
+    visibleCount = PAGE_SIZE;
+    renderGrid();
+  });
+
+  document.getElementById('btnLoadMore').addEventListener('click', function() {
+    visibleCount += PAGE_SIZE;
+    renderGrid();
+  });
+
+  fetchGames();
+</script>
+</body>
+</html>
