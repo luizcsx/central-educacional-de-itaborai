@@ -436,7 +436,27 @@
     renderGrid();
   });
 
-  fetchGames();
+import { createClient } from 'https://jspm.dev/@supabase/supabase-js'
+const supabase = createClient('https://tkpatolybraskbedknjc.supabase.co', 'sb_publishable_hrQmBCRFxI0YhyCkk7SOzA_1BvyFC9U');
+
+async function fetchGames() {
+  try {
+    const { data, error } = await supabase
+      .from('minigames')
+      .select('*')
+      .order('criado_em', { ascending: false });
+
+    if (error) throw error;
+
+    if (Array.isArray(data)) {
+      allGames = data;
+    }
+  } catch (err) {
+    console.error("Erro ao carregar minigames:", err);
+    allGames = []; 
+  }
+  renderGrid();
+}
 </script>
 </body>
 </html>
