@@ -1,35 +1,37 @@
-# Fundação Blockstep
+# Centro Educacional de Itaboraí
 
-> **Produzindo o que é certo.**
+> *Onde o jogo vira aprendizado.*
 
-A **Fundação Blockstep** é uma iniciativa educacional de **estudantes para estudantes**. Nosso foco é estimular o raciocínio lógico e o aprendizado estruturado para alunos do 1º ao 9º ano, provando que a tecnologia e a lógica podem ser aprendidas de forma clara e direta por quem vive a escola no dia a dia.
-
-Este repositório contém a interface principal da plataforma (Demo), organizada de forma modular para garantir alta performance e fácil manutenção.
+O **Centro Educacional de Itaboraí** (**C.E.I.**) é uma plataforma completa de apoio ao ensino municipal de Itaboraí. Criada para ser a ponte entre o lazer e o estudo, ela transforma o conteúdo escolar em desafios interativos, estimulando o protagonismo do aluno através da tecnologia.
 
 ---
 
-## Nossa Proposta
+## O que a plataforma oferece?
 
-Acreditamos que o aprendizado flui melhor entre pares. A Fundação não substitui a escola; ela **facilita o caminho** através de ferramentas lógicas e uma interface pensada para evitar distrações. Nossa missão é desenvolver soluções tecnológicas de alto nível que simplificam o conhecimento e garantem autonomia digital para quem está começando.
-
----
-
-## O que você encontrará aqui
-
-* **Estrutura do Site**: Códigos **HTML5** e **CSS3** serão adicionados, atualizados, ou deletados neste repositório.
-* **Pacotes**: Pacotes adicionais ou educacionais podem ser adicionados e atualizados.
-* **Desenvolvimento Aberto**: Um projeto feito por alunos, para o futuro da educação.
+* **Ambiente do Aluno:** Um painel exclusivo onde o estudante acessa seus desafios e acompanha sua evolução.
+* **Arena de Jogos (Minigames):** Atividades interativas de Português, Matemática, Ciências, História, Geografia, Inglês, Artes e Educação Física, desenhadas para reforçar o que foi ensinado em sala.
+* **História Local:** Módulos exclusivos sobre Itaboraí, valorizando a cultura e as raízes da nossa cidade.
+* **Acesso Seguro:** Sistema de cadastro individual que garante que cada aluno tenha seu próprio progresso salvo.
 
 ---
 
-## Links Úteis
+## Impacto na Escola
 
-* **Site Oficial:** [Clique aqui.](https://fundacao-blockstep.vercel.app)
-* **Instagram:** [@luiz.csx](https://instagram.com/luiz.csx)
+O Centro Educacional de Itaboraí foi desenvolvido ouvindo quem entende de educação. Com o apoio e testes iniciais de profissionais da rede (**Escola Municipal Antônio Santos da Silva**), a plataforma foca em:
+
+1.  **Engajamento:** Reduzir a distração e aumentar o interesse pelas matérias.
+2.  **Inovação:** Levar Itaboraí para a vanguarda da tecnologia educacional.
+3.  **Segurança Digital:** Proteção total das informações e um ambiente livre de anúncios ou distrações externas.
 
 ---
 
-## Licença
+## Como acessar
 
-Este projeto é desenvolvido sob a **Licença MIT**.  
-Feito no Rio de Janeiro, Brasil | 2026.
+A plataforma é otimizada para computadores e tablets das escolas:
+* **Link de Acesso:** [https://centro-educacional-itaborai.vercel.app](https://centro-educacional-itaborai.vercel.app)
+
+---
+
+## Agradecimentos
+
+Agradeço imensamente à equipe da **Escola Municipal Antônio Santos da Silva**, por validar as primeiras etapas deste ecossistema digital, e também os **primeiros testadores** deste projeto.
