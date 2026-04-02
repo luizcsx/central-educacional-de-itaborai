@@ -150,9 +150,9 @@
       object-fit: cover; object-position: center;
     }
 
-    .slide-1 { background-color: #0f3d1f; background-image: url('TEMPLATE_1'); background-size: cover; background-position: center; }
-    .slide-2 { background-color: #0f1f3d; background-image: url('IMAGEM_SLIDE_2'); background-size: cover; background-position: center; }
-    .slide-3 { background-color: #2a1a00; background-image: url('/css/img/slide_1.png'); background-size: cover; background-position: center; }
+    .slide-1 { background-color: #0f3d1f; background-image: url('/css/img/IMG_SLIDE_01.png'); background-size: cover; background-position: center; }
+    .slide-2 { background-color: #0f1f3d; background-image: url('/css/img/IMG_SLIDE_02.png'); background-size: cover; background-position: center; }
+    .slide-3 { background-color: #2a1a00; background-image: url('/css/img/IMG_SLIDE_03.png'); background-size: cover; background-position: center; }
 
     .carousel-slide::before {
       content: ''; position: absolute; inset: 0;
