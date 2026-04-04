@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Termos de Uso - Centro Educacional de Itaboraí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/termos1f.css" />
+
+</head>
+<body>
+
+<div class="topbar" role="banner">
+  <div class="container">
+    <div class="topbar-left">
+      <span><i class="fa-solid fa-triangle-exclamation"></i> <strong>ATENÇÃO:</strong> Plataforma em fase de testes. Projeto não-oficial sem ligação com órgãos públicos municipais.</span>
+    </div>
+    <div class="topbar-right">
+      <div class="accessibility-bar" aria-label="Ferramentas de acessibilidade">
+        <button aria-label="Aumentar fonte" onclick="changeFontSize(1)"><i class="fa-solid fa-a"></i> A+</button>
+        <button aria-label="Diminuir fonte" onclick="changeFontSize(-1)"><i class="fa-solid fa-a"></i> A-</button>
+        <button aria-label="Alto contraste" onclick="toggleContrast()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      </div>
+      <a href="malito:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a>
+      <a href="suporte1f.html"><i class="fa-solid fa-circle-question"></i> Ajuda</a>
+    </div>
+  </div>
+</div>
+
+<header class="header" role="navigation" aria-label="Menu principal">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Centro Educacional de Itaboraí">
+      <div class="logo-emblem" aria-hidden="true"></div>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-bar" role="search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" placeholder="Pesquisar..." aria-label="Pesquisar" />
+      </div>
+      <a href="entrar.html" class="btn btn-outline btn-login"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a>
+      <a href="junte-se.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Juntar-se</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <div class="logo">
+        <div class="logo-emblem" style="width:38px;height:38px;" aria-hidden="true"></div>
+        <div class="logo-text"><span class="abbr">Bem-vindo(a)!</span></div>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Fechar menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="drawer-footer">
+      <a href="junte-se.html" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fa-solid fa-right-to-bracket"></i> Junte-se a nós!</a>
+    </div>
+  </div>
+</div>
+
+<section class="termos-hero" aria-label="Termos de Uso">
+  <div class="container">
+    <div class="termos-hero-inner">
+      <div class="termos-hero-text">
+        <div class="section-label"><i class="fa-solid fa-file-contract"></i> Documentos legais</div>
+        <h1>Termos de Uso</h1>
+        <p>Leia com atenção antes de utilizar a plataforma. O uso desta plataforma implica na aceitação integral destas regras e condições.</p>
+      </div>
+      <div class="termos-hero-meta" aria-label="Informações do documento">
+        <span><i class="fa-solid fa-calendar"></i> Última atualização: <strong>04 de abril de 2026</strong></span>
+        <span><i class="fa-solid fa-code-branch"></i> Versão: <strong>1.0</strong></span>
+        <span><i class="fa-solid fa-earth-americas"></i> Aplicável a: <strong>todos os usuários</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main role="main">
+  <div class="container">
+    <div class="termos-layout">
+
+      <aside class="termos-nav-sticky" aria-label="Navegação dos Termos">
+        <div class="termos-nav-card">
+          <div class="termos-nav-card-head"><i class="fa-solid fa-list"></i> Seções</div>
+          <ul>
+            <li><a href="#aceitacao" class="active"><i class="fa-solid fa-handshake"></i> Aceitação</a></li>
+            <li><a href="#conduta"><i class="fa-solid fa-users"></i> Conduta</a></li>
+            <li><a href="#forum-regras"><i class="fa-solid fa-comments"></i> Fórum</a></li>
+            <li><a href="#minigames-regras"><i class="fa-solid fa-gamepad"></i> Minigames</a></li>
+            <li><a href="#conteudo"><i class="fa-solid fa-file-lines"></i> Conteúdo</a></li>
+            <li><a href="#privacidade"><i class="fa-solid fa-shield-halved"></i> Privacidade</a></li>
+            <li><a href="#penalidades"><i class="fa-solid fa-gavel"></i> Penalidades</a></li>
+            <li><a href="#admin"><i class="fa-solid fa-crown"></i> Administração</a></li>
+            <li><a href="#contato-termos"><i class="fa-solid fa-envelope"></i> Contato</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <div class="termos-content">
+
+        <div class="termos-section" id="aceitacao">
+          <div class="termos-section-head">
+            <div class="termos-section-head-icon"><i class="fa-solid fa-handshake"></i></div>
+            <div>
+              <h2>1. Aceitação dos Termos</h2>
+              <p>Base legal do uso da plataforma</p>
+            </div>
+          </div>
+          <div class="termos-section-body">
+            <p class="termos-prose">Ao acessar, criar uma conta ou utilizar qualquer recurso do <strong>Centro Educacional de Itaboraí (C.E.I.)</strong>, você declara que leu, compreendeu e concorda integralmente com estes Termos de Uso.</p>
+            <p class="termos-prose">Caso não concorde com qualquer disposição aqui presente, você não deve utilizar a plataforma. O uso continuado após alterações nestes Termos constitui aceitação das novas condições.</p>
+            <p class="termos-prose">A plataforma é destinada a <strong>estudantes, professores, coordenadores e orientadores educacionais</strong>. O acesso por menores de 13 anos deve ser acompanhado de autorização dos responsáveis legais.</p>
+          </div>
+        </div>
+
+        <div class="termos-section" id="conduta">
+          <div class="termos-section-head">
+            <div class="termos-section-head-icon"><i class="fa-solid fa-users"></i></div>
+            <div>
+              <h2>2. Conduta dos Usuários</h2>
+              <p>O que é esperado de todos na plataforma</p>
+            </div>
+          </div>
+          <div class="termos-section-body">
+            <div class="termos-rule">
+              <div class="rule-icon ok"><i class="fa-solid fa-check"></i></div>
+              <div class="rule-text">
+                <h4>Respeito mútuo</h4>
+                <p>Todos os usuários — alunos, professores, coordenadores e funcionários — devem interagir com respeito, cordialidade e boa-fé, independentemente de cargo ou função.</p>
+              </div>
+            </div>
+            <div class="termos-rule">
+              <div class="rule-icon ban"><i class="fa-solid fa-xmark"></i></div>
+              <div class="rule-text">
+                <h4>Críticas pessoais e ataques</h4>
+                <p>É estritamente proibido criticar, ofender, humilhar ou atacar pessoas da escola ou da plataforma — sejam colegas, professores, coordenadores ou funcionários. Isto inclui comentários sobre aparência, gênero, desempenho pessoal ou vida privada.</p>
+              </div>
+            </div>
+            <div class="termos-rule">
+              <div class="rule-icon ban"><i class="fa-solid fa-xmark"></i></div>
+              <div class="rule-text">
+                <h4>Brigas e conflitos públicos</h4>
+                <p>Discussões de caráter pessoal, provocações, agressões verbais ou qualquer forma de conflito entre usuários são terminantemente proibidas nos espaços públicos da plataforma.</p>
+              </div>
+            </div>
+            <div class="termos-rule">
+              <div class="rule-icon ban"><i class="fa-solid fa-xmark"></i></div>
+              <div class="rule-text">
+                <h4>Críticas depreciativas a disciplinas ou conteúdos</h4>
+                <p>Comentários que desvalorizem matérias, conteúdos curriculares ou práticas pedagógicas de forma depreciativa e sem embasamento construtivo não são permitidos.</p>
+              </div>
+            </div>
+            <div class="termos-rule">
+              <div class="rule-icon ok"><i class="fa-solid fa-check"></i></div>
+              <div class="rule-text">
+                <h4>Debate construtivo é bem-vindo</h4>
+                <p>Discordâncias pedagógicas, sugestões de melhoria e debates educacionais com tom respeitoso e fundamentado são encorajados e fazem parte do propósito da plataforma.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="termos-section" id="forum-regras">
+          <div class="termos-section-head">
+            <div class="termos-section-head-icon"><i class="fa-solid fa-comments"></i></div>
+            <div>
+              <h2>3. Fórum de Discussão</h2>
+              <p>Regras específicas para postagens e interações</p>
+            </div>
+          </div>
+          <div class="termos-section-body">
+            <div class="termos-rule">
+              <div class="rule-icon ok"><i class="fa-solid fa-check"></i></div>
+              <div class="rule-text">
+                <h4>Postagens relacionadas à educação</h4>
+                <p>Os tópicos devem ser relacionados ao contexto educacional: dúvidas sobre conteúdos, troca de experiências pedagógicas, revisão de matérias ou discussões sobre práticas de ensino.</p>
+              </div>
+            </div>
+            <div class="termos-rule">
+              <div class="rule-icon ban"><i class="fa-solid fa-xmark"></i></div>
+              <div class="rule-text">
+                <h4>Conteúdo impróprio ou ilegal</h4>
+                <p>Não é permitido publicar conteúdo violento, sexual, discriminatório, de ódio, ou qualquer material que viole leis brasileiras, especialmente o E.C.A. (Estatuto da Criança e do Adolescente).</p>
+              </div>
+            </div>
+            <div class="termos-rule">
+              <div class="rule-icon ban"><i class="fa-solid fa-xmark"></i></div>
+              <div class="rule-text">
+                <h4>Spams e publicidade</h4>
+                <p>A divulgação de produtos, serviços, links externos sem relação educacional ou qualquer tipo de propaganda comercial é proibida.</p>
+              </div>
+            </div>
+            <div class="termos-rule">
+              <div class="rule-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div class="rule-text">
+                <h4>Moderação ativa</h4>
+                <p>Todos os tópicos e respostas estão sujeitos à moderação pelos administradores da plataforma. Conteúdos que violem estas regras podem ser removidos sem aviso prévio.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="termos-section" id="minigames-regras">
+          <div class="termos-section-head">
+            <div class="termos-section-head-icon"><i class="fa-solid fa-gamepad"></i></div>
+            <div>
+              <h2>4. Minigames</h2>
+              <p>Criação, uso e responsabilidade sobre os jogos</p>
+            </div>
+          </div>
+          <div class="termos-section-body">
+            <div class="termos-rule">
+              <div class="rule-icon info"><i class="fa-solid fa-circle-info"></i></div>
+              <div class="rule-text">
+                <h4>Quem pode criar Minigames</h4>
+                <p>Professores, coordenadores e orientadores educacionais podem criar Minigames na plataforma. Alunos podem criar mediante autorização de um responsável com cargo superior.</p>
+              </div>
+            </div>
+            <div class="termos-rule">
+              <div class="rule-icon ok"><i class="fa-solid fa-check"></i></div>
+              <div class="rule-text">
+                <h4>Conteúdo pedagógico e adequado</h4>
+                <p>Os Minigames devem ter conteúdo estritamente educacional, adequado à faixa etária dos alunos da plataforma e alinhado à BNCC ou ao currículo escolar vigente.</p>
+              </div>
+            </div>
+            <div class="termos-rule">
+              <div class="rule-icon ban"><i class="fa-solid fa-xmark"></i></div>
+              <div class="rule-text">
+                <h4>Conteúdo enganoso ou inadequado</h4>
+                <p>Minigames com informações incorretas intencionalmente, conteúdo impróprio, perguntas que ridicularizem alunos ou culturas, ou que sirvam a outros fins que não o educacional serão removidos e o criador poderá ser penalizado.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="termos-section" id="conteudo">
+          <div class="termos-section-head">
+            <div class="termos-section-head-icon"><i class="fa-solid fa-file-lines"></i></div>
+            <div>
+              <h2>5. Propriedade de Conteúdo</h2>
+              <p>Direitos sobre o que é publicado na plataforma</p>
+            </div>
+          </div>
+          <div class="termos-section-body">
+            <div class="termos-rule">
+              <div class="rule-icon info"><i class="fa-solid fa-circle-info"></i></div>
+              <div class="rule-text">
+                <h4>Conteúdo gerado pelo usuário</h4>
+                <p>Ao publicar conteúdo no Centro Educacional de Itaboraí (tópicos, respostas, Minigames), você mantém os direitos sobre seu trabalho, mas concede à plataforma uma licença gratuita e não-exclusiva para exibir, distribuir e utilizar esse conteúdo dentro do contexto educacional da plataforma.</p>
+              </div>
+            </div>
+            <div class="termos-rule">
+              <div class="rule-icon ban"><i class="fa-solid fa-xmark"></i></div>
+              <div class="rule-text">
+                <h4>Plágio e violação de direitos autorais</h4>
+                <p>É proibido publicar conteúdo de terceiros sem a devida atribuição ou autorização. A reprodução integral de obras protegidas por direitos autorais sem licença adequada é vedada.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="termos-section" id="privacidade">
+          <div class="termos-section-head">
+            <div class="termos-section-head-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+              <h2>6. Privacidade e Dados</h2>
+              <p>Como seus dados são tratados</p>
+            </div>
+          </div>
+          <div class="termos-section-body">
+            <div class="termos-rule">
+              <div class="rule-icon ok"><i class="fa-solid fa-check"></i></div>
+              <div class="rule-text">
+                <h4>Dados coletados</h4>
+                <p>O Centro Educacional de Itaboraí coleta apenas os dados necessários para o funcionamento da plataforma: nome, nome de usuário, e-mail e escola/instituição. Senhas são armazenadas de forma criptografada e nunca são acessíveis em texto puro.</p>
+              </div>
+            </div>
+            <div class="termos-rule">
+              <div class="rule-icon ok"><i class="fa-solid fa-check"></i></div>
+              <div class="rule-text">
+                <h4>Uso dos dados</h4>
+                <p>Seus dados são utilizados exclusivamente para autenticação, personalização da experiência e funcionamento dos recursos da plataforma. Não vendemos, alugamos ou compartilhamos dados com terceiros para fins comerciais.</p>
+              </div>
+            </div>
+            <div class="termos-rule">
+              <div class="rule-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div class="rule-text">
+                <h4>Surpresas e informações não-autorizadas</h4>
+                <p>Vazar ou divulgar informações sobre eventos, surpresas ou novidades da plataforma sem autorização expressa dos administradores constitui violação destes Termos e pode resultar em advertência formal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="termos-section" id="penalidades">
+          <div class="termos-section-head">
+            <div class="termos-section-head-icon"><i class="fa-solid fa-gavel"></i></div>
+            <div>
+              <h2>7. Penalidades</h2>
+              <p>Consequências para violações das regras</p>
+            </div>
+          </div>
+          <div class="termos-section-body">
+            <p class="termos-prose" style="margin-bottom:20px;">As penalidades são aplicadas de forma proporcional à gravidade da infração, avaliadas pelos administradores da plataforma. Reincidências sempre resultam em penalidades mais severas.</p>
+
+            <div class="penalty-grid">
+              <div class="penalty-card warn-card">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <div class="p-level">Nível 1</div>
+                <div class="p-name">Aviso Formal</div>
+                <div class="p-desc">Para infrações leves e de primeira ocorrência. Registro no histórico do usuário. Sem suspensão de acesso.</div>
+              </div>
+              <div class="penalty-card ban-card">
+                 <i class="fa-solid fa-lock"></i>
+                <div class="p-level">Nível 2</div>
+                <div class="p-name">Suspensão Temporária</div>
+                <div class="p-desc">Banimento de 1 semana para infrações moderadas ou reincidência após aviso. Aplicável a brigas, ofensas e conteúdo impróprio.</div>
+              </div>
+              <div class="penalty-card perm-card">
+                  <i class="fa-solid fa-ban"></i>
+                <div class="p-level">Nível 3</div>
+                <div class="p-name">Banimento Permanente</div>
+                <div class="p-desc">Para infrações graves, reincidências múltiplas ou comportamentos que ameacem a integridade da plataforma ou de seus usuários.</div>
+              </div>
+            </div>
+
+            <div style="margin-top:20px;">
+              <div class="termos-rule">
+                <div class="rule-icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div class="rule-text">
+                  <h4>Casos específicos — Aviso (sem banimento)</h4>
+                  <p>Vazar surpresas ou novidades da plataforma sem autorização resulta em aviso formal. Não há banimento neste caso, mas o registro permanece no histórico.</p>
+                </div>
+              </div>
+              <div class="termos-rule">
+                <div class="rule-icon ban"><i class="fa-solid fa-xmark"></i></div>
+                <div class="rule-text">
+                  <h4>Casos específicos — Banimento de 1 semana</h4>
+                  <p>Brigas públicas, críticas ofensivas a pessoas ou instituições, e qualquer comportamento conflituoso nos espaços da plataforma resultam em suspensão de até 7 dias.</p>
+                </div>
+              </div>
+              <div class="termos-rule" style="border-bottom:none;">
+                <div class="rule-icon info"><i class="fa-solid fa-circle-info"></i></div>
+                <div class="rule-text">
+                  <h4>Cargo de Administrador</h4>
+                  <p>Apenas orientadores e coordenadores educacionais de confiança podem receber o cargo de Administrador. Se um administrador alterar o código-fonte ou configurações da plataforma sem autorização expressa, poderá ter o cargo removido imediatamente, sem risco de banimento.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="termos-section" id="admin">
+          <div class="termos-section-head">
+            <div class="termos-section-head-icon"><i class="fa-solid fa-crown"></i></div>
+            <div>
+              <h2>8. Administração da Plataforma</h2>
+              <p>Poderes e responsabilidades dos administradores</p>
+            </div>
+          </div>
+          <div class="termos-section-body">
+            <div class="termos-rule">
+              <div class="rule-icon info"><i class="fa-solid fa-circle-info"></i></div>
+              <div class="rule-text">
+                <h4>Quem pode ser administrador</h4>
+                <p>O cargo de Administrador é restrito ao <strong>orientador(a) educacional</strong> e ao <strong>coordenador(a) pedagógico(a)</strong> da instituição, desde que sejam pessoas de confiança reconhecida pela liderança do projeto.</p>
+              </div>
+            </div>
+            <div class="termos-rule">
+              <div class="rule-icon ok"><i class="fa-solid fa-check"></i></div>
+              <div class="rule-text">
+                <h4>Poderes do administrador</h4>
+                <p>Administradores podem moderar conteúdo, aplicar penalidades, gerenciar usuários, criar e excluir Minigames, e configurar aspectos da plataforma dentro dos limites autorizados.</p>
+              </div>
+            </div>
+            <div class="termos-rule">
+              <div class="rule-icon ban"><i class="fa-solid fa-xmark"></i></div>
+              <div class="rule-text">
+                <h4>Limites do cargo</h4>
+                <p>Alterações no código-fonte, no design ou em configurações estruturais da plataforma exigem autorização expressa do criador do projeto. A realização não autorizada dessas alterações implica na remoção imediata do cargo de Administrador.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="termos-section" id="contato-termos">
+          <div class="termos-section-head">
+            <div class="termos-section-head-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <h2>9. Dúvidas e Contato</h2>
+              <p>Como entrar em contato sobre os Termos</p>
+            </div>
+          </div>
+          <div class="termos-section-body">
+            <p class="termos-prose" style="margin-bottom:20px;">Em caso de dúvidas sobre estes Termos, denúncias de violações ou solicitações relacionadas à sua conta, entre em contato pelos canais abaixo:</p>
+            <div class="contact-box">
+              <div class="contact-box-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <h4>E-mail oficial</h4>
+                <p>Para dúvidas, denúncias ou sugestões sobre estes Termos de Uso, envie um e-mail para <a href="malito:centroeducacionaldeitaborai@gmail.com">centroeducacionaldeitaborai@gmail.com</a> ou <a href="malito:contato.luiz404@gmail.com">contato.luiz404@gmail.com</a>. Respondemos em até 7 dias úteis.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-emblem" aria-hidden="true"></div>
+            <div class="logo-text">
+              <span class="abbr">"O amanhã, hoje."</span>
+              <span class="full"><i>- Luiz Miguel</i></span>
+            </div>
+          </div>
+          <p>Plataforma pedagógica digital desenvolvida para fortalecer o ensino e a aprendizagem nas escolas municipais de Itaboraí, Rio de Janeiro.</p>
+          <div class="footer-socials" aria-label="Redes sociais">
+            <a href="https://www.youtube.com/@CentroEducacionaldeItaboraí" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://instagram.com/centroeducacionaldeitaborai" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="malito:centroeducacionaldeitaborai@gmail.com" aria-label="Contato"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Plataforma</h5>
+          <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
+            <li><a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a></li>
+            <li><a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a></li>
+            <li><a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a></li>
+            <li><a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a></li>
+            <li><a href="calendario1f.html"><i class="fa-solid fa-calendar-days"></i> Calendário</a></li>
+            <li><a href="doacao1f.html"><i class="fa-solid fa-hand-holding-heart"></i> Apoie este projeto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Acesso</h5>
+          <ul>
+            <li><a href="entrar.html"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a></li>
+            <li><a href="junte-se.html"><i class="fa-solid fa-user-plus"></i> Juntar-se</a></li>
+            <li><a href="recuperar-senha.1fhtml"><i class="fa-solid fa-key"></i> Recuperar senha</a></li>
+            <li><a href="privacidade1f.html"><i class="fa-solid fa-shield-halved"></i> Privacidade</a></li>
+            <li><a href="termos1f.html"><i class="fa-solid fa-file-contract"></i> Termos de uso</a></li>
+            <li><a href="suporte1f.html"><i class="fa-solid fa-headset"></i> Suporte</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Institucional</h5>
+          <ul>
+            <li><a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre Nós</a></li>
+            <li><a href="https://site.ib.itaborai.rj.gov.br/orgaos_municipais/educacao/"><i class="fa-solid fa-school"></i> Secretaria de Educação</a></li>
+            <li><a href="https://site.ib.itaborai.rj.gov.br"><i class="fa-solid fa-landmark"></i> Prefeitura de Itaboraí</a></li>
+            <li><a href="acessibilidade1f.html"><i class="fa-solid fa-universal-access"></i> Acessibilidade</a></li>
+            <li><a href="malito:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> <span class="gold">Centro Educacional de Itaboraí</span>. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="vlibras-btn" id="vlibrasBtn" aria-label="Ativar VLibras – Tradução em Libras">
+  <i class="fa-solid fa-hands"></i>
+</button>
+<div class="vlibras-tooltip" aria-hidden="true">Ativar VLibras</div>
+
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<script>
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  const hamburger = document.getElementById('hamburgerBtn');
+  const drawer    = document.getElementById('navDrawer');
+  const overlay   = document.getElementById('drawerOverlay');
+  const closeBtn  = document.getElementById('drawerClose');
+
+  function openDrawer()  { drawer.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeDrawer() { drawer.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+
+  hamburger.addEventListener('click', openDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  let fontSize = parseInt(localStorage.getItem('cei_fontsize') || '15', 10);
+  const FONT_MIN = 12, FONT_MAX = 22;
+
+  function applyFontSize() {
+    document.body.style.fontSize = fontSize + 'px';
+    document.querySelectorAll('.accessibility-bar button').forEach(btn => {
+      if (btn.getAttribute('aria-label') === 'Aumentar fonte') btn.disabled = fontSize >= FONT_MAX;
+      if (btn.getAttribute('aria-label') === 'Diminuir fonte') btn.disabled = fontSize <= FONT_MIN;
+    });
+  }
+
+  function changeFontSize(delta) {
+    fontSize = Math.min(FONT_MAX, Math.max(FONT_MIN, fontSize + delta));
+    localStorage.setItem('cei_fontsize', fontSize);
+    applyFontSize();
+  }
+
+  applyFontSize();
+
+  function toggleContrast() {
+    document.documentElement.classList.toggle('high-contrast');
+    const hc = document.documentElement.classList.contains('high-contrast');
+    if (hc) {
+      document.documentElement.style.setProperty('--cei-white','#000');
+      document.documentElement.style.setProperty('--cei-text','#fff');
+      document.documentElement.style.setProperty('--cei-gray','#111');
+      document.documentElement.style.setProperty('--cei-border','#555');
+      document.documentElement.style.setProperty('--cei-muted','#ccc');
+    } else {
+      ['--cei-white','--cei-text','--cei-gray','--cei-border','--cei-muted'].forEach(v =>
+        document.documentElement.style.removeProperty(v)
+      );
+    }
+  }
+
+  document.getElementById('vlibrasBtn').addEventListener('click', function() {
+    const accessBtn = document.querySelector('[vw-access-button]');
+    if (accessBtn) {
+      accessBtn.style.display = 'flex';
+      accessBtn.click();
+      accessBtn.style.display = 'none';
+    }
+  });
+
+  const navLinks = document.querySelectorAll('.termos-nav-card a');
+  const sections = document.querySelectorAll('.termos-section');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.termos-nav-card a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
