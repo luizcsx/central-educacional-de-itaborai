@@ -1,17 +1,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cei-green:   #1a6b3a;
-      --cei-green-d: #124d2a;
-      --cei-green-l: #239450;
+      --cei-green:   #E67817;
+      --cei-green-d: #C9660E;
+      --cei-green-l: #DE8333;
       --cei-gold:    #d4a017;
       --cei-gold-l:  #f0bb2a;
-      --cei-dark:    #0f1f15;
-      --cei-gray:    #f4f6f4;
-      --cei-muted:   #6b7c6e;
-      --cei-border:  #d8e3da;
-      --cei-white:   #ffffff;
-      --cei-text:    #1c2b20;
+      --cei-dark:    #10094A;
+      --cei-gray:    #F4F6F4;
+      --cei-muted:   #9E735D;
+      --cei-border:  #E3DDD8;
+      --cei-white:   #FFFFFF;
+      --cei-text:    #0D111C;
       --radius:      6px;
       --shadow-sm:   0 1px 4px rgba(0,0,0,.08);
       --shadow-md:   0 4px 16px rgba(0,0,0,.12);
@@ -93,11 +93,15 @@
     }
     .logo { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
     .logo-emblem {
-      width: 52px; height: 52px; background: var(--cei-green);
-      border-radius: var(--radius); display: flex; align-items: center;
-      justify-content: center; flex-direction: column; gap: 2px;
+      width: 52px; height: 52px;
+      border-radius: var(--radius); flex-shrink: 0;
+      background-color: var(--cei-green);
+      background-image: url('LOGO_CEI');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
     }
-    .logo-emblem i { color: var(--cei-gold); font-size: 22px; }
+    .logo-emblem i { display: none; }
     .logo-text { display: flex; flex-direction: column; }
     .logo-text .abbr {
       font-size: 22px; font-weight: 900; color: var(--cei-green); letter-spacing: -.5px;
@@ -149,7 +153,6 @@
       position: absolute; inset: 0; width: 100%; height: 100%;
       object-fit: cover; object-position: center;
     }
-
     .slide-1 { background-color: #0f3d1f; background-image: url('/css/img/IMG_SLIDE_01.png'); background-size: cover; background-position: center; }
     .slide-2 { background-color: #0f1f3d; background-image: url('/css/img/IMG_SLIDE_02.png'); background-size: cover; background-position: center; }
     .slide-3 { background-color: #2a1a00; background-image: url('/css/img/IMG_SLIDE_03.png'); background-size: cover; background-position: center; }
@@ -249,12 +252,12 @@
       display: flex; align-items: center; justify-content: center;
     }
     .game-thumb .thumb-icon { font-size: 42px; opacity: .9; }
-    .game-thumb.math    { background: #e8f5e9; color: #2e7d32; }
-    .game-thumb.history { background: #fff3e0; color: #e65100; }
-    .game-thumb.science { background: #e3f2fd; color: #1565c0; }
-    .game-thumb.lit     { background: #f3e5f5; color: #6a1b9a; }
-    .game-thumb.geo     { background: #e0f7fa; color: #00695c; }
-    .game-thumb.arts    { background: #fce4ec; color: #c62828; }
+    .game-thumb.math    { background: #e8f5e9; color: #2E7D32; }
+    .game-thumb.history { background: #fff3e0; color: #E65100; }
+    .game-thumb.science { background: #e3f2fd; color: #1565C0; }
+    .game-thumb.lit     { background: #f3e5f5; color: #6A1B9A; }
+    .game-thumb.geo     { background: #e0f7fa; color: #00695C; }
+    .game-thumb.arts    { background: #fce4ec; color: #C62828; }
     .game-card-body { padding: 18px; }
     .game-meta { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
     .game-card-body h3 { font-size: 15px; font-weight: 700; margin-bottom: 5px; }
@@ -287,7 +290,7 @@
       color: var(--cei-muted); font-size: 12px; display: flex;
       align-items: center; justify-content: center; transition: all var(--transition);
     }
-    .thread-vote button:hover { background: var(--cei-green); color: #fff; border-color: var(--cei-green); }
+    .thread-vote button:hover { background: var(--cei-green); color: #FFFFFF; border-color: var(--cei-green); }
     .thread-vote .count { font-size: 13px; font-weight: 700; color: var(--cei-text); }
     .thread-body { flex: 1; }
     .thread-tags { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
