@@ -1,18 +1,17 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cei-green:   #1a6b3a;
-      --cei-green-d: #124d2a;
-      --cei-green-l: #239450;
-      --cei-gold:    #d4a017;
-      --cei-gold-l:  #f0bb2a;
-      --cei-dark:    #0f1f15;
-      --cei-gray:    #f4f6f4;
-      --cei-muted:   #6b7c6e;
-      --cei-border:  #d8e3da;
-      --cei-white:   #ffffff;
-      --cei-text:    #1c2b20;
-      --cei-error:   #c0392b;
+      --cei-green:   #E67817;
+      --cei-green-d: #C9660E;
+      --cei-green-l: #DE8333;
+      --cei-gold:    #D4A017;
+      --cei-gold-l:  #F0BB2A;
+      --cei-dark:    #10094A;
+      --cei-gray:    #F4F6F4;
+      --cei-muted:   #9E735D;
+      --cei-border:  #E3DDD8;
+      --cei-white:   #FFFFFF;
+      --cei-text:    #0D111C;
       --radius:      6px;
       --shadow-sm:   0 1px 4px rgba(0,0,0,.08);
       --shadow-md:   0 4px 16px rgba(0,0,0,.12);
