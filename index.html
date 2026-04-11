@@ -529,49 +529,70 @@
   const supabase = createClient('https://tkpatolybraskbedknjc.supabase.co', 'sb_publishable_hrQmBCRFxI0YhyCkk7SOzA_1BvyFC9U');
 
   async function initDashboard() {
-    console.log("Carregando dados...");
     try {
-      const { count: u, error: errU } = await supabase.from('usuarios').select('*', { count: 'exact', head: true });
-      const { count: g, error: errG } = await supabase.from('minigames').select('*', { count: 'exact', head: true });
-      const { count: f, error: errF } = await supabase.from('forum_posts').select('*', { count: 'exact', head: true });
+      const [u, g, f] = await Promise.all([
+        supabase.from('usuarios').select('*', { count: 'exact', head: true }),
+        supabase.from('minigames').select('*', { count: 'exact', head: true }),
+        supabase.from('forum_posts').select('*', { count: 'exact', head: true })
+      ]);
 
-      if(errU || errG || errF) console.error("Erro nas contagens:", {errU, errG, errF});
+      if(document.getElementById('statUsers')) document.getElementById('statUsers').textContent = u.count || 0;
+      if(document.getElementById('statGames')) document.getElementById('statGames').textContent = g.count || 0;
+      if(document.getElementById('statForum')) document.getElementById('statForum').textContent = f.count || 0;
 
-      document.getElementById('statUsers').textContent = u || 0;
-      document.getElementById('statGames').textContent = g || 0;
-      document.getElementById('statForum').textContent = f || 0;
+      const { data: games } = await supabase.from('minigames').select('*').limit(3);
+      const { data: posts } = await supabase.from('forum_posts').select('*').limit(3);
 
-      const { data: games, error: errGames } = await supabase.from('minigames').select('titulo, descricao, disciplina, dificuldade, partidas, criador_id').limit(3);
-      
-      if (games && games.length > 0) {
-        console.log("Jogos encontrados:", games);
-        renderMinigames(games);
-      } else {
-        console.log("Nenhum jogo encontrado ou erro:", errGames);
-      }
+      if (games) renderMinigames(games);
+      if (posts) renderForum(posts);
 
     } catch (err) {
-      console.error("ERRO:", err);
+      console.error("Erro na inicialização:", err);
     }
   }
 
   function renderMinigames(games) {
-    const container = document.querySelector('#minigames .container');
-    const emptyState = document.querySelector('#minigames .empty-state');
-    if (emptyState) emptyState.style.display = 'none';
+    const container = document.querySelector('.minigames-grid');
+    if (!container) return;
+    
+    container.style.display = 'grid';
+    container.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
+    container.style.gap = '20px';
 
-    let grid = container.querySelector('.game-grid');
-    if (!grid) {
-      grid = document.createElement('div');
-      grid.className = 'game-grid';
-      container.appendChild(grid);
-    }
-
-    grid.innerHTML = games.map(g => `
+    container.innerHTML = games.map(g => `
       <div class="game-card">
-        <h3>${g.titulo}</h3>
-        <p>${g.descricao || 'Sem descrição'}</p>
-        <a href="minigames1f.html" class="btn btn-primary">Jogar</a>
+        <div class="game-thumb def">
+            <i class="fa-solid fa-gamepad thumb-icon"></i>
+        </div>
+        <div class="game-card-body">
+            <h3>${g.titulo}</h3>
+            <p>${g.descricao || 'Desafio educacional disponível.'}</p>
+        </div>
+        <div class="game-card-footer">
+            <div class="difficulty">
+                <div class="dot on"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+            <a href="minigames1f.html" class="btn btn-primary btn-sm">Jogar</a>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function renderForum(posts) {
+    const container = document.querySelector('.forum-threads');
+    if (!container) return;
+
+    container.innerHTML = posts.map(p => `
+      <div class="thread-card">
+        <div class="thread-vote">
+            <button><i class="fa-solid fa-chevron-up"></i></button>
+            <span class="count">0</span>
+            <button><i class="fa-solid fa-chevron-down"></i></button>
+        </div>
+        <div class="thread-body">
+            <h4>${p.titulo}</h4>
+            <p>${p.conteudo ? p.conteudo.substring(0, 80) + '...' : 'Participe da discussão!'}</p>
+        </div>
       </div>
     `).join('');
   }
