@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fórum – Centro Educacional de Itaboraí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/forum1f.css" />
+</head>
+<body>
+
+<div class="topbar" role="banner">
+  <div class="container">
+    <div class="topbar-left">
+      <span><i class="fa-solid fa-triangle-exclamation"></i> <strong>ATENÇÃO:</strong> Plataforma em fase de testes. Projeto não-oficial sem ligação com órgãos públicos municipais.</span>
+    </div>
+    <div class="topbar-right">
+      <div class="accessibility-bar" aria-label="Ferramentas de acessibilidade">
+        <button aria-label="Aumentar fonte" onclick="changeFontSize(1)"><i class="fa-solid fa-a"></i> A+</button>
+        <button aria-label="Diminuir fonte" onclick="changeFontSize(-1)"><i class="fa-solid fa-a"></i> A-</button>
+        <button aria-label="Alto contraste" onclick="toggleContrast()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      </div>
+      <a href="malito:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a>
+      <a href="suporte1f.html"><i class="fa-solid fa-circle-question"></i> Ajuda</a>
+    </div>
+  </div>
+</div>
+
+<header class="header" role="navigation" aria-label="Menu principal">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Centro Educacional de Itaboraí">
+      <div class="logo-emblem" aria-hidden="true"></div>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html" class="active"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-bar" role="search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" placeholder="Pesquisar..." aria-label="Pesquisar" />
+      </div>
+      <a href="entrar.html" class="btn btn-outline btn-login"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a>
+      <a href="junte-se.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Juntar-se</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <div class="logo">
+        <div class="logo-emblem" style="width:38px;height:38px;" aria-hidden="true"></div>
+        <div class="logo-text"><span class="abbr"></span></div>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Fechar menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="drawer-footer">
+      <a href="junte-se.html" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fa-solid fa-right-to-bracket"></i> Junte-se a nós!</a>
+    </div>
+  </div>
+</div>
+
+<section class="forum-hero" aria-label="Fórum">
+  <div class="container">
+    <div class="forum-hero-inner">
+      <div class="forum-hero-text">
+        <div class="section-label"><i class="fa-solid fa-comments"></i> Fórum</div>
+        <h1>Fórum de Discussão</h1>
+        <p>Espaço colaborativo para professores, coordenadores e alunos debaterem conteúdos, revisarem matérias e compartilharem ideias pedagógicas.</p>
+      </div>
+      <div class="forum-hero-stats" aria-label="Estatísticas do fórum">
+        <div class="fh-stat">
+          <div class="fh-stat-num" id="statTopicos">0</div>
+          <div class="fh-stat-lbl">Tópicos</div>
+        </div>
+        <div class="fh-stat">
+          <div class="fh-stat-num" id="statRespostas">0</div>
+          <div class="fh-stat-lbl">Respostas</div>
+        </div>
+        <div class="fh-stat">
+          <div class="fh-stat-num" id="statAutores">0</div>
+          <div class="fh-stat-lbl">Autores</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="forum-toolbar" role="search" aria-label="Filtros do fórum">
+  <div class="container">
+    <div class="forum-toolbar-left">
+      <div class="forum-search-wrap">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" id="forumSearch" placeholder="Buscar tópico..." aria-label="Buscar tópico" />
+      </div>
+      <div class="cat-filter" role="group" aria-label="Filtrar por categoria">
+        <button class="cat-filter-btn active" data-cat="">Todos</button>
+        <button class="cat-filter-btn" data-cat="portugues">Português</button>
+        <button class="cat-filter-btn" data-cat="matematica">Matemática</button>
+        <button class="cat-filter-btn" data-cat="ciencias">Ciências</button>
+        <button class="cat-filter-btn" data-cat="historia">História</button>
+        <button class="cat-filter-btn" data-cat="geografia">Geografia</button>
+        <button class="cat-filter-btn" data-cat="ingles">Inglês</button>
+        <button class="cat-filter-btn" data-cat="artes">Artes</button>
+        <button class="cat-filter-btn" data-cat="producao">Prod. Textual</button>
+        <button class="cat-filter-btn" data-cat="edfisica">Ed. Física</button>
+      </div>
+      <select class="sort-select" id="sortSelect" aria-label="Ordenar por">
+        <option value="recentes">Mais recentes</option>
+        <option value="votos">Mais votados</option>
+        <option value="respostas">Mais respondidos</option>
+      </select>
+    </div>
+    <span class="forum-count" id="forumCount" aria-live="polite">
+      <i class="fa-solid fa-comments"></i> <span id="forumCountNum">0</span> tópico(s)
+    </span>
+  </div>
+</div>
+
+<main class="forum-main" role="main">
+  <div class="container">
+    <div class="forum-layout">
+
+      <div>
+        <div class="forum-threads" id="forumThreads" aria-label="Lista de tópicos" aria-live="polite">
+          <div class="thread-skeleton">
+            <div class="skel-vote"><div class="skel" style="width:28px;height:28px;"></div><div class="skel" style="width:20px;height:14px;margin:4px 0;"></div><div class="skel" style="width:28px;height:28px;"></div></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:8px;"><div class="skel" style="height:14px;width:60%;"></div><div class="skel" style="height:18px;width:85%;"></div><div class="skel" style="height:12px;width:40%;"></div></div>
+          </div>
+          <div class="thread-skeleton">
+            <div class="skel-vote"><div class="skel" style="width:28px;height:28px;"></div><div class="skel" style="width:20px;height:14px;margin:4px 0;"></div><div class="skel" style="width:28px;height:28px;"></div></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:8px;"><div class="skel" style="height:14px;width:45%;"></div><div class="skel" style="height:18px;width:75%;"></div><div class="skel" style="height:12px;width:55%;"></div></div>
+          </div>
+          <div class="thread-skeleton">
+            <div class="skel-vote"><div class="skel" style="width:28px;height:28px;"></div><div class="skel" style="width:20px;height:14px;margin:4px 0;"></div><div class="skel" style="width:28px;height:28px;"></div></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:8px;"><div class="skel" style="height:14px;width:70%;"></div><div class="skel" style="height:18px;width:90%;"></div><div class="skel" style="height:12px;width:35%;"></div></div>
+          </div>
+        </div>
+        <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
+          <button class="btn btn-outline" id="btnLoadMore" style="margin-top:16px;"><i class="fa-solid fa-chevron-down"></i> Carregar mais</button>
+        </div>
+      </div>
+
+      <aside class="forum-sidebar" aria-label="Painel lateral do fórum">
+        <button class="sidebar-new-btn" id="sidebarNewBtn">
+          <i class="fa-solid fa-pen-to-square"></i> Novo Tópico
+        </button>
+        <div class="sidebar-card">
+          <div class="sidebar-card-header"><i class="fa-solid fa-tags"></i> Categorias</div>
+          <ul id="catList">
+            <li><a href="#" data-cat="" class="active"><i class="fa-solid fa-border-all"></i> Todos <span id="cnt-all">0</span></a></li>
+            <li><a href="#" data-cat="portugues"><i class="fa-solid fa-book"></i> Português <span id="cnt-portugues">0</span></a></li>
+            <li><a href="#" data-cat="matematica"><i class="fa-solid fa-square-root-variable"></i> Matemática <span id="cnt-matematica">0</span></a></li>
+            <li><a href="#" data-cat="ciencias"><i class="fa-solid fa-flask"></i> Ciências <span id="cnt-ciencias">0</span></a></li>
+            <li><a href="#" data-cat="historia"><i class="fa-solid fa-scroll"></i> História <span id="cnt-historia">0</span></a></li>
+            <li><a href="#" data-cat="geografia"><i class="fa-solid fa-earth-americas"></i> Geografia <span id="cnt-geografia">0</span></a></li>
+            <li><a href="#" data-cat="ingles"><i class="fa-solid fa-language"></i> Inglês <span id="cnt-ingles">0</span></a></li>
+            <li><a href="#" data-cat="artes"><i class="fa-solid fa-palette"></i> Artes <span id="cnt-artes">0</span></a></li>
+            <li><a href="#" data-cat="producao"><i class="fa-solid fa-pen"></i> Prod. Textual <span id="cnt-producao">0</span></a></li>
+            <li><a href="#" data-cat="edfisica"><i class="fa-solid fa-person-running"></i> Ed. Física <span id="cnt-edfisica">0</span></a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<div class="modal-overlay" id="modalTopico" role="dialog" aria-modal="true" aria-label="Novo tópico">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3><i class="fa-solid fa-pen-to-square" style="color:var(--cei-green);"></i> Novo Tópico</h3>
+      <button class="modal-close" id="modalClose" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-alert" id="modalAlert" role="alert">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span id="modalAlertMsg"></span>
+      </div>
+      <div class="modal-field">
+        <label for="topicoTitulo">Título <span style="color:#c0392b;">*</span></label>
+        <input type="text" id="topicoTitulo" placeholder="Ex: Como explicar frações para o 5º ano?" maxlength="120" />
+        <span class="char-count"><span id="tituloCount">0</span>/120</span>
+      </div>
+      <div class="modal-field">
+        <label for="topicoCategoria">Categoria <span style="color:#c0392b;">*</span></label>
+        <select id="topicoCategoria">
+          <option value="" disabled selected>Selecione a disciplina</option>
+          <option value="portugues">Português</option>
+          <option value="matematica">Matemática</option>
+          <option value="ciencias">Ciências</option>
+          <option value="historia">História</option>
+          <option value="geografia">Geografia</option>
+          <option value="ingles">Inglês</option>
+          <option value="artes">Artes</option>
+          <option value="producao">Produção Textual</option>
+          <option value="edfisica">Educação Física</option>
+        </select>
+      </div>
+      <div class="modal-field">
+        <label for="topicoTexto">Descrição <span style="color:#c0392b;">*</span></label>
+        <textarea id="topicoTexto" placeholder="Descreva sua dúvida, ideia ou discussão com detalhes..." maxlength="2000"></textarea>
+        <span class="char-count"><span id="textoCount">0</span>/2000</span>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-cancel" id="modalCancelar">Cancelar</button>
+      <button class="btn btn-primary btn-submit" id="modalPublicar">
+        <span class="btn-submit-lbl"><i class="fa-solid fa-paper-plane"></i> Publicar</span>
+        <span class="btn-submit-spin" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="post-detail-overlay" id="postDetail" role="dialog" aria-modal="true" aria-label="Detalhes do tópico">
+  <div class="post-detail-box">
+    <div class="post-detail-head">
+      <h2 id="detailTitle"></h2>
+      <button class="modal-close" id="detailClose" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="post-detail-body">
+      <div class="post-detail-meta">
+        <span class="author" id="detailAuthor"></span>
+        <span id="detailCat"></span>
+        <span id="detailDate"></span>
+        <span id="detailVotos"></span>
+      </div>
+      <div class="post-content" id="detailContent"></div>
+    </div>
+    <div class="replies-section">
+      <div class="replies-title" id="repliesTitle"><i class="fa-solid fa-comment"></i> Respostas</div>
+      <div id="repliesList"></div>
+      <div class="reply-form" id="replyForm">
+        <textarea id="replyText" placeholder="Escreva sua resposta..." maxlength="1000" rows="3"></textarea>
+        <div class="reply-form-footer">
+          <span id="replyCount" style="font-size:11px;color:var(--cei-muted);">0/1000</span>
+          <button class="btn btn-primary" id="btnReply" style="padding:8px 18px;font-size:13px;">
+            <i class="fa-solid fa-reply"></i> Responder
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-emblem" aria-hidden="true"></div>
+            <div class="logo-text">
+              <span class="abbr">"O amanhã, hoje."</span>
+              <span class="full"><i>- Luiz Miguel</i></span>
+            </div>
+          </div>
+          <p>Plataforma pedagógica digital desenvolvida para fortalecer o ensino e a aprendizagem nas escolas municipais de Itaboraí, Rio de Janeiro.</p>
+          <div class="footer-socials" aria-label="Redes sociais">
+            <a href="https://www.youtube.com/@CentroEducacionaldeItaboraí" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://instagram.com/centroeducacionaldeitaborai" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="malito:centroeducacionaldeitaborai@gmail.com" aria-label="Contato"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Plataforma</h5>
+          <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
+            <li><a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a></li>
+            <li><a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a></li>
+            <li><a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a></li>
+            <li><a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a></li>
+            <li><a href="calendario1f.html"><i class="fa-solid fa-calendar-days"></i> Calendário</a></li>
+            <li><a href="doacao1f.html"><i class="fa-solid fa-hand-holding-heart"></i> Apoie este projeto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Acesso</h5>
+          <ul>
+            <li><a href="entrar.html"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a></li>
+            <li><a href="junte-se.html"><i class="fa-solid fa-user-plus"></i> Juntar-se</a></li>
+            <li><a href="privacidade1f.html"><i class="fa-solid fa-shield-halved"></i> Privacidade</a></li>
+            <li><a href="termos1f.html"><i class="fa-solid fa-file-contract"></i> Termos de uso</a></li>
+            <li><a href="suporte1f.html"><i class="fa-solid fa-headset"></i> Suporte</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Institucional</h5>
+          <ul>
+            <li><a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre Nós</a></li>
+            <li><a href="https://site.ib.itaborai.rj.gov.br/orgaos_municipais/educacao/"><i class="fa-solid fa-school"></i> Secretaria de Educação</a></li>
+            <li><a href="https://site.ib.itaborai.rj.gov.br"><i class="fa-solid fa-landmark"></i> Prefeitura de Itaboraí</a></li>
+            <li><a href="acessibilidade1f.html"><i class="fa-solid fa-universal-access"></i> Acessibilidade</a></li>
+            <li><a href="malito:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> <span class="gold">Centro Educacional de Itaboraí</span>. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="vlibras-btn" id="vlibrasBtn" aria-label="Ativar VLibras – Tradução em Libras">
+  <i class="fa-solid fa-hands"></i>
+</button>
+<div class="vlibras-tooltip" aria-hidden="true">Ativar VLibras</div>
+
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+<script>
+  const SUPABASE_URL = 'SUPABASE_URL_AQUI';
+  const SUPABASE_KEY = 'SUPABASE_ANON_KEY_AQUI';
+
+  async function sbFetch(path, opts = {}) {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': opts.prefer || 'return=representation',
+        ...opts.headers,
+      },
+      ...opts,
+    });
+    if (!res.ok) throw new Error(await res.text());
+    const text = await res.text();
+    return text ? JSON.parse(text) : null;
+  }
+
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  const hamburger = document.getElementById('hamburgerBtn');
+  const drawer    = document.getElementById('navDrawer');
+  const overlay   = document.getElementById('drawerOverlay');
+  const closeBtn  = document.getElementById('drawerClose');
+  function openDrawer()  { drawer.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeDrawer() { drawer.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  hamburger.addEventListener('click', openDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  let fontSize = parseInt(localStorage.getItem('cei_fontsize') || '15', 10);
+  const FONT_MIN = 12, FONT_MAX = 22;
+  function applyFontSize() {
+    document.body.style.fontSize = fontSize + 'px';
+    document.querySelectorAll('.accessibility-bar button').forEach(btn => {
+      if (btn.getAttribute('aria-label') === 'Aumentar fonte') btn.disabled = fontSize >= FONT_MAX;
+      if (btn.getAttribute('aria-label') === 'Diminuir fonte') btn.disabled = fontSize <= FONT_MIN;
+    });
+  }
+  function changeFontSize(delta) {
+    fontSize = Math.min(FONT_MAX, Math.max(FONT_MIN, fontSize + delta));
+    localStorage.setItem('cei_fontsize', fontSize);
+    applyFontSize();
+  }
+  applyFontSize();
+
+  function toggleContrast() {
+    document.documentElement.classList.toggle('high-contrast');
+    const hc = document.documentElement.classList.contains('high-contrast');
+    if (hc) {
+      document.documentElement.style.setProperty('--cei-white','#000');
+      document.documentElement.style.setProperty('--cei-text','#fff');
+      document.documentElement.style.setProperty('--cei-gray','#111');
+      document.documentElement.style.setProperty('--cei-border','#555');
+      document.documentElement.style.setProperty('--cei-muted','#ccc');
+    } else {
+      ['--cei-white','--cei-text','--cei-gray','--cei-border','--cei-muted'].forEach(v =>
+        document.documentElement.style.removeProperty(v)
+      );
+    }
+  }
+
+  document.getElementById('vlibrasBtn').addEventListener('click', function() {
+    const ab = document.querySelector('[vw-access-button]');
+    if (ab) { ab.style.display = 'flex'; ab.click(); ab.style.display = 'none'; }
+  });
+
+  const CAT_LABELS = {
+    '': 'Todos', portugues: 'Português', matematica: 'Matemática',
+    ciencias: 'Ciências', historia: 'História', geografia: 'Geografia',
+    ingles: 'Inglês', artes: 'Artes', producao: 'Prod. Textual', edfisica: 'Ed. Física',
+  };
+  const CAT_ICONS = {
+    '': 'fa-border-all', portugues: 'fa-book', matematica: 'fa-square-root-variable',
+    ciencias: 'fa-flask', historia: 'fa-scroll', geografia: 'fa-earth-americas',
+    ingles: 'fa-language', artes: 'fa-palette', producao: 'fa-pen', edfisica: 'fa-person-running',
+  };
+
+  function esc(s) {
+    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function timeAgo(iso) {
+    const diff = Math.floor((Date.now() - new Date(iso)) / 1000);
+    if (diff < 60)    return 'agora mesmo';
+    if (diff < 3600)  return Math.floor(diff / 60) + ' min atrás';
+    if (diff < 86400) return Math.floor(diff / 3600) + 'h atrás';
+    if (diff < 604800) return Math.floor(diff / 86400) + 'd atrás';
+    return new Date(iso).toLocaleDateString('pt-BR');
+  }
+
+  function getUsuario() {
+    try { return JSON.parse(localStorage.getItem('usuario_logado') || 'null'); } catch { return null; }
+  }
+
+  let allPosts     = [];
+  let activecat    = '';
+  let searchQ      = '';
+  let sortMode     = 'recentes';
+  let openedPostId = null;
+  const PAGE       = 12;
+  let visible      = PAGE;
+
+  function getFiltered() {
+    let list = allPosts.filter(p => {
+      const matchCat = !activecat || p.categoria === activecat;
+      const q = searchQ.toLowerCase();
+      const matchQ = !q || p.titulo.toLowerCase().includes(q) ||
+        (p.conteudo || '').toLowerCase().includes(q) ||
+        (CAT_LABELS[p.categoria] || '').toLowerCase().includes(q);
+      return matchCat && matchQ;
+    });
+    if (sortMode === 'votos')     list = list.slice().sort((a,b) => (b.votos||0) - (a.votos||0));
+    if (sortMode === 'respostas') list = list.slice().sort((a,b) => (b.respostas||0) - (a.respostas||0));
+    return list;
+  }
+
+  function buildCard(p) {
+    const cat   = CAT_LABELS[p.categoria] || p.categoria || 'Geral';
+    const icon  = CAT_ICONS[p.categoria]  || 'fa-comments';
+    const votos = p.votos || 0;
+    const usuario = getUsuario();
+    const voted = usuario ? (p.votos_usuarios || {})[usuario.username] : null;
+    const pinCls = p.pinned ? ' pinned' : '';
+    return `
+      <article class="thread-card${pinCls}" data-id="${esc(p.id)}" role="listitem" tabindex="0">
+        <div class="thread-vote">
+          <button class="${voted === 1 ? 'voted-up' : ''}" aria-label="Votar positivo" onclick="votar(event,'${esc(p.id)}',1)"><i class="fa-solid fa-chevron-up"></i></button>
+          <span class="count">${votos}</span>
+          <button class="${voted === -1 ? 'voted-down' : ''}" aria-label="Votar negativo" onclick="votar(event,'${esc(p.id)}',-1)"><i class="fa-solid fa-chevron-down"></i></button>
+        </div>
+        <div class="thread-body">
+          <div class="thread-tags">
+            ${p.pinned ? '<span class="thread-pinned-badge"><i class="fa-solid fa-thumbtack"></i> Fixado</span>' : ''}
+            <span class="tag"><i class="fa-solid ${icon}"></i> ${esc(cat)}</span>
+          </div>
+          <h4>${esc(p.titulo)}</h4>
+          <p class="thread-preview">${esc(p.conteudo || '')}</p>
+          <div class="thread-footer">
+            <span><i class="fa-solid fa-comment"></i> ${p.respostas || 0} resposta${(p.respostas||0) !== 1 ? 's' : ''}</span>
+            <span><i class="fa-regular fa-clock"></i> ${timeAgo(p.criado_em)}</span>
+            <span class="author"><i class="fa-solid fa-user"></i> ${esc(p.autor_username || 'Usuário')}</span>
+          </div>
+        </div>
+      </article>`;
+  }
+
+  function updateSidebarCounts() {
+    const counts = {};
+    allPosts.forEach(p => { counts[p.categoria] = (counts[p.categoria] || 0) + 1; });
+    document.getElementById('cnt-all').textContent = allPosts.length;
+    Object.keys(CAT_LABELS).forEach(k => {
+      if (!k) return;
+      const el = document.getElementById('cnt-' + k);
+      if (el) el.textContent = counts[k] || 0;
+    });
+  }
+
+  function updateStats() {
+    document.getElementById('statTopicos').textContent = allPosts.length;
+    const totalRespostas = allPosts.reduce((s, p) => s + (p.respostas || 0), 0);
+    document.getElementById('statRespostas').textContent = totalRespostas;
+    const autores = new Set(allPosts.map(p => p.autor_username)).size;
+    document.getElementById('statAutores').textContent = autores;
+  }
+
+  function renderThreads() {
+    const filtered = getFiltered();
+    const container = document.getElementById('forumThreads');
+    document.getElementById('forumCountNum').textContent = filtered.length;
+    updateSidebarCounts();
+    updateStats();
+
+    if (filtered.length === 0) {
+      const msg = searchQ || activecat
+        ? 'Nenhum tópico encontrado para este filtro.'
+        : 'Nenhum tópico foi criado ainda. Seja o primeiro!';
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon"><i class="fa-solid fa-comments"></i></div>
+          <h3>${searchQ || activecat ? 'Nenhum resultado' : 'O fórum está vazio'}</h3>
+          <p>${msg}</p>
+          <button class="btn btn-primary" onclick="openModal()"><i class="fa-solid fa-pen-to-square"></i> Criar tópico</button>
+        </div>`;
+      document.getElementById('loadMoreWrap').style.display = 'none';
+      return;
+    }
+
+    const shown = filtered.slice(0, visible);
+    container.innerHTML = shown.map(buildCard).join('');
+    document.getElementById('loadMoreWrap').style.display = filtered.length > visible ? 'block' : 'none';
+
+    container.querySelectorAll('.thread-card').forEach(card => {
+      card.addEventListener('click', e => {
+        if (e.target.closest('button')) return;
+        openPost(card.dataset.id);
+      });
+      card.addEventListener('keydown', e => { if (e.key === 'Enter') openPost(card.dataset.id); });
+    });
+  }
+
+  async function fetchPosts() {
+    try {
+      const data = await sbFetch(
+        'forum_posts?select=*&order=pinned.desc,criado_em.desc',
+        { method: 'GET', prefer: 'return=representation' }
+      );
+      allPosts = Array.isArray(data) ? data : [];
+    } catch {
+      allPosts = [];
+    }
+    renderThreads();
+  }
+
+  document.getElementById('forumSearch').addEventListener('input', function() {
+    searchQ = this.value.trim();
+    visible = PAGE;
+    renderThreads();
+  });
+
+  document.getElementById('sortSelect').addEventListener('change', function() {
+    sortMode = this.value;
+    visible = PAGE;
+    renderThreads();
+  });
+
+  document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      activecat = this.dataset.cat;
+      visible = PAGE;
+      renderThreads();
+      document.querySelectorAll('#catList a').forEach(a => {
+        a.classList.toggle('active', a.dataset.cat === activecat);
+      });
+    });
+  });
+
+  document.querySelectorAll('#catList a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      activecat = a.dataset.cat;
+      visible = PAGE;
+      renderThreads();
+      document.querySelectorAll('#catList a').forEach(x => x.classList.toggle('active', x.dataset.cat === activecat));
+      document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === activecat));
+    });
+  });
+
+  document.getElementById('btnLoadMore').addEventListener('click', () => {
+    visible += PAGE;
+    renderThreads();
+  });
+
+  async function votar(e, id, delta) {
+    e.stopPropagation();
+    const usuario = getUsuario();
+    if (!usuario) { window.location.href = 'entrar.html'; return; }
+
+    const post = allPosts.find(p => p.id === id);
+    if (!post) return;
+
+    const votos_usuarios = post.votos_usuarios || {};
+    const prev = votos_usuarios[usuario.username] || 0;
+    const novoDelta = prev === delta ? 0 : delta;
+    votos_usuarios[usuario.username] = novoDelta;
+    const novoVotos = (post.votos || 0) - prev + novoDelta;
+
+    post.votos = novoVotos;
+    post.votos_usuarios = votos_usuarios;
+    renderThreads();
+    if (openedPostId === id) document.getElementById('detailVotos').textContent = novoVotos + ' voto' + (novoVotos !== 1 ? 's' : '');
+
+    try {
+      await sbFetch(`forum_posts?id=eq.${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ votos: novoVotos, votos_usuarios }),
+        prefer: 'return=minimal',
+      });
+    } catch {}
+  }
+
+  function openModal() {
+    const usuario = getUsuario();
+    if (!usuario) { window.location.href = 'entrar.html'; return; }
+    document.getElementById('modalTopico').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('topicoTitulo').focus();
+    document.getElementById('modalAlert').classList.remove('show');
+  }
+  function closeModal() {
+    document.getElementById('modalTopico').classList.remove('open');
+    document.body.style.overflow = '';
+    document.getElementById('topicoTitulo').value    = '';
+    document.getElementById('topicoCategoria').value = '';
+    document.getElementById('topicoTexto').value     = '';
+    document.getElementById('tituloCount').textContent = '0';
+    document.getElementById('textoCount').textContent  = '0';
+  }
+
+  document.getElementById('sidebarNewBtn').addEventListener('click', openModal);
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalCancelar').addEventListener('click', closeModal);
+  document.getElementById('modalTopico').addEventListener('click', e => { if (e.target === document.getElementById('modalTopico')) closeModal(); });
+
+  document.getElementById('topicoTitulo').addEventListener('input', function() {
+    document.getElementById('tituloCount').textContent = this.value.length;
+  });
+  document.getElementById('topicoTexto').addEventListener('input', function() {
+    document.getElementById('textoCount').textContent = this.value.length;
+  });
+
+  document.getElementById('modalPublicar').addEventListener('click', async function() {
+    const titulo    = document.getElementById('topicoTitulo').value.trim();
+    const categoria = document.getElementById('topicoCategoria').value;
+    const conteudo  = document.getElementById('topicoTexto').value.trim();
+    const usuario   = getUsuario();
+    const alertEl   = document.getElementById('modalAlert');
+    const alertMsg  = document.getElementById('modalAlertMsg');
+
+    alertEl.classList.remove('show');
+
+    if (!titulo || !categoria || !conteudo) {
+      alertMsg.textContent = 'Preencha todos os campos obrigatórios.';
+      alertEl.classList.add('show');
+      return;
+    }
+    if (!usuario) {
+      alertMsg.textContent = 'Você precisa estar logado para publicar.';
+      alertEl.classList.add('show');
+      return;
+    }
+
+    this.classList.add('loading');
+    this.disabled = true;
+
+    try {
+      const novoPost = await sbFetch('forum_posts', {
+        method: 'POST',
+        body: JSON.stringify({
+          titulo,
+          categoria,
+          conteudo,
+          autor_username: usuario.username,
+          votos: 0,
+          respostas: 0,
+          votos_usuarios: {},
+          pinned: false,
+        }),
+        prefer: 'return=representation',
+      });
+
+      if (novoPost && novoPost[0]) {
+        allPosts.unshift(novoPost[0]);
+      } else {
+        await fetchPosts();
+      }
+      renderThreads();
+      closeModal();
+    } catch (err) {
+      alertMsg.textContent = 'Erro ao publicar. Tente novamente.';
+      alertEl.classList.add('show');
+    } finally {
+      this.classList.remove('loading');
+      this.disabled = false;
+    }
+  });
+
+  async function openPost(id) {
+    const post = allPosts.find(p => p.id === id);
+    if (!post) return;
+    openedPostId = id;
+
+    document.getElementById('detailTitle').textContent   = post.titulo;
+    document.getElementById('detailAuthor').textContent  = post.autor_username || 'Usuário';
+    document.getElementById('detailCat').innerHTML       = `<i class="fa-solid ${CAT_ICONS[post.categoria] || 'fa-comments'}"></i> ${esc(CAT_LABELS[post.categoria] || post.categoria)}`;
+    document.getElementById('detailDate').innerHTML      = `<i class="fa-regular fa-clock"></i> ${timeAgo(post.criado_em)}`;
+    document.getElementById('detailVotos').textContent   = (post.votos || 0) + ' voto' + ((post.votos || 0) !== 1 ? 's' : '');
+    document.getElementById('detailContent').textContent = post.conteudo || '';
+    document.getElementById('repliesList').innerHTML     = '<p style="font-size:13px;color:var(--cei-muted);text-align:center;padding:12px 0;">Carregando respostas...</p>';
+    document.getElementById('replyText').value           = '';
+
+    document.getElementById('postDetail').classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    await loadReplies(id);
+  }
+
+  async function loadReplies(postId) {
+    try {
+      const replies = await sbFetch(
+        `forum_respostas?post_id=eq.${postId}&order=criado_em.asc`,
+        { method: 'GET', prefer: 'return=representation' }
+      );
+      const list = Array.isArray(replies) ? replies : [];
+      document.getElementById('repliesTitle').innerHTML =
+        `<i class="fa-solid fa-comment"></i> ${list.length} Resposta${list.length !== 1 ? 's' : ''}`;
+
+      if (list.length === 0) {
+        document.getElementById('repliesList').innerHTML =
+          '<p style="font-size:13px;color:var(--cei-muted);text-align:center;padding:12px 0;">Nenhuma resposta ainda. Seja o primeiro a responder!</p>';
+        return;
+      }
+
+      document.getElementById('repliesList').innerHTML = list.map(r => `
+        <div class="reply-card">
+          <div class="reply-meta">
+            <span class="reply-author"><i class="fa-solid fa-user"></i> ${esc(r.autor_username || 'Usuário')}</span>
+            <span>${timeAgo(r.criado_em)}</span>
+          </div>
+          <div class="reply-text">${esc(r.conteudo || '')}</div>
+        </div>`).join('');
+    } catch {
+      document.getElementById('repliesList').innerHTML =
+        '<p style="font-size:13px;color:#c0392b;text-align:center;padding:12px 0;">Erro ao carregar respostas.</p>';
+    }
+  }
+
+  document.getElementById('detailClose').addEventListener('click', () => {
+    document.getElementById('postDetail').classList.remove('open');
+    document.body.style.overflow = '';
+    openedPostId = null;
+  });
+  document.getElementById('postDetail').addEventListener('click', e => {
+    if (e.target === document.getElementById('postDetail')) {
+      document.getElementById('postDetail').classList.remove('open');
+      document.body.style.overflow = '';
+      openedPostId = null;
+    }
+  });
+
+  document.getElementById('replyText').addEventListener('input', function() {
+    document.getElementById('replyCount').textContent = this.value.length + '/1000';
+  });
+
+  document.getElementById('btnReply').addEventListener('click', async function() {
+    const usuario  = getUsuario();
+    const conteudo = document.getElementById('replyText').value.trim();
+    if (!usuario) { window.location.href = 'entrar.html'; return; }
+    if (!conteudo || !openedPostId) return;
+
+    this.disabled = true;
+    const origHtml = this.innerHTML;
+    this.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+
+    try {
+      await sbFetch('forum_respostas', {
+        method: 'POST',
+        body: JSON.stringify({ post_id: openedPostId, conteudo, autor_username: usuario.username }),
+        prefer: 'return=minimal',
+      });
+
+      const post = allPosts.find(p => p.id === openedPostId);
+      if (post) post.respostas = (post.respostas || 0) + 1;
+
+      await sbFetch(`forum_posts?id=eq.${openedPostId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ respostas: (post ? post.respostas : 1) }),
+        prefer: 'return=minimal',
+      });
+
+      document.getElementById('replyText').value = '';
+      document.getElementById('replyCount').textContent = '0/1000';
+      renderThreads();
+      await loadReplies(openedPostId);
+    } catch {
+      alert('Erro ao enviar resposta. Tente novamente.');
+    } finally {
+      this.disabled = false;
+      this.innerHTML = origHtml;
+    }
+  });
+
+  fetchPosts();
+</script>
+</body>
+</html>
