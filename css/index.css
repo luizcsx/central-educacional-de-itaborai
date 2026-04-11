@@ -241,7 +241,7 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
     }
 
-   #containerJogos {
+   #minigames-title {
      display: grid !important;
      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
      gap: 20px;
