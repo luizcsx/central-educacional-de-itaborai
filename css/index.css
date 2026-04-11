@@ -238,8 +238,16 @@
     .section-header p { color: var(--cei-muted); max-width: 560px; font-size: 15px; }
 
     .minigames-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
     }
+
+   #containerJogos {
+     display: grid !important;
+     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+     gap: 20px;
+     width: 100%;
+   }
+
     .game-card {
       border: 1px solid var(--cei-border); border-radius: 10px;
       overflow: hidden; background: var(--cei-white);
