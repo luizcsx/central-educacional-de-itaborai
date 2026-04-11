@@ -304,7 +304,6 @@
 
   import { createClient } from 'https://jspm.dev/@supabase/supabase-js';
 
-  // Configuração inicial
   const SUPABASE_URL = 'https://tkpatolybraskbedknjc.supabase.co';
   const SUPABASE_KEY = 'sb_publishable_hrQmBCRFxI0YhyCkk7SOzA_1BvyFC9U';
   const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -374,7 +373,6 @@
     const empty = document.getElementById('mgEmpty');
     const loadMore = document.getElementById('mgLoadMore');
 
-    // Atualiza estatísticas
     document.getElementById('statTotal').textContent = allGames.length;
     document.getElementById('statJogadas').textContent = allGames.reduce((s, g) => s + (g.partidas || 0), 0);
     document.getElementById('statCriadores').textContent = [...new Set(allGames.map(g => g.criador_id))].length;
@@ -403,7 +401,6 @@
     renderGrid();
   }
 
-  // Listeners de Eventos
   document.querySelectorAll('.mg-filter-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.mg-filter-btn').forEach(b => b.classList.remove('active'));
@@ -431,7 +428,6 @@
     renderGrid();
   });
 
-  // Inicia o carregamento
   fetchGames();
 </script>
 
