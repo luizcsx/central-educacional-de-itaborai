@@ -518,5 +518,44 @@
     }
   });
 </script>
+
+  <script type="module">
+  import { createClient } from 'https://jspm.dev/@supabase/supabase-js';
+
+  const supabase = createClient('https://tkpatolybraskbedknjc.supabase.co', 'sb_publishable_hrQmBCRFxI0YhyCkk7SOzA_1BvyFC9U');
+
+  async function updateDashboard() {
+    try {
+      const { count: usersCount } = await supabase.from('users').select('*', { count: 'exact', head: true });
+      const { count: gamesCount } = await supabase.from('minigames').select('*', { count: 'exact', head: true });
+      const { count: forumCount } = await supabase.from('posts').select('*', { count: 'exact', head: true });
+      
+      const counters = [
+        { id: 'statUsers', val: usersCount || 0 },
+        { id: 'statGames', val: gamesCount || 0 },
+        { id: 'statForum', val: forumCount || 0 }
+      ];
+
+      counters.forEach(item => {
+        const el = document.querySelector(`.stats-strip [data-id="${item.id}"]`);
+        if(el) el.textContent = item.val;
+      });
+
+      if (gamesCount > 0) {
+        document.querySelector('#minigames .empty-state').style.display = 'none';
+        // qualquer coisa eu chamo uma função pra adicionar os minigames
+      }
+      
+      if (forumCount > 0) {
+        document.querySelector('#forum .empty-state').style.display = 'none';
+      }
+
+    } catch (err) {
+      console.error("Erro ao carregar dados do dashboard:", err);
+    }
+  }
+
+  updateDashboard();
+</script>
 </body>
 </html>
