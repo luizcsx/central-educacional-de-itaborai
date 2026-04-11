@@ -161,26 +161,31 @@
 
 <div class="stats-strip" aria-label="Números da plataforma">
   <div class="container">
+    
     <div class="stat-item">
-      <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+      <div class="stat-icon" aria-hidden="true"><i class="fa-solid fa-users"></i></div>
       <div>
-        <div class="stat-num" id="statUsers">0</div> <div class="stat-desc">Usuários cadastrados</div>
+        <div class="stat-num" id="statUsers">0</div>
+        <div class="stat-desc">Usuários cadastrados</div>
       </div>
     </div>
+
     <div class="stat-item">
-      <div class="stat-icon"><i class="fa-solid fa-gamepad"></i></div>
+      <div class="stat-icon" aria-hidden="true"><i class="fa-solid fa-gamepad"></i></div>
       <div>
-        <div class="stat-num" id="statGames">0</div> <div class="stat-desc">Minigames disponíveis</div>
+        <div class="stat-num" id="statGames">0</div>
+        <div class="stat-desc">Minigames disponíveis</div>
       </div>
     </div>
+
     <div class="stat-item">
-      <div class="stat-icon"><i class="fa-solid fa-comments"></i></div>
+      <div class="stat-icon" aria-hidden="true"><i class="fa-solid fa-comments"></i></div>
       <div>
-        <div class="stat-num" id="statForum">0</div> <div class="stat-desc">Tópicos no fórum</div>
+        <div class="stat-num" id="statForum">0</div>
+        <div class="stat-desc">Tópicos no fórum</div>
       </div>
     </div>
-    </div>
-</div>
+
     <div class="stat-item">
       <div class="stat-icon" aria-hidden="true"><i class="fa-solid fa-school"></i></div>
       <div>
@@ -188,6 +193,7 @@
         <div class="stat-desc">Escolas participantes</div>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -522,23 +528,30 @@
   import { createClient } from 'https://jspm.dev/@supabase/supabase-js';
   const supabase = createClient('https://tkpatolybraskbedknjc.supabase.co', 'sb_publishable_hrQmBCRFxI0YhyCkk7SOzA_1BvyFC9U');
 
-  async function updateDashboard() {
+  async function updateStats() {
     try {
-      const { count: u } = await supabase.from('usuarios').select('*', { count: 'exact', head: true });
-      const { count: g } = await supabase.from('minigames').select('*', { count: 'exact', head: true });
-      const { count: f } = await supabase.from('forum_posts').select('*', { count: 'exact', head: true });
+      const [u, g, f] = await Promise.all([
+        supabase.from('usuarios').select('*', { count: 'exact', head: true }),
+        supabase.from('minigames').select('*', { count: 'exact', head: true }),
+        supabase.from('forum_posts').select('*', { count: 'exact', head: true })
+      ]);
 
-      if(document.getElementById('statUsers')) document.getElementById('statUsers').textContent = u || 0;
-      if(document.getElementById('statGames')) document.getElementById('statGames').textContent = g || 0;
-      if(document.getElementById('statForum')) document.getElementById('statForum').textContent = f || 0;
+      const updateEl = (id, val) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val !== null ? val : 0;
+      };
 
-      console.log("Valores carregados:", { u, g, f });
-    } catch (e) {
-      console.error("Erro na busca:", e);
+      updateEl('statUsers', u.count);
+      updateEl('statGames', g.count);
+      updateEl('statForum', f.count);
+
+      console.log("Stats atualizados:", { u: u.count, g: g.count, f: f.count });
+    } catch (err) {
+      console.error("Erro ao buscar dados:", err);
     }
   }
 
-  updateDashboard();
+  window.addEventListener('DOMContentLoaded', updateStats);
 </script>
 </body>
 </html>
