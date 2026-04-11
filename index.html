@@ -560,10 +560,28 @@
     const emptyState = document.querySelector('#minigames .empty-state');
     if (emptyState) emptyState.style.display = 'none';
 
-    const grid = document.createElement('div');
-    grid.className = 'game-grid'; 
-    grid.innerHTML = games.map(g => `<div class="game-card"><h3>${g.titulo}</h3></div>`).join('');
-    container.appendChild(grid);
+    // Cria o container do grid se não existir
+    let grid = container.querySelector('.game-grid');
+    if (!grid) {
+      grid = document.createElement('div');
+      grid.className = 'game-grid';
+      container.appendChild(grid);
+    }
+
+    grid.innerHTML = games.map(g => `
+      <div class="game-card">
+        <div class="game-icon"><i class="fa-solid fa-scroll"></i></div>
+        <div class="game-meta">
+          <span class="game-tag"><i class="fa-solid fa-book"></i> ${g.categoria || 'Geral'}</span>
+        </div>
+        <h3>${g.titulo}</h3>
+        <p>${g.descricao || 'Desafio educacional.'}</p>
+        <div class="game-footer">
+          <span class="game-diff"><i class="fa-solid fa-circle"></i> ${g.dificuldade || 'Médio'}</span>
+          <a href="minigames1f.html" class="btn btn-primary"><i class="fa-solid fa-play"></i> Jogar</a>
+        </div>
+      </div>
+    `).join('');
   }
 
   function renderForum(posts) {
@@ -573,12 +591,27 @@
 
     container.innerHTML = posts.map(p => `
       <div class="thread-item">
-        <h4>${p.titulo}</h4>
+        <div class="thread-vote">
+            <button><i class="fa-solid fa-chevron-up"></i></button>
+            <span>0</span>
+            <button><i class="fa-solid fa-chevron-down"></i></button>
+        </div>
+        <div class="thread-content">
+            <div class="thread-tags">
+                ${p.fixado ? '<span class="tag-fixed"><i class="fa-solid fa-thumbtack"></i> FIXADO</span>' : ''}
+                <span class="tag-cat"><i class="fa-solid fa-book"></i> ${p.categoria || 'Geral'}</span>
+            </div>
+            <h3>${p.titulo}</h3>
+            <p>${p.conteudo ? p.conteudo.substring(0, 100) + '...' : ''}</p>
+            <div class="thread-meta">
+                <span><i class="fa-solid fa-comment"></i> ${p.respostas || 0} respostas</span>
+                <span><i class="fa-solid fa-clock"></i> ${p.tempo || 'agora mesmo'}</span>
+                <span><i class="fa-solid fa-user"></i> ${p.autor || 'Anônimo'}</span>
+            </div>
+        </div>
       </div>
     `).join('');
   }
-
-  window.addEventListener('DOMContentLoaded', initDashboard);
 </script>
 </body>
 </html>
