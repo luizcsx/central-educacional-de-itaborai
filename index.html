@@ -529,29 +529,29 @@
   const supabase = createClient('https://tkpatolybraskbedknjc.supabase.co', 'sb_publishable_hrQmBCRFxI0YhyCkk7SOzA_1BvyFC9U');
 
   async function initDashboard() {
+    console.log("Carregando dados...");
     try {
-      const [u, g, f] = await Promise.all([
-        supabase.from('usuarios').select('*', { count: 'exact', head: true }),
-        supabase.from('minigames').select('*', { count: 'exact', head: true }),
-        supabase.from('forum_posts').select('*', { count: 'exact', head: true })
-      ]);
+      const { count: u, error: errU } = await supabase.from('usuarios').select('*', { count: 'exact', head: true });
+      const { count: g, error: errG } = await supabase.from('minigames').select('*', { count: 'exact', head: true });
+      const { count: f, error: errF } = await supabase.from('forum_posts').select('*', { count: 'exact', head: true });
 
-      if(document.getElementById('statUsers')) document.getElementById('statUsers').textContent = u.count || 0;
-      if(document.getElementById('statGames')) document.getElementById('statGames').textContent = g.count || 0;
-      if(document.getElementById('statForum')) document.getElementById('statForum').textContent = f.count || 0;
+      if(errU || errG || errF) console.error("Erro nas contagens:", {errU, errG, errF});
 
-      if (g.count > 0) {
-        const { data: games } = await supabase.from('minigames').select('*').limit(3);
+      document.getElementById('statUsers').textContent = u || 0;
+      document.getElementById('statGames').textContent = g || 0;
+      document.getElementById('statForum').textContent = f || 0;
+
+      const { data: games, error: errGames } = await supabase.from('minigames').select('titulo, descricao, disciplina, dificuldade, partidas, criador_id').limit(3);
+      
+      if (games && games.length > 0) {
+        console.log("Jogos encontrados:", games);
         renderMinigames(games);
-      }
-
-      if (f.count > 0) {
-        const { data: posts } = await supabase.from('forum_posts').select('*').limit(3);
-        renderForum(posts);
+      } else {
+        console.log("Nenhum jogo encontrado ou erro:", errGames);
       }
 
     } catch (err) {
-      console.error("Erro na inicialização:", err);
+      console.error("ERRO:", err);
     }
   }
 
@@ -560,7 +560,6 @@
     const emptyState = document.querySelector('#minigames .empty-state');
     if (emptyState) emptyState.style.display = 'none';
 
-    // Cria o container do grid se não existir
     let grid = container.querySelector('.game-grid');
     if (!grid) {
       grid = document.createElement('div');
@@ -570,48 +569,14 @@
 
     grid.innerHTML = games.map(g => `
       <div class="game-card">
-        <div class="game-icon"><i class="fa-solid fa-scroll"></i></div>
-        <div class="game-meta">
-          <span class="game-tag"><i class="fa-solid fa-book"></i> ${g.categoria || 'Geral'}</span>
-        </div>
         <h3>${g.titulo}</h3>
-        <p>${g.descricao || 'Desafio educacional.'}</p>
-        <div class="game-footer">
-          <span class="game-diff"><i class="fa-solid fa-circle"></i> ${g.dificuldade || 'Médio'}</span>
-          <a href="minigames1f.html" class="btn btn-primary"><i class="fa-solid fa-play"></i> Jogar</a>
-        </div>
+        <p>${g.descricao || 'Sem descrição'}</p>
+        <a href="minigames1f.html" class="btn btn-primary">Jogar</a>
       </div>
     `).join('');
   }
 
-  function renderForum(posts) {
-    const container = document.querySelector('#forum .forum-threads');
-    const emptyState = document.querySelector('#forum .empty-state');
-    if (emptyState) emptyState.style.display = 'none';
-
-    container.innerHTML = posts.map(p => `
-      <div class="thread-item">
-        <div class="thread-vote">
-            <button><i class="fa-solid fa-chevron-up"></i></button>
-            <span>0</span>
-            <button><i class="fa-solid fa-chevron-down"></i></button>
-        </div>
-        <div class="thread-content">
-            <div class="thread-tags">
-                ${p.fixado ? '<span class="tag-fixed"><i class="fa-solid fa-thumbtack"></i> FIXADO</span>' : ''}
-                <span class="tag-cat"><i class="fa-solid fa-book"></i> ${p.categoria || 'Geral'}</span>
-            </div>
-            <h3>${p.titulo}</h3>
-            <p>${p.conteudo ? p.conteudo.substring(0, 100) + '...' : ''}</p>
-            <div class="thread-meta">
-                <span><i class="fa-solid fa-comment"></i> ${p.respostas || 0} respostas</span>
-                <span><i class="fa-solid fa-clock"></i> ${p.tempo || 'agora mesmo'}</span>
-                <span><i class="fa-solid fa-user"></i> ${p.autor || 'Anônimo'}</span>
-            </div>
-        </div>
-      </div>
-    `).join('');
-  }
+  window.addEventListener('DOMContentLoaded', initDashboard);
 </script>
 </body>
 </html>
