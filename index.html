@@ -520,41 +520,25 @@
 
 <script type="module">
   import { createClient } from 'https://jspm.dev/@supabase/supabase-js';
-
   const supabase = createClient('https://tkpatolybraskbedknjc.supabase.co', 'sb_publishable_hrQmBCRFxI0YhyCkk7SOzA_1BvyFC9U');
 
   async function updateDashboard() {
     try {
-      console.log("Iniciando busca...");
-      
-      const { data: users, count: usersCount, error: errU } = await supabase.from('usuarios').select('*', { count: 'exact', head: true });
-      const { data: games, count: gamesCount, error: errG } = await supabase.from('minigames').select('*', { count: 'exact', head: true });
-      const { data: posts, count: forumCount, error: errF } = await supabase.from('forum_posts').select('*', { count: 'exact', head: true });
+      const { count: u } = await supabase.from('usuarios').select('*', { count: 'exact', head: true });
+      const { count: g } = await supabase.from('minigames').select('*', { count: 'exact', head: true });
+      const { count: f } = await supabase.from('forum_posts').select('*', { count: 'exact', head: true });
 
-      console.log("Resultados:", { usersCount, gamesCount, forumCount });
-      if (errU || errG || errF) console.error("Erro na consulta:", errU || errG || errF);
+      if(document.getElementById('statUsers')) document.getElementById('statUsers').textContent = u || 0;
+      if(document.getElementById('statGames')) document.getElementById('statGames').textContent = g || 0;
+      if(document.getElementById('statForum')) document.getElementById('statForum').textContent = f || 0;
 
-      // aqui ele vai atualizar os renderizadores
-      if(document.getElementById('statUsers')) document.getElementById('statUsers').textContent = usersCount || 0;
-      if(document.getElementById('statGames')) document.getElementById('statGames').textContent = gamesCount || 0;
-      if(document.getElementById('statForum')) document.getElementById('statForum').textContent = forumCount || 0;
-
-      if (gamesCount > 0) {
-        const gameSection = document.querySelector('#minigames .empty-state');
-        console.log("Minigame(s) encontrado(s):", !!gameSection);
-        if (gameSection) gameSection.style.display = 'none';
-      }
-      
-      if (forumCount > 0) {
-        const forumSection = document.querySelector('#forum .empty-state');
-        console.log("Postagem(ns) encontrada(s):", !!forumSection);
-        if (forumSection) forumSection.style.display = 'none';
-      }
-
-    } catch (err) {
-      console.error("Erro:", err);
+      console.log("Valores carregados:", { u, g, f });
+    } catch (e) {
+      console.error("Erro na busca:", e);
     }
   }
+
+  updateDashboard();
 </script>
 </body>
 </html>
