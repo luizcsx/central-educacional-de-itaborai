@@ -464,7 +464,7 @@
   async function fetchUsers() {
     try {
       const data = await sbFetch(
-        'usuarios?select=id,nome,username,escola,papel,pontos,minigames_jogados,topicos,criado_em,ultimo_acesso&order=criado_em.desc',
+        'usuarios_publicos?select=id,nome,username,escola,papel,pontos,minigames_jogados,topicos,criado_em,ultimo_acesso&order=criado_em.desc',
         { method: 'GET' }
       );
       allUsers = Array.isArray(data) ? data : [];
