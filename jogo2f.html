@@ -31,7 +31,7 @@
   <div class="container">
     <button class="game-back" id="btnBack"><i class="fa-solid fa-arrow-left"></i> Voltar</button>
     <div class="game-title-wrap">
-      <div class="game-title" id="gameTitle">Carregando…</div>
+      <div class="game-title" id="gameTitle">Carregando...</div>
       <div class="game-subtitle" id="gameSubtitle"></div>
     </div>
     <div class="game-progress-bar-wrap">
@@ -54,7 +54,7 @@
     <div id="gameArea">
       <div class="loading-screen">
         <div class="loading-spinner"></div>
-        <div class="loading-text">Carregando minigame…</div>
+        <div class="loading-text">Carregando minigame...</div>
       </div>
     </div>
   </div>
@@ -154,7 +154,7 @@
       </div>`;
     } else if (tipo === 'completar' || tipo === 'digitar') {
       optionsHtml = `<div class="fill-form">
-        <input class="fill-input" id="fillInput" type="text" placeholder="Digite sua resposta…" autocomplete="off" />
+        <input class="fill-input" id="fillInput" type="text" placeholder="Digite sua resposta." autocomplete="off" />
         ${p.dica ? '<span class="fill-hint"><i class="fa-solid fa-lightbulb"></i> Dica: ' + esc(p.dica) + '</span>' : ''}
         <button class="submit-btn" onclick="responderTexto()">
           <i class="fa-solid fa-paper-plane"></i> Confirmar resposta
@@ -486,7 +486,7 @@
       if (!dados || dados.length === 0) { showError('Minigame não encontrado', 'O jogo com o ID "' + esc(GAME_ID) + '" não existe ou foi removido.'); return; }
 
       jogo = dados[0];
-      document.title = jogo.titulo + ' – C.E.I.';
+      document.title = jogo.titulo + ' - Centro Educacional de Itaboraí';
       document.getElementById('gameTitle').textContent   = jogo.titulo;
       document.getElementById('gameSubtitle').textContent = (CAT_LABELS[jogo.disciplina] || jogo.disciplina || '') + (jogo.dificuldade ? ' · ' + ['','Fácil','Médio','Difícil'][jogo.dificuldade] : '');
 
