@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jogando - Centro Educacional de Itaboraí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/jogo2f.css" />
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames2f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+    </div>
+    <div class="topbar-user" id="topbarUser">
+      <div class="avatar" id="userAvatar">?</div>
+      <span id="userName">Carregando...</span>
+    </div>
+  </div>
+</div>
+
+<div class="game-header">
+  <div class="container">
+    <button class="game-back" id="btnBack"><i class="fa-solid fa-arrow-left"></i> Voltar</button>
+    <div class="game-title-wrap">
+      <div class="game-title" id="gameTitle">Carregando…</div>
+      <div class="game-subtitle" id="gameSubtitle"></div>
+    </div>
+    <div class="game-progress-bar-wrap">
+      <div class="game-progress-label">
+        <span id="progText">Pergunta 0 de 0</span>
+        <span id="progPct">0%</span>
+      </div>
+      <div class="game-progress-bar"><div class="game-progress-fill" id="progFill"></div></div>
+    </div>
+    <div class="timer-wrap" id="timerWrap" style="display:none;">
+      <i class="fa-regular fa-clock"></i>
+      <span id="timerDisplay">00:00</span>
+    </div>
+    <div class="game-score-badge"><i class="fa-solid fa-star"></i> <span id="scoreDisplay">0</span> pts</div>
+  </div>
+</div>
+
+<main class="game-main">
+  <div class="container">
+    <div id="gameArea">
+      <div class="loading-screen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Carregando minigame…</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const SUPABASE_URL = 'https://tkpatolybraskbedknjc.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_hrQmBCRFxI0YhyCkk7SOzA_1BvyFC9U';
+
+  async function sbFetch(path, opts = {}) {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': opts.prefer || 'return=representation',
+        ...opts.headers,
+      },
+      ...opts,
+    });
+    if (!res.ok) throw new Error(await res.text());
+    const t = await res.text();
+    return t ? JSON.parse(t) : null;
+  }
+
+  function getParam(name) { return new URLSearchParams(window.location.search).get(name); }
+  function getUsuario() {
+    try { return JSON.parse(localStorage.getItem('usuario_logado') || 'null'); } catch { return null; }
+  }
+
+  const GAME_ID = getParam('id');
+  const usuario = getUsuario();
+
+  if (!usuario) { window.location.replace('jogo1f.html?id=' + (GAME_ID || '')); }
+  if (!GAME_ID)  { window.location.replace('minigames2f.html'); }
+
+  document.getElementById('userAvatar').textContent = (usuario?.nome || '?').charAt(0).toUpperCase();
+  document.getElementById('userName').textContent   = usuario?.username ? '@' + usuario.username : usuario?.nome || '';
+
+  document.getElementById('btnBack').addEventListener('click', () => { window.location.href = 'minigames2f.html'; });
+
+  const CAT_LABELS = { matematica:'Matemática', historia:'História', ciencias:'Ciências', portugues:'Português', geografia:'Geografia', ingles:'Inglês', artes:'Artes', producao:'Prod. Textual', edfisica:'Ed. Física' };
+
+  let jogo         = null;
+  let perguntas    = [];
+  let qIndex       = 0;
+  let score        = 0;
+  let acertos      = 0;
+  let erros        = 0;
+  let answered     = false;
+  let startTime    = null;
+  let timerInterval= null;
+  let tempoTotal   = 0;
+  let respostas    = [];
+
+  const LETRAS = ['A','B','C','D','E'];
+  const PONTOS_CERTO  = 10;
+  const PONTOS_ERRADO = 0;
+  const BONUS_TEMPO   = 3;
+
+  function setScore(n) { score = n; document.getElementById('scoreDisplay').textContent = n; }
+  function setProgress(i, total) {
+    const pct = total > 0 ? Math.round((i / total) * 100) : 0;
+    document.getElementById('progText').textContent  = 'Pergunta ' + i + ' de ' + total;
+    document.getElementById('progPct').textContent   = pct + '%';
+    document.getElementById('progFill').style.width  = pct + '%';
+  }
+
+  function esc(s) { return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function renderQuestion() {
+    if (qIndex >= perguntas.length) { showResults(); return; }
+    answered = false;
+    const p = perguntas[qIndex];
+    setProgress(qIndex + 1, perguntas.length);
+
+    let extraHtml = '';
+    if (p.imagem)  extraHtml += '<img class="question-img" src="' + esc(p.imagem)  + '" alt="Imagem da pergunta" />';
+    if (p.codigo)  extraHtml += '<pre class="question-code">' + esc(p.codigo) + '</pre>';
+
+    let optionsHtml = '';
+    const tipo = (p.tipo || 'multipla').toLowerCase();
+
+    if (tipo === 'multipla' || tipo === 'multipla_escolha') {
+      optionsHtml = '<div class="options-grid">';
+      (p.opcoes || []).forEach((op, i) => {
+        optionsHtml += `<button class="option-btn" data-index="${i}" onclick="responder(this)">
+          <span class="option-letter">${LETRAS[i] || i + 1}</span>
+          <span>${esc(op.texto || op)}</span>
+        </button>`;
+      });
+      optionsHtml += '</div>';
+    } else if (tipo === 'verdadeiro_falso' || tipo === 'vf') {
+      optionsHtml = `<div class="true-false-row">
+        <button class="tf-btn" data-index="0" onclick="responder(this)"><i class="fa-solid fa-check"></i> Verdadeiro</button>
+        <button class="tf-btn" data-index="1" onclick="responder(this)"><i class="fa-solid fa-xmark"></i> Falso</button>
+      </div>`;
+    } else if (tipo === 'completar' || tipo === 'digitar') {
+      optionsHtml = `<div class="fill-form">
+        <input class="fill-input" id="fillInput" type="text" placeholder="Digite sua resposta…" autocomplete="off" />
+        ${p.dica ? '<span class="fill-hint"><i class="fa-solid fa-lightbulb"></i> Dica: ' + esc(p.dica) + '</span>' : ''}
+        <button class="submit-btn" onclick="responderTexto()">
+          <i class="fa-solid fa-paper-plane"></i> Confirmar resposta
+        </button>
+      </div>`;
+    }
+
+    const tempoQuestao = p.tempo_segundos ? parseInt(p.tempo_segundos, 10) : 0;
+
+    document.getElementById('gameArea').innerHTML = `
+      <div class="quiz-area">
+        <div class="question-card">
+          <div class="question-num"><i class="fa-solid fa-circle-question" style="color:var(--cei-green);"></i> Pergunta ${qIndex + 1} de ${perguntas.length}</div>
+          <div class="question-text">${esc(p.enunciado || p.pergunta || '')}</div>
+          ${extraHtml}
+        </div>
+        ${optionsHtml}
+        <div id="feedbackArea"></div>
+      </div>`;
+
+    if (tipo === 'completar' || tipo === 'digitar') {
+      const inp = document.getElementById('fillInput');
+      if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') responderTexto(); });
+    }
+
+    if (tempoQuestao > 0) {
+      startQuestionTimer(tempoQuestao);
+    } else {
+      document.getElementById('timerWrap').style.display = 'none';
+    }
+  }
+
+  function startQuestionTimer(seconds) {
+    clearInterval(timerInterval);
+    let remaining = seconds;
+    const wrap    = document.getElementById('timerWrap');
+    const display = document.getElementById('timerDisplay');
+    wrap.style.display = 'flex';
+    wrap.classList.remove('danger');
+
+    function tick() {
+      const m = String(Math.floor(remaining / 60)).padStart(2, '0');
+      const s = String(remaining % 60).padStart(2, '0');
+      display.textContent = m + ':' + s;
+      if (remaining <= 10) wrap.classList.add('danger');
+      if (remaining <= 0) {
+        clearInterval(timerInterval);
+        if (!answered) timeOut();
+        return;
+      }
+      remaining--;
+    }
+    tick();
+    timerInterval = setInterval(tick, 1000);
+  }
+
+  function timeOut() {
+    answered = true;
+    clearInterval(timerInterval);
+    const p = perguntas[qIndex];
+    respostas.push({ pergunta: p.enunciado || p.pergunta, correta: false, resposta_dada: '(tempo esgotado)', resposta_certa: getRespCerta(p) });
+    erros++;
+    showFeedback(false, p.explicacao || 'O tempo acabou!', null, true);
+  }
+
+  function getRespCerta(p) {
+    const tipo = (p.tipo || 'multipla').toLowerCase();
+    if (tipo === 'verdadeiro_falso' || tipo === 'vf') {
+      return p.resposta_correta === true || p.resposta_correta === 0 ? 'Verdadeiro' : 'Falso';
+    }
+    if (tipo === 'completar' || tipo === 'digitar') return p.resposta_correta || '';
+    const idx = typeof p.resposta_correta === 'number' ? p.resposta_correta : 0;
+    const op  = (p.opcoes || [])[idx];
+    return op ? (op.texto || op) : '';
+  }
+
+  function responder(btn) {
+    if (answered) return;
+    answered = true;
+    clearInterval(timerInterval);
+    const p       = perguntas[qIndex];
+    const idx     = parseInt(btn.dataset.index, 10);
+    const tipo    = (p.tipo || 'multipla').toLowerCase();
+    let correta   = false;
+
+    if (tipo === 'verdadeiro_falso' || tipo === 'vf') {
+      const esperado = (p.resposta_correta === true || p.resposta_correta === 0) ? 0 : 1;
+      correta = (idx === esperado);
+    } else {
+      const esperado = typeof p.resposta_correta === 'number' ? p.resposta_correta : 0;
+      correta = (idx === esperado);
+    }
+
+    document.querySelectorAll('.option-btn, .tf-btn').forEach(b => b.disabled = true);
+    btn.classList.add(correta ? 'correct' : 'wrong');
+
+    if (!correta) {
+      if (tipo === 'verdadeiro_falso' || tipo === 'vf') {
+        const certaIdx = (p.resposta_correta === true || p.resposta_correta === 0) ? 0 : 1;
+        document.querySelectorAll('.tf-btn')[certaIdx]?.classList.add('correct');
+      } else {
+        const certaIdx = typeof p.resposta_correta === 'number' ? p.resposta_correta : 0;
+        document.querySelectorAll('.option-btn')[certaIdx]?.classList.add('correct');
+      }
+    }
+
+    const textoDado  = btn.querySelector('span:last-child')?.textContent || btn.textContent.trim();
+    respostas.push({ pergunta: p.enunciado || p.pergunta, correta, resposta_dada: textoDado, resposta_certa: getRespCerta(p) });
+
+    if (correta) { acertos++; setScore(score + PONTOS_CERTO); }
+    else         { erros++; }
+
+    showFeedback(correta, p.explicacao || '', null, false);
+  }
+
+  function responderTexto() {
+    if (answered) return;
+    const inp = document.getElementById('fillInput');
+    if (!inp || !inp.value.trim()) return;
+    answered = true;
+    clearInterval(timerInterval);
+
+    const p        = perguntas[qIndex];
+    const dado     = inp.value.trim().toLowerCase();
+    const certa    = (p.resposta_correta || '').toString().trim().toLowerCase();
+    const sinonimos= (p.sinonimos || []).map(s => s.toString().trim().toLowerCase());
+    const correta  = dado === certa || sinonimos.includes(dado);
+
+    inp.disabled = true;
+    inp.classList.add(correta ? 'correct' : 'wrong');
+
+    respostas.push({ pergunta: p.enunciado || p.pergunta, correta, resposta_dada: inp.value.trim(), resposta_certa: p.resposta_correta || '' });
+
+    if (correta) { acertos++; setScore(score + PONTOS_CERTO); }
+    else         { erros++; }
+
+    showFeedback(correta, p.explicacao || '', null, false);
+  }
+
+  function showFeedback(correta, explicacao, nota, timeout) {
+    const area = document.getElementById('feedbackArea');
+    const icon = correta ? 'fa-circle-check' : 'fa-circle-xmark';
+    const cls  = correta ? 'correct' : 'wrong';
+    const tit  = timeout ? 'Tempo esgotado!' : (correta ? 'Resposta correta!' : 'Resposta errada!');
+
+    area.innerHTML = `
+      <div class="feedback-bar ${cls}">
+        <i class="feedback-icon fa-solid ${icon}"></i>
+        <div>
+          <strong>${tit}${correta ? ' +' + PONTOS_CERTO + ' pts' : ''}</strong>
+          ${explicacao ? '<span class="explanation">' + esc(explicacao) + '</span>' : ''}
+        </div>
+      </div>`;
+
+    const isLast = (qIndex + 1 >= perguntas.length);
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'next-btn';
+    nextBtn.innerHTML = isLast
+      ? '<i class="fa-solid fa-flag-checkered"></i> Ver resultado'
+      : '<i class="fa-solid fa-arrow-right"></i> Próxima pergunta';
+    nextBtn.addEventListener('click', () => {
+      qIndex++;
+      renderQuestion();
+    });
+
+    const quizArea = document.querySelector('.quiz-area');
+    if (quizArea) quizArea.appendChild(nextBtn);
+    nextBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  async function showResults() {
+    clearInterval(timerInterval);
+    document.getElementById('timerWrap').style.display = 'none';
+    tempoTotal = Math.floor((Date.now() - startTime) / 1000);
+    const total = perguntas.length;
+    const pct   = total > 0 ? Math.round((acertos / total) * 100) : 0;
+
+    let trophy = '🏆'; let msg = 'Excelente!';
+    if (pct < 40)      { trophy = '😅'; msg = 'Continue praticando!'; }
+    else if (pct < 60) { trophy = '🙂'; msg = 'Bom esforço!'; }
+    else if (pct < 80) { trophy = '😊'; msg = 'Muito bom!'; }
+    else if (pct < 100){ trophy = '🌟'; msg = 'Incrível!'; }
+
+    const circunf = 2 * Math.PI * 54;
+    const offset  = circunf - (pct / 100) * circunf;
+    const min = String(Math.floor(tempoTotal / 60)).padStart(2,'0');
+    const seg = String(tempoTotal % 60).padStart(2,'0');
+
+    let reviewHtml = respostas.map((r, i) => `
+      <div class="review-item ${r.correta ? 'ok' : 'err'}">
+        <i class="review-icon fa-solid ${r.correta ? 'fa-circle-check' : 'fa-circle-xmark'}"></i>
+        <div>
+          <div class="review-q">${i + 1}. ${esc(r.pergunta)}</div>
+          <div class="review-a">
+            ${r.correta
+              ? '<span class="certa">✓ ' + esc(r.resposta_dada) + '</span>'
+              : '<span class="dada">✗ ' + esc(r.resposta_dada) + '</span> → <span class="certa">Certa: ' + esc(r.resposta_certa) + '</span>'}
+          </div>
+        </div>
+      </div>`).join('');
+
+    document.getElementById('gameArea').innerHTML = `
+      <div class="results-card">
+        <div class="results-trophy">${trophy}</div>
+        <div class="results-title">${msg}</div>
+        <div class="results-subtitle">${jogo?.titulo || 'Minigame'} · ${pct}% de acertos</div>
+        <div class="score-circle-wrap">
+          <svg width="130" height="130" viewBox="0 0 130 130">
+            <g class="score-ring">
+              <circle class="score-ring-bg"   cx="65" cy="65" r="54" />
+              <circle class="score-ring-fill" cx="65" cy="65" r="54"
+                stroke-dasharray="${circunf.toFixed(2)}"
+                stroke-dashoffset="${circunf.toFixed(2)}"
+                id="ringFill" />
+            </g>
+            <text class="score-pct" x="65" y="62" text-anchor="middle" dominant-baseline="middle" font-family="Inter,sans-serif" font-weight="900">${pct}%</text>
+            <text class="score-label-svg" x="65" y="80" text-anchor="middle" font-family="Inter,sans-serif">${score} pts</text>
+          </svg>
+        </div>
+        <div class="results-stats">
+          <div class="result-stat"><div class="result-stat-num">${acertos}</div><div class="result-stat-lbl">Acertos</div></div>
+          <div class="result-stat"><div class="result-stat-num">${erros}</div><div class="result-stat-lbl">Erros</div></div>
+          <div class="result-stat"><div class="result-stat-num">${score}</div><div class="result-stat-lbl">Pontos</div></div>
+          <div class="result-stat"><div class="result-stat-num">${min}:${seg}</div><div class="result-stat-lbl">Tempo</div></div>
+        </div>
+        <div class="results-actions">
+          <button class="submit-btn" onclick="replayGame()"><i class="fa-solid fa-rotate-right"></i> Jogar novamente</button>
+          <a href="minigames2f.html" class="submit-btn" style="text-decoration:none;"><i class="fa-solid fa-gamepad"></i> Mais minigames</a>
+        </div>
+        <div class="answer-review">
+          <div class="review-title"><i class="fa-solid fa-list-check"></i> Revisão das respostas</div>
+          ${reviewHtml}
+        </div>
+      </div>`;
+
+    setTimeout(() => {
+      const ring = document.getElementById('ringFill');
+      if (ring) ring.style.strokeDashoffset = offset.toFixed(2);
+    }, 200);
+
+    await salvarResultado(pct);
+    await incrementarPartidas();
+  }
+
+  async function salvarResultado(pct) {
+    try {
+      await sbFetch('minigame_resultados', {
+        method: 'POST',
+        body: JSON.stringify({
+          minigame_id:   GAME_ID,
+          usuario_username: usuario.username,
+          pontos:        score,
+          acertos,
+          erros,
+          total_perguntas: perguntas.length,
+          percentual:    pct,
+          tempo_segundos: tempoTotal,
+          criado_em:     new Date().toISOString(),
+        }),
+        prefer: 'return=minimal',
+      });
+    } catch {}
+
+    try {
+      const atual = await sbFetch('usuarios?username=eq.' + encodeURIComponent(usuario.username) + '&select=pontos,minigames_jogados');
+      if (atual && atual[0]) {
+        const novoPontos   = (atual[0].pontos || 0) + score;
+        const novoJogados  = (atual[0].minigames_jogados || 0) + 1;
+        await sbFetch('usuarios?username=eq.' + encodeURIComponent(usuario.username), {
+          method: 'PATCH',
+          body: JSON.stringify({ pontos: novoPontos, minigames_jogados: novoJogados }),
+          prefer: 'return=minimal',
+        });
+      }
+    } catch {}
+  }
+
+  async function incrementarPartidas() {
+    try {
+      const atual = await sbFetch('minigames?id=eq.' + encodeURIComponent(GAME_ID) + '&select=partidas');
+      if (atual && atual[0]) {
+        await sbFetch('minigames?id=eq.' + encodeURIComponent(GAME_ID), {
+          method: 'PATCH',
+          body: JSON.stringify({ partidas: (atual[0].partidas || 0) + 1 }),
+          prefer: 'return=minimal',
+        });
+      }
+    } catch {}
+  }
+
+  function replayGame() {
+    qIndex = 0; score = 0; acertos = 0; erros = 0; respostas = [];
+    setScore(0);
+    perguntas = shuffleArray([...perguntas]);
+    startTime = Date.now();
+    renderQuestion();
+  }
+
+  function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  function setProgress2(i, total) {
+    const pct = total > 0 ? Math.round((i / total) * 100) : 0;
+    document.getElementById('progText').textContent = 'Pergunta ' + i + ' de ' + total;
+    document.getElementById('progPct').textContent  = pct + '%';
+    document.getElementById('progFill').style.width = pct + '%';
+  }
+
+  function showError(titulo, msg) {
+    document.getElementById('gameArea').innerHTML = `
+      <div class="error-screen">
+        <div class="error-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <h2>${titulo}</h2>
+        <p>${msg}</p>
+        <a href="minigames2f.html" style="margin-top:16px;" class="submit-btn">
+          <i class="fa-solid fa-arrow-left"></i> Voltar aos minigames
+        </a>
+      </div>`;
+  }
+
+  async function init() {
+    try {
+      const dados = await sbFetch('minigames?id=eq.' + encodeURIComponent(GAME_ID) + '&select=*');
+      if (!dados || dados.length === 0) { showError('Minigame não encontrado', 'O jogo com o ID "' + esc(GAME_ID) + '" não existe ou foi removido.'); return; }
+
+      jogo = dados[0];
+      document.title = jogo.titulo + ' – C.E.I.';
+      document.getElementById('gameTitle').textContent   = jogo.titulo;
+      document.getElementById('gameSubtitle').textContent = (CAT_LABELS[jogo.disciplina] || jogo.disciplina || '') + (jogo.dificuldade ? ' · ' + ['','Fácil','Médio','Difícil'][jogo.dificuldade] : '');
+
+      let qs = jogo.perguntas;
+      if (!qs || !Array.isArray(qs) || qs.length === 0) {
+        try {
+          const qRows = await sbFetch('minigame_perguntas?minigame_id=eq.' + encodeURIComponent(GAME_ID) + '&order=ordem.asc');
+          qs = qRows && qRows.length > 0 ? qRows : null;
+        } catch {}
+      }
+
+      if (!qs || !Array.isArray(qs) || qs.length === 0) {
+        showError('Minigame sem perguntas', 'Este minigame ainda não tem perguntas cadastradas. O criador precisa adicionar conteúdo.');
+        return;
+      }
+
+      perguntas = jogo.embaralhar ? shuffleArray([...qs]) : [...qs];
+      startTime = Date.now();
+      renderQuestion();
+
+    } catch (err) {
+      showError('Erro ao carregar', 'Não foi possível carregar o minigame. Verifique sua conexão e tente novamente.');
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>
