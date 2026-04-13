@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendário Escolar - Centro Educacional de Itaboraí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/calendario1f.css" />
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+</head>
+<body>
+
+<div class="topbar" role="banner">
+  <div class="container">
+    <div class="topbar-left">
+      <span><i class="fa-solid fa-triangle-exclamation"></i> <strong>ATENÇÃO:</strong> Plataforma em fase de testes. Projeto não-oficial sem ligação com órgãos públicos municipais.</span>
+    </div>
+    <div class="topbar-right">
+      <div class="accessibility-bar" aria-label="Ferramentas de acessibilidade">
+        <button aria-label="Aumentar fonte" onclick="changeFontSize(1)"><i class="fa-solid fa-a"></i> A+</button>
+        <button aria-label="Diminuir fonte" onclick="changeFontSize(-1)"><i class="fa-solid fa-a"></i> A-</button>
+        <button aria-label="Alto contraste" onclick="toggleContrast()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      </div>
+      <a href="malito:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a>
+      <a href="suporte1f.html"><i class="fa-solid fa-circle-question"></i> Ajuda</a>
+    </div>
+  </div>
+</div>
+
+<header class="header" role="navigation" aria-label="Menu principal">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Centro Educacional de Itaboraí">
+      <div class="logo-emblem" aria-hidden="true"></div>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-bar" role="search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" placeholder="Pesquisar..." aria-label="Pesquisar" />
+      </div>
+      <a href="entrar.html" class="btn btn-outline btn-login"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a>
+      <a href="junte-se.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Juntar-se</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <div class="logo">
+        <div class="logo-emblem" style="width:38px;height:38px;" aria-hidden="true"></div>
+        <div class="logo-text"><span class="abbr">Bem-vindo(a)!</span></div>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Fechar menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="drawer-footer">
+      <a href="junte-se.html" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fa-solid fa-right-to-bracket"></i> Junte-se a nós!</a>
+    </div>
+  </div>
+</div>
+
+<section class="cal-hero" aria-label="Calendário Escolar">
+  <div class="container">
+    <div class="cal-hero-inner">
+      <div class="cal-hero-text">
+        <div class="section-label"><i class="fa-solid fa-calendar-days"></i> Calendário Escolar</div>
+        <h1>Calendário de Feriados</h1>
+        <p>Visualize feriados nacionais, estaduais, municipais e pontos facultativos. Finais de semana e feriados são marcados como sem aula.</p>
+      </div>
+      <div class="region-selector">
+        <label for="regionSelect">Região</label>
+        <select id="regionSelect" aria-label="Selecionar região">
+          <optgroup label="Itaboraí">
+            <option value="itaborai" selected>Regiões de Itaboraí</option>
+          </optgroup>
+          <optgroup label="Rio de Janeiro">
+            <option value="rj">Regiões do Rio de Janeiro</option>
+          </optgroup>
+          <optgroup label="Brasil">
+            <option value="br">Todo o Brasil</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cal-controls" role="navigation" aria-label="Navegação do calendário">
+  <div class="container">
+    <div class="cal-nav">
+      <button class="cal-nav-btn" id="btnPrev" aria-label="Mês anterior"><i class="fa-solid fa-chevron-left"></i></button>
+      <span class="cal-month-label" id="monthLabel" aria-live="polite"></span>
+      <button class="cal-nav-btn" id="btnNext" aria-label="Próximo mês"><i class="fa-solid fa-chevron-right"></i></button>
+      <button class="cal-today-btn" id="btnToday">H</button>
+    </div>
+    <div class="cal-legend" aria-label="Legenda">
+      <span class="legend-item"><span class="legend-dot" style="background:#C0392B;"></span> Feriado nacional</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#856404;"></span> Ponto facultativo</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#1565C0;"></span> Feriado estadual/municipal</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#2E7D32;"></span> Fim de semana (sem aula)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--cei-green);"></span> Hoje</span>
+    </div>
+  </div>
+</div>
+
+<main class="cal-main" role="main">
+  <div class="container">
+
+    <div class="cal-grid-header" role="row" aria-label="Dias da semana">
+      <span>Domingo</span>
+      <span>Segunda</span>
+      <span>Terça</span>
+      <span>Quarta</span>
+      <span>Quinta</span>
+      <span>Sexta</span>
+      <span class="weekend">Sábado</span>
+    </div>
+
+    <div class="cal-grid" id="calGrid" role="grid" aria-label="Calendário mensal">
+      <div class="cal-loading" style="grid-column:1/-1;">
+        <div class="cal-spinner"></div>
+        <span>Carregando...</span>
+      </div>
+    </div>
+
+    <div class="cal-holiday-list" id="holidayList"></div>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-emblem" aria-hidden="true"></div>
+            <div class="logo-text">
+              <span class="abbr">"O amanhã, hoje."</span>
+              <span class="full"><i>- Luiz Miguel</i></span>
+            </div>
+          </div>
+          <p>Plataforma pedagógica digital desenvolvida para fortalecer o ensino e a aprendizagem nas escolas municipais de Itaboraí, Rio de Janeiro.</p>
+          <div class="footer-socials" aria-label="Redes sociais">
+            <a href="https://www.youtube.com/@CentroEducacionaldeItaboraí" aria-label="Nosso YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://instagram.com/centroeducacionaldeitaborai" aria-label="Nosso Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="malito:centroeducacionaldeitaborai@gmail.com" aria-label="Nosso Contato"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Plataforma</h5>
+          <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
+            <li><a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a></li>
+            <li><a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a></li>
+            <li><a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a></li>
+            <li><a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a></li>
+            <li><a href="calendario1f.html"><i class="fa-solid fa-calendar-days"></i> Calendário</a></li>
+            <li><a href="doacao1f.html"><i class="fa-solid fa-hand-holding-heart"></i> Apoie este projeto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Acesso</h5>
+          <ul>
+            <li><a href="entrar.html"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a></li>
+            <li><a href="junte-se.html"><i class="fa-solid fa-user-plus"></i> Juntar-se</a></li>
+            <li><a href="privacidade1f.html"><i class="fa-solid fa-shield-halved"></i> Privacidade</a></li>
+            <li><a href="termos1f.html"><i class="fa-solid fa-file-contract"></i> Termos de uso</a></li>
+            <li><a href="suporte1f.html"><i class="fa-solid fa-headset"></i> Suporte</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Institucional</h5>
+          <ul>
+            <li><a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre Nós</a></li>
+            <li><a href="https://site.ib.itaborai.rj.gov.br/orgaos_municipais/educacao/"><i class="fa-solid fa-school"></i> Secretaria de Educação</a></li>
+            <li><a href="https://site.ib.itaborai.rj.gov.br"><i class="fa-solid fa-landmark"></i> Prefeitura de Itaboraí</a></li>
+            <li><a href="acessibilidade1f.html"><i class="fa-solid fa-universal-access"></i> Acessibilidade</a></li>
+            <li><a href="malito:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> <span class="gold">Centro Educacional de Itaboraí</span>. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="vlibras-btn" id="vlibrasBtn" aria-label="Ativar VLibras – Tradução em Libras">
+  <i class="fa-solid fa-hands"></i>
+</button>
+<div class="vlibras-tooltip" aria-hidden="true">Ativar VLibras</div>
+
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+<script>
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  const hamburger = document.getElementById('hamburgerBtn');
+  const drawer    = document.getElementById('navDrawer');
+  const overlay   = document.getElementById('drawerOverlay');
+  const closeBtn  = document.getElementById('drawerClose');
+  function openDrawer()  { drawer.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeDrawer() { drawer.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  hamburger.addEventListener('click', openDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  let fontSize = parseInt(localStorage.getItem('cei_fontsize') || '15', 10);
+  const FONT_MIN = 12, FONT_MAX = 22;
+  function applyFontSize() {
+    document.body.style.fontSize = fontSize + 'px';
+    document.querySelectorAll('.accessibility-bar button').forEach(btn => {
+      if (btn.getAttribute('aria-label') === 'Aumentar fonte') btn.disabled = fontSize >= FONT_MAX;
+      if (btn.getAttribute('aria-label') === 'Diminuir fonte') btn.disabled = fontSize <= FONT_MIN;
+    });
+  }
+  function changeFontSize(delta) {
+    fontSize = Math.min(FONT_MAX, Math.max(FONT_MIN, fontSize + delta));
+    localStorage.setItem('cei_fontsize', fontSize);
+    applyFontSize();
+  }
+  applyFontSize();
+
+  function toggleContrast() {
+    document.documentElement.classList.toggle('high-contrast');
+    const hc = document.documentElement.classList.contains('high-contrast');
+    if (hc) {
+      document.documentElement.style.setProperty('--cei-white','#000');
+      document.documentElement.style.setProperty('--cei-text','#fff');
+      document.documentElement.style.setProperty('--cei-gray','#111');
+      document.documentElement.style.setProperty('--cei-border','#555');
+      document.documentElement.style.setProperty('--cei-muted','#ccc');
+    } else {
+      ['--cei-white','--cei-text','--cei-gray','--cei-border','--cei-muted'].forEach(v =>
+        document.documentElement.style.removeProperty(v)
+      );
+    }
+  }
+
+  document.getElementById('vlibrasBtn').addEventListener('click', function() {
+    const accessBtn = document.querySelector('[vw-access-button]');
+    if (accessBtn) { accessBtn.style.display = 'flex'; accessBtn.click(); accessBtn.style.display = 'none'; }
+  });
+
+  const TODAY     = new Date();
+  const TODAY_Y   = TODAY.getFullYear();
+  const TODAY_M   = TODAY.getMonth();
+  const TODAY_D   = TODAY.getDate();
+  const MIN_YEAR  = TODAY_Y - 5;
+  const MAX_YEAR  = TODAY_Y + 5;
+
+  let viewYear    = TODAY_Y;
+  let viewMonth   = TODAY_M;
+  let region      = 'itaborai';
+  let holidayCache = {};
+
+  const MONTHS_PT = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+  function regionApiCode() {
+    if (region === 'br')        return 'BR';
+    if (region === 'rj')        return 'BR-RJ';
+    if (region === 'itaborai')  return 'BR-RJ';
+    return 'BR';
+  }
+
+  async function fetchHolidays(year) {
+    const cacheKey = year + '_' + region;
+    if (holidayCache[cacheKey]) return holidayCache[cacheKey];
+
+    const code = regionApiCode();
+    try {
+      const res  = await fetch(`https://date.nager.at/api/v3/PublicHolidays/${year}/${code.split('-')[0]}`);
+      const data = await res.json();
+
+      let list = data.map(h => ({
+        date:     h.date,
+        name:     h.localName || h.name,
+        type:     'holiday',
+        national: h.national,
+        counties: h.counties,
+      }));
+
+      if (region === 'itaborai' || region === 'rj') {
+        list = list.filter(h => h.national || !h.counties || h.counties.includes('BR-RJ'));
+      }
+
+      list = addOptionalPoints(list, year);
+      list = addLocalHolidays(list, year, region);
+
+      const map = {};
+      list.forEach(h => {
+        if (!map[h.date]) map[h.date] = [];
+        map[h.date].push(h);
+      });
+
+      holidayCache[cacheKey] = map;
+      return map;
+    } catch {
+      return {};
+    }
+  }
+
+  function easterDate(year) {
+    const a = year % 19, b = Math.floor(year / 100), c = year % 100;
+    const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
+    const g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
+    const i = Math.floor(c / 4), k = c % 4;
+    const l = (32 + 2 * e + 2 * i - h - k) % 7;
+    const m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const month = Math.floor((h + l - 7 * m + 114) / 31);
+    const day   = ((h + l - 7 * m + 114) % 31) + 1;
+    return new Date(year, month - 1, day);
+  }
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function dateStr(d) { return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`; }
+  function addDays(d, n) { const r = new Date(d); r.setDate(r.getDate() + n); return r; }
+
+  function addOptionalPoints(list, year) {
+    const extras = [];
+    const easter = easterDate(year);
+
+    extras.push({ date: dateStr(addDays(easter, -3)), name: 'Quinta-feira Santa',  type: 'optional' });
+    extras.push({ date: dateStr(easter),               name: 'Páscoa',       type: 'holiday'  });
+    extras.push({ date: dateStr(addDays(easter, 48)),  name: 'Corpus Christi',      type: 'optional' });
+
+    const carnival = addDays(easter, -47);
+    extras.push({ date: dateStr(addDays(carnival, -1)), name: 'Segunda de Carnaval', type: 'optional' });
+    extras.push({ date: dateStr(carnival),               name: 'Terça de Carnaval',  type: 'optional' });
+    extras.push({ date: dateStr(addDays(carnival, 1)),   name: 'Quarta de Cinzas',   type: 'optional' });
+
+    const prazeres = [
+      { m: '01', d: '01', n: 'Confraternização Universal', t: 'holiday' },
+      { m: '11', d: '15', n: 'Proclamação da República',   t: 'holiday' },
+      { m: '12', d: '24', n: 'Véspera de Natal',           t: 'optional'},
+      { m: '12', d: '31', n: 'Véspera de Ano Novo',        t: 'optional'},
+    ];
+    prazeres.forEach(p => extras.push({ date: `${year}-${p.m}-${p.d}`, name: p.n, type: p.t }));
+
+    return list.concat(extras);
+  }
+
+  function addLocalHolidays(list, year, reg) {
+    if (reg === 'itaborai') {
+      list.push({ date: `${year}-03-13`, name: 'Aniversário de Itaboraí', type: 'holiday' });
+      list.push({ date: `${year}-11-20`, name: 'Consciência Negra (Itaboraí)', type: 'holiday' });
+    }
+    if (reg === 'rj' || reg === 'itaborai') {
+      list.push({ date: `${year}-01-20`, name: 'Dia de São Sebastião (RJ)', type: 'holiday' });
+      list.push({ date: `${year}-11-20`, name: 'Consciência Negra (RJ)',     type: 'holiday' });
+    }
+    return list;
+  }
+
+  function updateNav() {
+    const atMin = viewYear === MIN_YEAR && viewMonth === 0;
+    const atMax = viewYear === MAX_YEAR && viewMonth === 11;
+    document.getElementById('btnPrev').disabled = atMin;
+    document.getElementById('btnNext').disabled = atMax;
+    document.getElementById('monthLabel').textContent = `${MONTHS_PT[viewMonth]} de ${viewYear}`;
+  }
+
+  async function render() {
+    updateNav();
+    const grid = document.getElementById('calGrid');
+    grid.innerHTML = '<div class="cal-loading" style="grid-column:1/-1;"><div class="cal-spinner"></div><span>Carregando calendário...</span></div>';
+    document.getElementById('holidayList').innerHTML = '';
+
+    const holidays = await fetchHolidays(viewYear);
+
+    const firstDay = new Date(viewYear, viewMonth, 1).getDay();
+    const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+    const prevDays = new Date(viewYear, viewMonth, 0).getDate();
+
+    let cells = '';
+    const monthHolidays = [];
+
+    for (let i = 0; i < firstDay; i++) {
+      const d = prevDays - firstDay + 1 + i;
+      cells += `<div class="cal-day other-month" aria-hidden="true"><span class="day-num">${d}</span></div>`;
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dt      = new Date(viewYear, viewMonth, d);
+      const dow     = dt.getDay();
+      const ds      = dateStr(dt);
+      const isToday = viewYear === TODAY_Y && viewMonth === TODAY_M && d === TODAY_D;
+      const isSat   = dow === 6;
+      const isSun   = dow === 0;
+      const isWeekend = isSat || isSun;
+      const dayHols = holidays[ds] || [];
+
+      dayHols.forEach(h => monthHolidays.push({ ...h, dayNum: d }));
+
+      let cls = 'cal-day';
+      if (isToday)   cls += ' today';
+      if (isWeekend) cls += ' weekend';
+
+      const hasHoliday  = dayHols.some(h => h.type === 'holiday');
+      const hasOptional = dayHols.some(h => h.type === 'optional');
+      if (hasHoliday)  cls += ' holiday';
+      if (hasOptional && !hasHoliday) cls += ' optional';
+      if (isWeekend && !hasHoliday)  cls += ' no-class';
+
+      const numHtml = isToday
+        ? `<span class="day-num"><span>${d}</span></span>`
+        : `<span class="day-num">${d}</span>`;
+
+      let tagsHtml = '<div class="day-tags">';
+      if (isToday) tagsHtml += `<span class="day-tag today-tag">Hoje</span>`;
+      if (isWeekend) tagsHtml += `<span class="day-tag weekend">${isSun ? 'Domingo' : 'Sábado'} — sem aula</span>`;
+      dayHols.forEach(h => {
+        const tc = h.type === 'holiday' ? 'holiday' : 'optional';
+        tagsHtml += `<span class="day-tag ${tc}" title="${h.name}">${h.name}</span>`;
+      });
+      tagsHtml += '</div>';
+
+      cells += `<div class="${cls}" role="gridcell" aria-label="${d} de ${MONTHS_PT[viewMonth]}">${numHtml}${tagsHtml}</div>`;
+    }
+
+    const totalCells = firstDay + daysInMonth;
+    const remaining  = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+    for (let i = 1; i <= remaining; i++) {
+      cells += `<div class="cal-day other-month" aria-hidden="true"><span class="day-num">${i}</span></div>`;
+    }
+
+    grid.innerHTML = cells;
+
+    if (monthHolidays.length > 0) {
+      monthHolidays.sort((a, b) => a.dayNum - b.dayNum);
+      const unique = [];
+      const seen = new Set();
+      monthHolidays.forEach(h => {
+        const k = h.date + h.name;
+        if (!seen.has(k)) { seen.add(k); unique.push(h); }
+      });
+
+      const items = unique.map(h => {
+        const dt  = new Date(h.date + 'T00:00:00');
+        const dow = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'][dt.getDay()];
+        const tc  = h.type === 'holiday' ? 'holiday' : 'optional';
+        const tl  = h.type === 'holiday' ? 'Feriado' : 'Ponto Facultativo';
+        return `<div class="holiday-item">
+          <span class="holiday-item-dot ${tc}"></span>
+          <div>
+            <div class="holiday-item-date">${pad(dt.getDate())}/${pad(dt.getMonth()+1)} · ${dow}</div>
+            <div class="holiday-item-name">${h.name}</div>
+            <div class="holiday-item-type">${tl}</div>
+          </div>
+        </div>`;
+      }).join('');
+
+      document.getElementById('holidayList').innerHTML = `
+        <h3><i class="fa-solid fa-flag" style="color:var(--cei-green);"></i> Feriados e pontos em ${MONTHS_PT[viewMonth]}</h3>
+        <div class="holiday-list-grid">${items}</div>`;
+    }
+  }
+
+  document.getElementById('btnPrev').addEventListener('click', () => {
+    if (viewMonth === 0) { viewMonth = 11; viewYear--; } else viewMonth--;
+    render();
+  });
+  document.getElementById('btnNext').addEventListener('click', () => {
+    if (viewMonth === 11) { viewMonth = 0; viewYear++; } else viewMonth++;
+    render();
+  });
+  document.getElementById('btnToday').addEventListener('click', () => {
+    viewYear = TODAY_Y; viewMonth = TODAY_M; render();
+  });
+  document.getElementById('regionSelect').addEventListener('change', function() {
+    region = this.value;
+    holidayCache = {};
+    render();
+  });
+
+  render();
+</script>
+</body>
+</html>
