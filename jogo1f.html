@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carregando Minigame - C.E.I.</title>
+  <title>Carregando Minigame - Centro Educacional de Itaboraí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="/css/jogo1f.css" />
   <link rel="icon" type="image/png" href="img/favicon.png">
   
@@ -37,13 +41,13 @@
     const gate = document.getElementById('gate');
     gate.innerHTML = `
       <div class="gate-logo"><i class="fa-solid fa-gamepad" style="font-size:28px;"></i></div>
-      <h1>Entre para jogar!</h1>
-      <p>Este Minigame é exclusivo para membros da plataforma. Faça login ou junte-se a nós para continuar.</p>
+      <h1 style="font-family: 'Inter', sans-serif;">Entre para jogar!</h1>
+      <p style="font-family: 'Inter', sans-serif;">Este Minigame é exclusivo para membros da plataforma. Faça login ou junte-se a nós para continuar.</p>
       <div class="gate-btns">
-        <a class="btn-entrar" href="entrar.html?next=${encodeURIComponent('jogo2f.html?id='+id)}">
+        <a class="btn-entrar" style="font-family: 'Inter', sans-serif;" href="entrar.html?next=${encodeURIComponent('jogo2f.html?id='+id)}">
           <span>&#xf2f6;</span> Entrar na plataforma
         </a>
-        <a class="btn-cadastro" href="junte-se.html">
+        <a class="btn-cadastro" href="junte-se.html" style="font-family: 'Inter', sans-serif;">
           Junte-se a nós gratuitamente!
         </a>
       </div>`;
