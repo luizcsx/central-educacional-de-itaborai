@@ -7,23 +7,18 @@ const supabase = createClient(
 );
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
+  if (req.method !== 'POST')
     return res.status(405).json({ ok: false, message: 'Método não permitido' });
-  }
 
   const { nome, username, email, senha, data_nascimento, escola } = req.body;
 
-  if (!nome || !username || !email || !senha) {
+  if (!nome || !username || !email || !senha)
     return res.status(400).json({ ok: false, message: 'Campos obrigatórios faltando.' });
-  }
 
   const senha_hash = await bcrypt.hash(senha, 12);
 
   const { error } = await supabase.from('usuarios').insert({
-    nome, 
-    username, 
-    email, 
-    senha_hash,
+    nome, username, email, senha_hash,
     data_nascimento: data_nascimento || null,
     escola: escola || null,
     provider: 'email'
@@ -36,5 +31,5 @@ export default async function handler(req, res) {
     return res.status(400).json({ ok: false, message: msg });
   }
 
-  return res.status(200).json({ ok: true, message: 'Conta criada com sucesso!' });
+  return res.status(200).json({ ok: true, redirect: '/index.html' });
 }
