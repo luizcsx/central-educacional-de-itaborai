@@ -47,7 +47,7 @@
     .header { background: var(--cei-white); border-bottom: 1px solid var(--cei-border); position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); width: 100%; overflow: hidden; }
     .header .container { display: flex; align-items: center; gap: 32px; padding-top: 14px; padding-bottom: 14px; min-width: 0; }
     .logo { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
-    .logo-emblem { width: 52px; height: 52px; border-radius: var(--radius); flex-shrink: 0; background-color: var(--cei-green); background-image: url('/css/img/icone.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+    .logo-emblem { width: 52px; height: 52px; border-radius: var(--radius); flex-shrink: 0; background-color: var(--cei-green); background-image: url('/css/img/icon.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
     .logo-emblem i { display: none; }
     .logo-text { display: flex; flex-direction: column; }
     .logo-text .abbr { font-size: 22px; font-weight: 900; color: var(--cei-green); letter-spacing: -.5px; }
