@@ -1,45 +1,34 @@
-import { createClient } from '@supabase/supabase-js';
-import bcrypt from 'bcryptjs';
-
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
-);
-
 export default async function handler(req, res) {
-
   if (req.method !== 'POST') {
-    return res.status(405).json({ ok: false, message: 'Método não permitido.' });
+    return res.status(405).json({ ok: false, message: 'Método não permitido' });
   }
 
   const { email, senha } = req.body;
+  const supabaseUrl = process.env.SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_ANON_KEY;
 
-  if (!email || !senha) {
-    return res.status(400).json({ ok: false, message: 'E-mail e senha são obrigatórios.' });
-  }
+  try {
+    const response = await fetch(`${supabaseUrl}/auth/v1/token?grant_type=password`, {
+      method: 'POST',
+      headers: {
+        'apikey': supabaseKey,
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${supabaseKey}`
+      },
+      body: JSON.stringify({ 
+        email: email, 
+        password: senha 
+      })
+    });
 
-  const { data: usuario, error } = await supabase
-    .from('usuarios')
-    .select('nome, username, email, senha_hash, escola')
-    .eq('email', email.toLowerCase().trim())
-    .single();
+    const data = await response.json();
 
-  if (error || !usuario) {
-    return res.status(401).json({ ok: false, message: 'E-mail ou senha incorretos.' });
-  }
-
-  const senhaCorreta = await bcrypt.compare(senha, usuario.senha_hash);
-
-  if (!senhaCorreta) {
-    return res.status(401).json({ ok: false, message: 'E-mail ou senha incorretos.' });
-  }
-
-  return res.status(200).json({
-    ok: true,
-    usuario: {
-      nome:     usuario.nome,
-      username: usuario.username,
-      escola:   usuario.escola ?? 'Não informada',
+    if (response.ok) {
+      return res.status(200).json({ ok: true, redirect: 'dashboard2f.html' });
+    } else {
+      return res.status(401).json({ ok: false, message: data.message || 'Erro no login' });
     }
-  });
+  } catch (error) {
+    return res.status(500).json({ ok: false, message: error.message });
+  }
 }
