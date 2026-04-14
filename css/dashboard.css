@@ -96,7 +96,7 @@
       width: 52px; height: 52px;
       border-radius: var(--radius); flex-shrink: 0;
       background-color: var(--cei-green);
-      background-image: url('LOGO_CEI');
+      background-image: url('/css/img/icone.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
