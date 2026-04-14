@@ -1,30 +1,8 @@
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ ok: false, message: 'Método não permitido' });
-  }
-
-  const { email, senha } = req.body;
+export default function handler(req, res) {
   const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_ANON_KEY;
-
-  try {
-    const response = await fetch(`${supabaseUrl}/auth/v1/token?grant_type=password`, {
-      method: 'POST',
-      headers: {
-        'apikey': supabaseKey,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, password: senha })
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      return res.status(200).json({ ok: true, redirect: 'dashboard.html' });
-    } else {
-      return res.status(401).json({ ok: false, message: 'Credenciais inválidas' });
-    }
-  } catch (error) {
-    return res.status(500).json({ ok: false, message: 'Erro no servidor' });
-  }
+  const siteUrl = process.env.SITE_URL || 'https://centro-educacional-de-itaborai.vercel.app';
+  
+  const loginUrl = `${supabaseUrl}/auth/v1/authorize?provider=google&redirect_to=${siteUrl}/dashboard2f.html`;
+  
+  return res.redirect(302, loginUrl);
 }
