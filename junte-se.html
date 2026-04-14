@@ -559,10 +559,10 @@
 <script type="module">
   import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-  const SUPABASE_URL  = 'SUPABASE_URL_AQUI';
-  const SUPABASE_KEY  = 'SUPABASE_ANON_KEY_AQUI';
+  const SUPABASE_URL  = 'https://tkpatolybraskbedknjc.supabase.co';
+  const SUPABASE_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrcGF0b2x5YnJhc2tiZWRrbmpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3OTU3MDEsImV4cCI6MjA5MDM3MTcwMX0.StBtmkGixU93Jcehu5SIanBvH2OTUDxM_8CLY5BmOks';
   const supabase      = createClient(SUPABASE_URL, SUPABASE_KEY);
-  const REDIRECT_URL  = window.location.origin + '/dashboard2f.html';
+  const REDIRECT_URL  = window.location.origin + '/dashboard.html';
 
   const AUTH_ERRORS = {
     'Invalid login credentials':              'E-mail ou senha incorretos.',
