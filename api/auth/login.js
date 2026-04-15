@@ -31,12 +31,20 @@ export default async function handler(req, res) {
   if (!ok)
     return res.status(401).json({ ok: false, message: 'Credenciais inválidas.' });
 
-  const token = jwt.sign(
+const token = jwt.sign(
     { id: user.id, username: user.username },
     process.env.JWT_SECRET,
     { expiresIn: '7d' }
-  );
+);
 
-  res.setHeader('Set-Cookie', `cei_token=${token}; HttpOnly; Path=/; Max-Age=604800; SameSite=Lax`);
-  return res.status(200).json({ ok: true, redirect: '/dashboard.html' });
-}
+res.setHeader('Set-Cookie', `cei_token=${token}; HttpOnly; Path=/; Max-Age=604800; SameSite=Lax`);
+
+return res.status(200).json({ 
+    ok: true, 
+    redirect: '/dashboard.html',
+    usuario: { 
+        nome: user.nome, 
+        username: user.username, 
+        escola: user.escola 
+    } 
+});
