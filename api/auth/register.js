@@ -8,7 +8,7 @@ const supabase = createClient(
 
 export default async function handler(req, res) {
   if (req.method !== 'POST')
-    return res.status(405).json({ ok: false, message: 'Método não permitido' });
+    return res.status(405).json({ ok: false, message: 'Método não permitido.' });
 
   const { nome, username, email, senha, data_nascimento, escola } = req.body;
 
