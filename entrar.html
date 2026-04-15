@@ -342,58 +342,46 @@
     });
   });
 
-  document.getElementById('btn-entrar').addEventListener('click', async function() {
-    const email    = document.getElementById('login-email').value.trim();
-    const senha    = document.getElementById('login-senha').value;
-    const alertEl  = document.getElementById('alert-login');
+document.getElementById('btn-entrar').addEventListener('click', async function() {
+    const email = document.getElementById('login-email').value.trim();
+    const senha = document.getElementById('login-senha').value;
+    const alertEl = document.getElementById('alert-login');
     const alertMsg = document.getElementById('alert-login-msg');
 
     alertEl.classList.remove('show');
 
     if (!email || !senha) {
-      alertMsg.textContent = 'Preencha o e-mail e a senha.';
-      alertEl.classList.add('show');
-      return;
+        alertMsg.textContent = 'Preencha o e-mail e a senha.';
+        alertEl.classList.add('show');
+        return;
     }
 
     this.classList.add('loading');
     this.disabled = true;
 
-try {
-      const resposta = await fetch('/api/auth/login', {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ email, senha }),
-      });
+    try {
+        const resposta = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, senha: senha })
+        });
 
-      const dados = await resposta.json();
+        const dados = await resposta.json();
 
-      if (dados.ok) {
-        if (dados.usuario) {
-          localStorage.setItem('usuario_logado', JSON.stringify(dados.usuario));
+        if (dados.ok) {
+            window.location.href = dados.redirect || 'dashboard.html';
+        } else {
+            alertMsg.textContent = dados.message || 'E-mail ou senha incorretos.';
+            alertEl.classList.add('show');
         }
-      
-        window.location.href = dados.redirect || 'dashboard.html';
-      } else {
-        alertMsg.textContent = dados.message || 'E-mail ou senha incorretos.';
+    } catch (e) {
+        alertMsg.textContent = 'Erro de conexão. Tente novamente.';
         alertEl.classList.add('show');
-      }
-
-    } catch (err) {
-      console.error(err);
-      alertMsg.textContent = 'Erro de conexão. Tente novamente.';
-      alertEl.classList.add('show');
-    }
-
-    } catch {
-      alertMsg.textContent = 'Erro de conexão. Tente novamente.';
-      alertEl.classList.add('show');
-
     } finally {
-      this.classList.remove('loading');
-      this.disabled = false;
+        this.classList.remove('loading');
+        this.disabled = false;
     }
-  });
+});
 
   document.getElementById('btn-google-login').addEventListener('click', () => {
     window.location.href = '/api/auth/google';
