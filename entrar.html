@@ -359,23 +359,35 @@ document.getElementById('btn-entrar').addEventListener('click', async function()
     this.classList.add('loading');
     this.disabled = true;
 
-    try {
-      const dados = await resposta.json();
-
-      if (dados.ok) {
-      if (dados.usuario) {
-        localStorage.setItem('usuario_logado', JSON.stringify(dados.usuario));
-    }
+try {
+    const resposta = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, senha }),
+    });
+  
+    const textoResposta = await resposta.text();
     
-      window.location.href = dados.redirect || 'dashboard.html';
-    } else {
-     alertMsg.textContent = dados.message || 'E-mail ou senha incorretos.';
-            alertEl.classList.add('show');
-        }
+    let dados;
+    try {
+        dados = JSON.parse(textoResposta);
     } catch (e) {
-        alertMsg.textContent = 'Erro de conexão. Tente novamente.';
+        console.error("Resposta bruta do servidor:", textoResposta);
+        throw new Error("Erro no formato do servidor");
+    }
+
+    if (dados.ok) {
+        if (dados.usuario) localStorage.setItem('usuario_logado', JSON.stringify(dados.usuario));
+        window.location.href = dados.redirect || 'dashboard.html';
+    } else {
+        alertMsg.textContent = dados.message || 'Erro no login.';
         alertEl.classList.add('show');
-    } finally {
+    }
+} catch (err) {
+    alertMsg.textContent = 'Erro crítico de comunicação.';
+    alertEl.classList.add('show');
+    console.error(err);
+} finally {
         this.classList.remove('loading');
         this.disabled = false;
     }
