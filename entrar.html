@@ -360,18 +360,16 @@ document.getElementById('btn-entrar').addEventListener('click', async function()
     this.disabled = true;
 
     try {
-        const resposta = await fetch('/api/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email, senha: senha })
-        });
+      const dados = await resposta.json();
 
-        const dados = await resposta.json();
-
-        if (dados.ok) {
-            window.location.href = dados.redirect || 'dashboard.html';
-        } else {
-            alertMsg.textContent = dados.message || 'E-mail ou senha incorretos.';
+      if (dados.ok) {
+      if (dados.usuario) {
+        localStorage.setItem('usuario_logado', JSON.stringify(dados.usuario));
+    }
+    
+      window.location.href = dados.redirect || 'dashboard.html';
+    } else {
+     alertMsg.textContent = dados.message || 'E-mail ou senha incorretos.';
             alertEl.classList.add('show');
         }
     } catch (e) {
