@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/css/junte-se.css" />
+  <link rel="stylesheet" href="/css/entrar.css" />
   <link rel="icon" type="image/png" href="img/favicon.ico">
 
 </head>
@@ -432,7 +432,7 @@
 <button class="vlibras-btn" id="vlibrasBtn" aria-label="Ativar VLibras – Tradução em Libras">
   <i class="fa-solid fa-hands"></i>
 </button>
-<div class="vlibras-tooltip" aria-hidden="true">Ativar VLibras</div>
+<div class="vlibras-tooltip" aria-hidden="true">VLibras – Libras</div>
 
 <div vw class="enabled">
   <div vw-access-button class="active"></div>
@@ -449,7 +449,7 @@
   document.getElementById('currentYear').textContent = new Date().getFullYear();
 
   function showTab(t) {
-    var isReg = t === 'reg';
+    const isReg = t === 'reg';
     document.getElementById('tab-reg').classList.toggle('active', isReg);
     document.getElementById('tab-log').classList.toggle('active', !isReg);
     document.getElementById('tab-reg').setAttribute('aria-selected', isReg);
@@ -457,21 +457,21 @@
     document.getElementById('panel-reg').classList.toggle('active', isReg);
     document.getElementById('panel-log').classList.toggle('active', !isReg);
   }
-  document.getElementById('tab-reg').addEventListener('click', function() { showTab('reg'); });
-  document.getElementById('tab-log').addEventListener('click', function() { showTab('log'); });
-  document.getElementById('link-to-log').addEventListener('click', function(e) { e.preventDefault(); showTab('log'); });
-  document.getElementById('link-to-reg').addEventListener('click', function(e) { e.preventDefault(); showTab('reg'); });
+  document.getElementById('tab-reg').addEventListener('click', () => showTab('reg'));
+  document.getElementById('tab-log').addEventListener('click', () => showTab('log'));
+  document.getElementById('link-to-log').addEventListener('click', e => { e.preventDefault(); showTab('log'); });
+  document.getElementById('link-to-reg').addEventListener('click', e => { e.preventDefault(); showTab('reg'); });
 
-  document.querySelectorAll('.btn-tog').forEach(function(btn) {
+  document.querySelectorAll('.btn-tog').forEach(btn => {
     btn.addEventListener('click', function() {
-      var inp = document.getElementById(this.dataset.target);
-      var ico = this.querySelector('i');
+      const inp = document.getElementById(this.dataset.target);
+      const ico = this.querySelector('i');
       inp.type = inp.type === 'password' ? 'text' : 'password';
       ico.className = inp.type === 'password' ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash';
     });
   });
 
-  var pwLevels = [
+  const pwLevels = [
     { l: '',         c: '',        w: '0%'   },
     { l: 'Fraca',    c: '#e74c3c', w: '25%'  },
     { l: 'Razoável', c: '#e67e22', w: '50%'  },
@@ -479,8 +479,8 @@
     { l: 'Forte',    c: '#27ae60', w: '100%' },
   ];
   function scorePass(pw) {
-    var s = 0;
-    if (pw.length >= 8)  s++;
+    let s = 0;
+    if (pw.length >= 8) s++;
     if (pw.length >= 12) s++;
     if (/[A-Z]/.test(pw) && /[a-z]/.test(pw)) s++;
     if (/\d/.test(pw)) s++;
@@ -488,95 +488,17 @@
     return Math.min(4, s);
   }
   document.getElementById('r-senha').addEventListener('input', function() {
-    var s = this.value.length ? scorePass(this.value) : 0;
-    document.getElementById('pw-fill').style.width      = pwLevels[s].w;
+    const s = this.value.length ? scorePass(this.value) : 0;
+    document.getElementById('pw-fill').style.width = pwLevels[s].w;
     document.getElementById('pw-fill').style.background = pwLevels[s].c;
-    document.getElementById('pw-lbl').textContent       = pwLevels[s].l;
-    document.getElementById('pw-lbl').style.color       = pwLevels[s].c;
+    document.getElementById('pw-lbl').textContent = pwLevels[s].l;
+    document.getElementById('pw-lbl').style.color = pwLevels[s].c;
   });
 
-  function showErr(id, v) { var el = document.getElementById(id); if (el) el.classList.toggle('show', v); }
-  function markErr(id, v) { var el = document.getElementById(id); if (el) el.classList.toggle('err',  v); }
+  function showErr(id, v) { document.getElementById(id)?.classList.toggle('show', v); }
+  function markErr(id, v) { document.getElementById(id)?.classList.toggle('err', v); }
 
-  var _hamburger = document.getElementById('hamburgerBtn');
-  var _drawer    = document.getElementById('navDrawer');
-  var _overlay   = document.getElementById('drawerOverlay');
-  var _closeBtn  = document.getElementById('drawerClose');
-  function openDrawer()  { _drawer.classList.add('open');    _hamburger.setAttribute('aria-expanded', 'true');  document.body.style.overflow = 'hidden'; }
-  function closeDrawer() { _drawer.classList.remove('open'); _hamburger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';       }
-  _hamburger.addEventListener('click', openDrawer);
-  _overlay.addEventListener('click',   closeDrawer);
-  _closeBtn.addEventListener('click',  closeDrawer);
-  _drawer.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', closeDrawer); });
-
-  var _fontSize = parseInt(localStorage.getItem('cei_fontsize') || '15', 10);
-  var FONT_MIN = 12, FONT_MAX = 22;
-  function _applyFontSize() {
-    document.body.style.fontSize = _fontSize + 'px';
-    document.querySelectorAll('[aria-label="Aumentar fonte"]').forEach(function(b) { b.disabled = _fontSize >= FONT_MAX; });
-    document.querySelectorAll('[aria-label="Diminuir fonte"]').forEach(function(b) { b.disabled = _fontSize <= FONT_MIN; });
-  }
-  function changeFontSize(delta) {
-    _fontSize = Math.min(FONT_MAX, Math.max(FONT_MIN, _fontSize + delta));
-    localStorage.setItem('cei_fontsize', _fontSize);
-    _applyFontSize();
-  }
-  _applyFontSize();
-
-  var _darkMode = localStorage.getItem('cei_dark') === '1';
-  var _DARK_VARS = {
-    '--cei-white':  '#0E1117',
-    '--cei-text':   '#E8ECF0',
-    '--cei-gray':   '#1A1F28',
-    '--cei-border': '#2E3440',
-    '--cei-muted':  '#8B9AAB',
-  };
-  function _applyDark(on) {
-    document.documentElement.classList.toggle('high-contrast', on);
-    Object.keys(_DARK_VARS).forEach(function(v) {
-      if (on) document.documentElement.style.setProperty(v, _DARK_VARS[v]);
-      else    document.documentElement.style.removeProperty(v);
-    });
-    var btn = document.querySelector('[aria-label="Alto contraste"]');
-    if (btn) {
-      btn.title = on ? 'Desativar tema escuro' : 'Ativar tema escuro';
-      btn.querySelector('i').className = on
-        ? 'fa-solid fa-circle'
-        : 'fa-solid fa-circle-half-stroke';
-    }
-    localStorage.setItem('cei_dark', on ? '1' : '0');
-  }
-  function toggleContrast() { _darkMode = !_darkMode; _applyDark(_darkMode); }
-  _applyDark(_darkMode);
-
-  document.getElementById('vlibrasBtn').addEventListener('click', function() {
-    var ab = document.querySelector('[vw-access-button]');
-    if (ab) { ab.style.display = 'flex'; ab.click(); ab.style.display = 'none'; }
-  });
-</script>
-
-<script type="module">
-  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
-
-  const SUPABASE_URL  = 'https://tkpatolybraskbedknjc.supabase.co';
-  const SUPABASE_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrcGF0b2x5YnJhc2tiZWRrbmpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3OTU3MDEsImV4cCI6MjA5MDM3MTcwMX0.StBtmkGixU93Jcehu5SIanBvH2OTUDxM_8CLY5BmOks';
-  const supabase      = createClient(SUPABASE_URL, SUPABASE_KEY);
-  const REDIRECT_URL  = window.location.origin + '/dashboard.html';
-
-  const AUTH_ERRORS = {
-    'Invalid login credentials':              'E-mail ou senha incorretos.',
-    'Email not confirmed':                    'Confirme seu e-mail antes de entrar.',
-    'User already registered':                'Este e-mail já está cadastrado.',
-    'Email rate limit exceeded':              'Muitas tentativas. Aguarde alguns minutos.',
-    'Password should be at least 6 characters': 'A senha deve ter pelo menos 6 caracteres.',
-    'Too many requests':                      'Muitas tentativas. Aguarde alguns minutos.',
-  };
-  const errPT = (msg) => AUTH_ERRORS[msg] || msg || 'Ocorreu um erro inesperado.';
-
-  function showErr(id, v) { const el = document.getElementById(id); if (el) el.classList.toggle('show', v); }
-  function markErr(id, v) { const el = document.getElementById(id); if (el) el.classList.toggle('err',  v); }
-
-  document.getElementById('btn-registrar').addEventListener('click', async function () {
+  document.getElementById('btn-registrar').addEventListener('click', function() {
     const nome  = document.getElementById('r-nome').value.trim();
     const user  = document.getElementById('r-user').value.trim();
     const data  = document.getElementById('r-data').value;
@@ -584,140 +506,118 @@
     const senha = document.getElementById('r-senha').value;
     const conf  = document.getElementById('r-conf').value;
     const terms = document.getElementById('r-termos').checked;
-    const escola = document.getElementById('r-escola').value;
     const al    = document.getElementById('alert-reg');
     al.classList.remove('show');
-
     let ok = true;
-    const nOk = nome.length >= 3;
-    const uOk = /^[a-zA-Z0-9_\-]{3,24}$/.test(user);
-    const dOk = !!data;
-    const eOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const sOk = senha.length >= 8;
-    const cOk = conf === senha && conf.length > 0;
-    showErr('err-nome',  !nOk); markErr('r-nome',  !nOk); if (!nOk) ok = false;
-    showErr('err-user',  !uOk); markErr('r-user',  !uOk); if (!uOk) ok = false;
-    showErr('err-data',  !dOk); markErr('r-data',  !dOk); if (!dOk) ok = false;
-    showErr('err-email', !eOk); markErr('r-email', !eOk); if (!eOk) ok = false;
-    showErr('err-senha', !sOk); markErr('r-senha', !sOk); if (!sOk) ok = false;
-    showErr('err-conf',  !cOk); markErr('r-conf',  !cOk); if (!cOk) ok = false;
-    if (!terms) {
-      document.getElementById('alert-reg-msg').textContent = 'Aceite os Termos de Uso para continuar.';
-      al.className = 'auth-alert auth-alert-err show';
-      ok = false;
-    }
+    const nOk = nome.length >= 3;   showErr('err-nome',  !nOk); markErr('r-nome',  !nOk); if (!nOk) ok = false;
+    const uOk = /^[a-zA-Z0-9_\-]{3,24}$/.test(user); showErr('err-user', !uOk); markErr('r-user', !uOk); if (!uOk) ok = false;
+    const dOk = !!data;             showErr('err-data',  !dOk); markErr('r-data',  !dOk); if (!dOk) ok = false;
+    const eOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); showErr('err-email', !eOk); markErr('r-email', !eOk); if (!eOk) ok = false;
+    const sOk = senha.length >= 8;  showErr('err-senha', !sOk); markErr('r-senha', !sOk); if (!sOk) ok = false;
+    const cOk = conf === senha && conf.length > 0; showErr('err-conf', !cOk); markErr('r-conf', !cOk); if (!cOk) ok = false;
+    if (!terms) { document.getElementById('alert-reg-msg').textContent = 'Aceite os Termos de Uso para continuar.'; al.classList.add('show'); ok = false; }
     if (!ok) return;
-
     this.classList.add('loading'); this.disabled = true;
-
-    const { data: authData, error: authError } = await supabase.auth.signUp({
-      email,
-      password: senha,
-      options: { data: { nome, username: user, data_nascimento: data, escola } },
-    });
-
-    if (authError) {
+    fetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome, username: user, data_nascimento: data, email, senha, escola: document.getElementById('r-escola').value })
+    })
+    .then(r => r.json())
+    .then(d => {
       this.classList.remove('loading'); this.disabled = false;
-      document.getElementById('alert-reg-msg').textContent = errPT(authError.message);
-      al.className = 'auth-alert auth-alert-err show';
-      return;
-    }
-
-    const { error: profileError } = await supabase.from('usuarios').insert({
-      id:                authData.user.id,
-      nome,
-      username:          user,
-      email,
-      data_nascimento:   data,
-      escola,
-      papel:             'aluno',
-      pontos:            0,
-      minigames_jogados: 0,
-      topicos:           0,
-      criado_em:         new Date().toISOString(),
+      if (d.ok) {
+        al.className = 'auth-alert auth-alert-ok show';
+        document.getElementById('alert-reg-msg').textContent = 'Conta criada! Aguarde um momento...';
+        setTimeout(() => window.location.href = d.redirect || 'dashboard.html', 1500);
+      } else {
+        document.getElementById('alert-reg-msg').textContent = d.message || 'Erro ao criar conta.';
+        al.classList.add('show');
+      }
+    })
+    .catch(() => {
+      this.classList.remove('loading'); this.disabled = false;
+      document.getElementById('alert-reg-msg').textContent = 'Erro de conexão. Tente novamente.';
+      al.classList.add('show');
     });
-
-    this.classList.remove('loading'); this.disabled = false;
-
-    if (profileError && profileError.code !== '23505') {
-      document.getElementById('alert-reg-msg').textContent =
-        'Conta criada, mas erro ao salvar perfil: ' + profileError.message;
-      al.className = 'auth-alert auth-alert-err show';
-      return;
-    }
-
-    if (authData?.session) {
-      localStorage.setItem('usuario_logado', JSON.stringify({
-        id: authData.user.id, nome, username: user, email, escola, papel: 'aluno',
-      }));
-    }
-    al.className = 'auth-alert auth-alert-ok show';
-    document.getElementById('alert-reg-msg').textContent =
-      'Conta criada com sucesso! Verifique seu e-mail e aguarde...';
-    setTimeout(() => { window.location.href = 'dashboard.html'; }, 2000);
   });
 
-  document.getElementById('btn-entrar').addEventListener('click', async function () {
+  document.getElementById('btn-entrar').addEventListener('click', function() {
     const email = document.getElementById('l-email').value.trim();
     const senha = document.getElementById('l-senha').value;
-    const al    = document.getElementById('alert-log');
+    const al = document.getElementById('alert-log');
     al.classList.remove('show');
-
-    if (!email || !senha) {
-      al.querySelector('span').textContent = 'Preencha o e-mail e a senha.';
-      al.classList.add('show');
-      return;
-    }
-
+    if (!email || !senha) { al.classList.add('show'); return; }
     this.classList.add('loading'); this.disabled = true;
-
-    const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
-      email, password: senha,
-    });
-
-    if (loginError) {
+    fetch('/api/auth/entrar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, senha })
+    })
+    .then(r => r.json())
+    .then(d => {
       this.classList.remove('loading'); this.disabled = false;
-      al.querySelector('span').textContent = errPT(loginError.message);
-      al.classList.add('show');
-      return;
-    }
-
-    const { data: perfil } = await supabase
-      .from('usuarios')
-      .select('id,nome,username,email,escola,papel')
-      .eq('id', loginData.user.id)
-      .single();
-
-    localStorage.setItem('usuario_logado', JSON.stringify({
-      id:       loginData.user.id,
-      nome:     perfil?.nome     || loginData.user.user_metadata?.nome     || '',
-      username: perfil?.username || loginData.user.user_metadata?.username || '',
-      email:    perfil?.email    || loginData.user.email                   || '',
-      escola:   perfil?.escola   || loginData.user.user_metadata?.escola   || '',
-      papel:    perfil?.papel    || 'aluno',
-    }));
-
-    this.classList.remove('loading'); this.disabled = false;
-
-    const next = new URLSearchParams(window.location.search).get('next');
-    window.location.href = next || 'dashboard.html';
+      if (d.ok) window.location.href = d.redirect || 'dashboard.html';
+      else al.classList.add('show');
+    })
+    .catch(() => { this.classList.remove('loading'); this.disabled = false; al.classList.add('show'); });
   });
 
-  document.querySelectorAll('[id^="btn-google"]').forEach(function (btn) {
-    btn.addEventListener('click', async function () {
-      this.disabled = true; this.style.opacity = '0.6';
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: REDIRECT_URL,
-          queryParams: { access_type: 'offline', prompt: 'consent' },
-        },
-      });
-      if (error) {
-        this.disabled = false; this.style.opacity = '';
-        alert('Erro ao iniciar login com Google: ' + error.message);
-      }
+  document.querySelectorAll('[id^="btn-google"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      window.location.href = '/api/auth/google';
     });
+  });
+
+  document.querySelectorAll('[id^="btn-github"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      window.location.href = '/api/auth/github';
+    });
+  });
+
+  const hamburger = document.getElementById('hamburgerBtn');
+  const drawer    = document.getElementById('navDrawer');
+  const overlay   = document.getElementById('drawerOverlay');
+  const closeBtn  = document.getElementById('drawerClose');
+
+  function openDrawer()  { drawer.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeDrawer() { drawer.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+
+  hamburger.addEventListener('click', openDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  let fontSize = 15;
+  function changeFontSize(delta) {
+    fontSize = Math.min(20, Math.max(12, fontSize + delta));
+    document.body.style.fontSize = fontSize + 'px';
+  }
+
+  function toggleContrast() {
+    document.documentElement.classList.toggle('high-contrast');
+    const hc = document.documentElement.classList.contains('high-contrast');
+    if (hc) {
+      document.documentElement.style.setProperty('--cei-white','#000');
+      document.documentElement.style.setProperty('--cei-text','#fff');
+      document.documentElement.style.setProperty('--cei-gray','#111');
+      document.documentElement.style.setProperty('--cei-border','#555');
+      document.documentElement.style.setProperty('--cei-muted','#ccc');
+    } else {
+      ['--cei-white','--cei-text','--cei-gray','--cei-border','--cei-muted'].forEach(v =>
+        document.documentElement.style.removeProperty(v)
+      );
+    }
+  }
+
+
+  document.getElementById('vlibrasBtn').addEventListener('click', function() {
+    const accessBtn = document.querySelector('[vw-access-button]');
+    if (accessBtn) {
+      accessBtn.style.display = 'flex';
+      accessBtn.click();
+      accessBtn.style.display = 'none';
+    }
   });
 </script>
 </body>
