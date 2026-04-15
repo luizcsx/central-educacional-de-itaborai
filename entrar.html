@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Juntando-se a nós - Centro Educacional de Itaboraí</title>
+  <title>Entrar - Centro Educacional de Itaboraí</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -13,11 +13,11 @@
 
 </head>
 <body>
-  
+
 <div class="topbar" role="banner">
   <div class="container">
     <div class="topbar-left">
-      <span> <i class="fa-solid fa-triangle-exclamation"></i> <strong>ATENÇÃO:</strong> Plataforma em fase de testes. Projeto não-oficial sem ligação com órgãos públicos municipais.</span>
+      <span><i class="fa-solid fa-triangle-exclamation"></i> <strong>ATENÇÃO:</strong> Plataforma em fase de testes. Projeto não-oficial sem ligação com órgãos públicos municipais.</span>
     </div>
     <div class="topbar-right">
       <div class="accessibility-bar" aria-label="Ferramentas de acessibilidade">
@@ -34,8 +34,7 @@
 <header class="header" role="navigation" aria-label="Menu principal">
   <div class="container">
     <a href="index.html" class="logo" aria-label="Centro Educacional de Itaboraí">
-      <div class="logo-emblem" aria-hidden="true">
-      </div>
+      <div class="logo-emblem" aria-hidden="true"></div>
     </a>
 
     <nav class="nav" aria-label="Navegação principal">
@@ -52,7 +51,7 @@
         <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
         <input type="search" placeholder="Pesquisar..." aria-label="Pesquisar" />
       </div>
-      <a href="entrar.html" class="btn btn-outline btn-login"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a>
+      <a href="entrar.html" class="btn btn-outline btn-login" aria-current="page"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a>
       <a href="junte-se.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Juntar-se</a>
       <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
         <i class="fa-solid fa-bars"></i>
@@ -66,10 +65,9 @@
   <div class="drawer-panel">
     <div class="drawer-header">
       <div class="logo">
-        <div class="logo-emblem" style="width:38px;height:38px;" aria-hidden="true">
-        </div>
+        <div class="logo-emblem" style="width:38px;height:38px;" aria-hidden="true"></div>
         <div class="logo-text">
-          <span class="abbr">C.E.I.</span>
+          <span class="abbr">Olá!</span>
         </div>
       </div>
       <button class="drawer-close" id="drawerClose" aria-label="Fechar menu"><i class="fa-solid fa-xmark"></i></button>
@@ -83,282 +81,121 @@
       <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
     </nav>
     <div class="drawer-footer">
-      <a href="juntar-se.html" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fa-solid fa-right-to-bracket"></i> Junte-se a nós!</a>
+      <a href="junte-se.html" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fa-solid fa-right-to-bracket"></i> Junte-se a nós!</a>
     </div>
   </div>
 </div>
 
-<section class="hero-auth" id="acesso" aria-label="Acesso à plataforma">
+<main class="login-section" role="main">
   <div class="container">
-    <div class="hero-auth-layout">
+    <div class="login-layout">
 
-      <aside class="auth-info" aria-label="Nossos Benefícios">
-        <span class="badge"><i class="fa-solid fa-graduation-cap"></i> Plataforma educacional</span>
-        <h1>Faça parte do Centro Educacional de Itaboraí!</h1>
-        <p>Junte-se a nós gratuitamente e acesse os nossos Minigames educativos, o nosso Fórum de discussão e seu histórico de aprendizado — tudo em um só lugar.</p>
-        <div class="auth-features">
-          <div class="auth-feat">
-            <div class="auth-feat-icon" aria-hidden="true"><i class="fa-solid fa-gamepad"></i></div>
-            <div class="auth-feat-text"><h5>Minigames educativos</h5><p>Jogue e teste seu conhecimento em conteúdos criados pelos professores.</p></div>
+      <aside class="login-info" aria-label="Informações da plataforma">
+        <div class="section-label"><i class="fa-solid fa-right-to-bracket"></i> Acesso</div>
+        <h1>Bem-vindo(a) de volta!</h1>
+        <p>Entre com sua conta para acessar os nossos Minigames, participar do nosso Fórum e acompanhar seu progresso de aprendizado.</p>
+        <div class="login-feats">
+          <div class="login-feat">
+            <div class="login-feat-icon" aria-hidden="true"><i class="fa-solid fa-gamepad"></i></div>
+            <div class="login-feat-text">
+              <h5>Minigames educativos</h5>
+              <p>Continue jogando e melhore sua posição no ranking da turma.</p>
+            </div>
           </div>
-          <div class="auth-feat">
-            <div class="auth-feat-icon" aria-hidden="true"><i class="fa-solid fa-comments"></i></div>
-            <div class="auth-feat-text"><h5>Fórum colaborativo</h5><p>Participe de discussões com professores de todo o Brasil.</p></div>
+          <div class="login-feat">
+            <div class="login-feat-icon" aria-hidden="true"><i class="fa-solid fa-comments"></i></div>
+            <div class="login-feat-text">
+              <h5>Fórum colaborativo</h5>
+              <p>Interaja com professores e colegas de todo o Brasil.</p>
+            </div>
           </div>
-          <div class="auth-feat">
-            <div class="auth-feat-icon" aria-hidden="true"><i class="fa-solid fa-trophy"></i></div>
-            <div class="auth-feat-text"><h5>Ranking e conquistas</h5><p>Acompanhe seu desempenho e compita com colegas de forma saudável.</p></div>
+          <div class="login-feat">
+            <div class="login-feat-icon" aria-hidden="true"><i class="fa-solid fa-trophy"></i></div>
+            <div class="login-feat-text">
+              <h5>Ranking e conquistas</h5>
+              <p>Veja sua posição e desbloqueie novas conquistas.</p>
+            </div>
           </div>
-          <div class="auth-feat">
-            <div class="auth-feat-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
-            <div class="auth-feat-text"><h5>Ambiente seguro e moderado</h5><p>Supervisionado por coordenadores e orientadores educacionais.</p></div>
+          <div class="login-feat">
+            <div class="login-feat-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="login-feat-text">
+              <h5>Ambiente seguro e moderado</h5>
+              <p>Supervisionado por coordenadores e orientadores educacionais.</p>
+            </div>
           </div>
         </div>
       </aside>
 
-      <div class="auth-card" role="region" aria-label="Formulário de acesso">
-        <div class="auth-card-head">
-          <h2>Juntando-se a nós</h2>
-          <p>Crie uma conta ou entre com uma conta existente.</p>
-          <div class="auth-tabs" role="tablist">
-            <button class="auth-tab active" id="tab-reg" role="tab" aria-selected="true" aria-controls="panel-reg">
-              <i class="fa-solid fa-user-plus"></i> Criar uma conta
-            </button>
-            <button class="auth-tab" id="tab-log" role="tab" aria-selected="false" aria-controls="panel-log">
-              <i class="fa-solid fa-right-to-bracket"></i> Entrar
-            </button>
-          </div>
+      <div class="login-card" role="region" aria-label="Formulário de login">
+        <div class="login-card-head">
+          <h2>Entrar no Centro Educacional de Itaboraí</h2>
+          <p>Use sua conta ou continue com o Google.</p>
+          <div class="login-card-divider"></div>
         </div>
 
-        <div class="auth-body">
+        <div class="login-card-body">
 
-          <div class="auth-panel active" id="panel-reg" role="tabpanel" aria-labelledby="tab-reg">
-            <div class="auth-alert auth-alert-err" id="alert-reg" role="alert">
-              <i class="fa-solid fa-circle-exclamation"></i>
-              <span id="alert-reg-msg">Verifique os campos e tente novamente.</span>
-            </div>
-
-            <button class="btn-oauth" type="button" id="btn-google-reg" aria-label="Criar conta com Google">
-              <svg viewBox="0 0 18 18" aria-hidden="true" width="17" height="17">
-                <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615Z"/>
-                <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18Z"/>
-                <path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332Z"/>
-                <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58Z"/>
-              </svg>
-              Continuar com Google
-            </button>
-
-            <div class="auth-divider" aria-hidden="true">ou preencha o formulário abaixo</div>
-
-            <div class="auth-fields">
-              <div class="auth-field">
-                <label for="r-nome">Nome completo <span class="req">*</span></label>
-                <div class="auth-wrap">
-                  <i class="fa-solid fa-user ic" aria-hidden="true"></i>
-                  <input type="text" id="r-nome" placeholder="Seu nome completo" autocomplete="name" required />
-                </div>
-                <span class="auth-err" id="err-nome"><i class="fa-solid fa-triangle-exclamation"></i> Informe seu nome completo.</span>
-              </div>
-
-              <div class="auth-row">
-                <div class="auth-field">
-                  <label for="r-user">Nome de usuário <span class="req">*</span></label>
-                  <div class="auth-wrap">
-                    <i class="fa-solid fa-at ic" aria-hidden="true"></i>
-                    <input type="text" id="r-user" placeholder="seu_usuario" pattern="[a-zA-Z0-9_\-]{3,24}" required />
-                  </div>
-                  <span class="auth-err" id="err-user"><i class="fa-solid fa-triangle-exclamation"></i> 3–24 letras, números ou _</span>
-                </div>
-                <div class="auth-field">
-                  <label for="r-data">Data de nascimento <span class="req">*</span></label>
-                  <div class="auth-wrap">
-                    <i class="fa-solid fa-calendar ic" aria-hidden="true"></i>
-                    <input type="date" id="r-data" autocomplete="bday" required />
-                  </div>
-                  <span class="auth-err" id="err-data"><i class="fa-solid fa-triangle-exclamation"></i> Informe uma data.</span>
-                </div>
-              </div>
-
-              <div class="auth-field">
-                <label for="r-email">E-mail <span class="req">*</span></label>
-                <div class="auth-wrap">
-                  <i class="fa-solid fa-envelope ic" aria-hidden="true"></i>
-                  <input type="email" id="r-email" placeholder="seu@email.com" autocomplete="email" required />
-                </div>
-                <span class="auth-err" id="err-email"><i class="fa-solid fa-triangle-exclamation"></i> E-mail inválido.</span>
-              </div>
-
-              <div class="auth-field">
-                <label for="r-escola">Escola / Instituição</label>
-                <div class="auth-wrap is-select">
-                  <i class="fa-solid fa-school ic" aria-hidden="true"></i>
-                  <select id="r-escola">
-                    <option value="" disabled selected>Selecione sua escola</option>
-                    <optgroup label="Rede Municipal de Itaboraí">
-                      <option value="emass">E. M. Antônio Santos da Silva</option>
-                      <option value="onzedejunho">E. Mz. Onze de Junho</option>
-                      <option value="outra_ita">Outra escola de Itaboraí/RJ</option>
-                    </optgroup>
-                    <optgroup label="Outras redes">
-                      <option value="municipal">Escola Municipal</option>
-                      <option value="estadual">Escola Estadual</option>
-                      <option value="federal">Escola Federal</option>
-                      <option value="militar">Escola Militar</option>
-                      <option value="particular">Escola Particular</option>
-                      <option value="outra">Outra instituição</option>
-                    </optgroup>
-                  </select>
-                </div>
-              </div>
-
-              <div class="auth-field">
-                <label for="r-senha">Senha <span class="req">*</span></label>
-                <div class="auth-wrap has-tog">
-                  <i class="fa-solid fa-lock ic" aria-hidden="true"></i>
-                  <input type="password" id="r-senha" placeholder="Mínimo 8 caracteres" autocomplete="new-password" minlength="8" required />
-                  <button type="button" class="btn-tog" data-target="r-senha" aria-label="Mostrar senha"><i class="fa-solid fa-eye"></i></button>
-                </div>
-                <div class="pw-bar" aria-live="polite">
-                  <div class="pw-bar-bg"><div class="pw-bar-fill" id="pw-fill"></div></div>
-                  <span class="pw-bar-lbl" id="pw-lbl"></span>
-                </div>
-                <span class="auth-err" id="err-senha"><i class="fa-solid fa-triangle-exclamation"></i> Mínimo 8 caracteres.</span>
-              </div>
-
-              <div class="auth-field">
-                <label for="r-conf">Confirmar senha <span class="req">*</span></label>
-                <div class="auth-wrap has-tog">
-                  <i class="fa-solid fa-lock ic" aria-hidden="true"></i>
-                  <input type="password" id="r-conf" placeholder="Repita a senha" autocomplete="new-password" required />
-                  <button type="button" class="btn-tog" data-target="r-conf" aria-label="Mostrar confirmação"><i class="fa-solid fa-eye"></i></button>
-                </div>
-                <span class="auth-err" id="err-conf"><i class="fa-solid fa-triangle-exclamation"></i> As senhas não coincidem.</span>
-              </div>
-
-              <div class="auth-check">
-                <input type="checkbox" id="r-termos" required />
-                <label for="r-termos">Eu li e concordo com os <a href="termos1f.html">Termos de Uso</a> e a <a href="privacidade1f.html">Política de Privacidade</a>.</label>
-              </div>
-
-              <button class="auth-submit" type="button" id="btn-registrar">
-                <span class="lbl"><i class="fa-solid fa-user-plus"></i> Criar minha conta</span>
-                <span class="spin" aria-hidden="true"></span>
-              </button>
-            </div>
-            <p class="auth-foot">Já possui uma conta? <a href="entrar.html" id="link-to-log">Clique aqui</a>!</p>
+          <div class="login-alert" id="alert-login" role="alert">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span id="alert-login-msg">E-mail ou senha incorretos.</span>
           </div>
 
-          <div class="auth-panel" id="panel-log" role="tabpanel" aria-labelledby="tab-log">
-            <div class="auth-alert auth-alert-err" id="alert-log" role="alert">
-              <i class="fa-solid fa-circle-exclamation"></i>
-              <span>E-mail ou senha incorretos.</span>
+          <button class="btn-google" type="button" id="btn-google-login" aria-label="Entrar com Google">
+            <svg viewBox="0 0 18 18" aria-hidden="true">
+              <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615Z"/>
+              <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18Z"/>
+              <path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332Z"/>
+              <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58Z"/>
+            </svg>
+            Continuar com Google
+          </button>
+
+          <div class="divider" aria-hidden="true">ou entre com e-mail</div>
+
+          <div class="fields">
+
+            <div class="field">
+              <label for="login-email">E-mail</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-envelope icon-left" aria-hidden="true"></i>
+                <input type="email" id="login-email" placeholder="seu@email.com" autocomplete="email" required />
+              </div>
             </div>
 
-            <button class="btn-oauth" type="button" id="btn-google-log" aria-label="Entrar com Google">
-              <svg viewBox="0 0 18 18" aria-hidden="true" width="17" height="17">
-                <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615Z"/>
-                <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18Z"/>
-                <path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332Z"/>
-                <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58Z"/>
-              </svg>
-              Entrar com Google
+            <div class="field">
+              <div class="field-label-row">
+                <label for="login-senha">Senha</label>
+                <a href="recuperar-senha1f.html">Esqueci a senha</a>
+              </div>
+              <div class="input-wrap has-toggle">
+                <i class="fa-solid fa-lock icon-left" aria-hidden="true"></i>
+                <input type="password" id="login-senha" placeholder="Sua senha" autocomplete="current-password" required />
+                <button type="button" class="btn-toggle-pw" aria-label="Mostrar senha" data-target="login-senha">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="checkbox-wrap">
+              <input type="checkbox" id="lembrar" />
+              <label for="lembrar">Manter-me conectado neste dispositivo.</label>
+            </div>
+
+            <button class="btn-submit" type="button" id="btn-entrar">
+              <span class="btn-text"><i class="fa-solid fa-right-to-bracket"></i> Entrar</span>
+              <span class="spinner" aria-hidden="true"></span>
             </button>
 
-            <div class="auth-divider" aria-hidden="true">ou entre com e-mail</div>
-
-            <div class="auth-fields">
-              <div class="auth-field">
-                <label for="l-email">E-mail <span class="req">*</span></label>
-                <div class="auth-wrap">
-                  <i class="fa-solid fa-envelope ic" aria-hidden="true"></i>
-                  <input type="email" id="l-email" placeholder="seu@email.com" autocomplete="email" required />
-                </div>
-              </div>
-              <div class="auth-field">
-                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
-                  <label for="l-senha" style="margin:0;">Senha <span class="req">*</span></label>
-                  <a href="recuperar-senha1f.html" style="font-size:11.5px;color:var(--cei-green);font-weight:600;">Esqueci a senha</a>
-                </div>
-                <div class="auth-wrap has-tog">
-                  <i class="fa-solid fa-lock ic" aria-hidden="true"></i>
-                  <input type="password" id="l-senha" placeholder="Sua senha" autocomplete="current-password" required />
-                  <button type="button" class="btn-tog" data-target="l-senha" aria-label="Mostrar senha"><i class="fa-solid fa-eye"></i></button>
-                </div>
-              </div>
-              <div class="auth-check">
-                <input type="checkbox" id="l-lembrar" />
-                <label for="l-lembrar">Manter-me conectado neste dispositivo.</label>
-              </div>
-              <button class="auth-submit" type="button" id="btn-entrar">
-                <span class="lbl"><i class="fa-solid fa-right-to-bracket"></i> Entrar</span>
-                <span class="spin" aria-hidden="true"></span>
-              </button>
-            </div>
-            <p class="auth-foot">Não possui uma conta? <a href="juntar-se.html" id="link-to-reg">Junte-se a nós</a>!</p>
           </div>
+
+          <p class="card-footer-link">Não possui uma conta? <a href="junte-se.html">Junte-se a nós</a>!</p>
 
         </div>
       </div>
 
     </div>
   </div>
-</section>
-
-
-<section class="curiosidades section" id="curiosidades" aria-labelledby="curio-title">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label"><i class="fa-solid fa-lightbulb"></i> Você sabia?</div>
-      <h2 class="section-title" id="curio-title">Curiosidades sobre educação</h2>
-      <p>Fatos e dados interessantes sobre ensino, aprendizado e tecnologia na educação que inspiraram a criação do Centro Educacional de Itaboraí.</p>
-    </div>
-    <div class="curio-grid">
-
-      <article class="curio-card">
-        <div class="curio-icon" aria-hidden="true"><i class="fa-solid fa-brain"></i></div>
-        <h4>Aprender jogando funciona de verdade?</h4>
-        <p>Estudos mostram que o aprendizado baseado em jogos pode aumentar em até 40% a retenção de conteúdo em comparação com métodos tradicionais, graças à ativação do sistema de recompensa do cérebro.</p>
-        <span class="curio-fonte"><i class="fa-solid fa-book-open"></i> Pesquisa: Journal of Educational Psychology</span>
-      </article>
-
-      <article class="curio-card">
-        <div class="curio-icon" aria-hidden="true"><i class="fa-solid fa-earth-americas"></i></div>
-        <h4>O Brasil tem mais de 180 mil escolas!</h4>
-        <p>Segundo o INEP, o Brasil conta com cerca de 181 mil escolas de educação básica. A tecnologia é uma das principais ferramentas para democratizar o acesso à educação de qualidade entre elas.</p>
-        <span class="curio-fonte"><i class="fa-solid fa-book-open"></i> Fonte: INEP / Censo Escolar</span>
-      </article>
-
-      <article class="curio-card">
-        <div class="curio-icon" aria-hidden="true"><i class="fa-solid fa-repeat"></i></div>
-        <h4>A repetição espaçada triplica a memória</h4>
-        <p>A técnica de repetição espaçada — revisar conteúdo em intervalos crescentes — é considerada uma das formas mais eficientes de memorização de longo prazo pela neurociência cognitiva.</p>
-        <span class="curio-fonte"><i class="fa-solid fa-book-open"></i> Fonte: Ebbinghaus / Cognitive Science</span>
-      </article>
-
-      <article class="curio-card">
-        <div class="curio-icon" aria-hidden="true"><i class="fa-solid fa-people-group"></i></div>
-        <h4>Colaboração melhora o desempenho escolar</h4>
-        <p>Alunos que participam de atividades colaborativas — como fóruns e discussões em grupo — apresentam, em média, notas 15% maiores do que os que estudam de forma isolada.</p>
-        <span class="curio-fonte"><i class="fa-solid fa-book-open"></i> Fonte: UNESCO / Relatório de Educação Global</span>
-      </article>
-
-      <article class="curio-card">
-        <div class="curio-icon" aria-hidden="true"><i class="fa-solid fa-mobile-screen"></i></div>
-        <h4>90% dos jovens brasileiros têm acesso à internet</h4>
-        <p>Segundo o IBGE, 9 em cada 10 jovens de 10 a 17 anos no Brasil acessam a internet, principalmente pelo celular — o que torna plataformas digitais de ensino cada vez mais relevantes.</p>
-        <span class="curio-fonte"><i class="fa-solid fa-book-open"></i> Fonte: IBGE / PNAD Contínua TIC</span>
-      </article>
-
-      <article class="curio-card">
-        <div class="curio-icon" aria-hidden="true"><i class="fa-solid fa-medal"></i></div>
-        <h4>Gamificação aumenta o engajamento em 60%</h4>
-        <p>Sistemas com pontuação, rankings e conquistas — como o da C.E.I. — aumentam o engajamento dos estudantes em até 60%, segundo levantamentos realizados em plataformas educacionais ao redor do mundo.</p>
-        <span class="curio-fonte"><i class="fa-solid fa-book-open"></i> Fonte: Deloitte / Gamification Report</span>
-      </article>
-
-    </div>
-  </div>
-</section>
+</main>
 
 <footer class="footer" role="contentinfo">
   <div class="footer-main">
@@ -367,8 +204,7 @@
 
         <div class="footer-brand">
           <div class="logo">
-            <div class="logo-emblem" aria-hidden="true">
-            </div>
+            <div class="logo-emblem" aria-hidden="true"></div>
             <div class="logo-text">
               <span class="abbr">“O amanhã, hoje.”</span>
               <span class="full"><i>- Luiz Miguel</i></span>
@@ -391,7 +227,7 @@
             <li><a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a></li>
             <li><a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a></li>
             <li><a href="calendario1f.html"><i class="fa-solid fa-calendar-days"></i> Calendário</a></li>
-            <li><a href="doacao1f.html"><i class="fa-solid fa-hand-holding-heart"></i> Apoie este projeto</a></li>
+            <li><a href="daocao1f.html"><i class="fa-solid fa-hand-holding-heart"></i> Apoie este projeto</a></li>
           </ul>
         </div>
 
@@ -399,10 +235,10 @@
           <h5>Acesso</h5>
           <ul>
             <li><a href="entrar.html"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a></li>
-            <li><a href="junte-se.html"><i class="fa-solid fa-user-plus"></i> Juntar-se</a></li>
+            <li><a href="junte-se.html"><i class="fa-solid fa-user-plus"></i> Cadastrar</a></li>
             <li><a href="recuperar-senha1f.html"><i class="fa-solid fa-key"></i> Recuperar senha</a></li>
             <li><a href="privacidade1f.html"><i class="fa-solid fa-shield-halved"></i> Privacidade</a></li>
-            <li><a href="termos1f.html"><i class="fa-solid fa-file-contract"></i> Termos de Uso</a></li>
+            <li><a href="termos1f.html"><i class="fa-solid fa-file-contract"></i> Termos de uso</a></li>
             <li><a href="suporte1f.html"><i class="fa-solid fa-headset"></i> Suporte</a></li>
           </ul>
         </div>
@@ -410,9 +246,9 @@
         <div class="footer-col">
           <h5>Institucional</h5>
           <ul>
-            <li><a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre o C.E.I.</a></li>
+            <li><a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre Nós</a></li>
             <li><a href="https://site.ib.itaborai.rj.gov.br/orgaos_municipais/educacao/"><i class="fa-solid fa-school"></i> Secretaria de Educação</a></li>
-            <li><a href="https://site.ib.itaborai.rj.gov.br"><i class="fa-solid fa-landmark"></i> Prefeitura de Itaboraí</a></li>
+            <li><a href="https://site.ib.itaborai.rj.gov.br/"><i class="fa-solid fa-landmark"></i> Prefeitura de Itaboraí</a></li>
             <li><a href="acessibilidade1f.html"><i class="fa-solid fa-universal-access"></i> Acessibilidade</a></li>
             <li><a href="malito:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a></li>
           </ul>
@@ -447,133 +283,6 @@
 
 <script>
   document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-  function showTab(t) {
-    const isReg = t === 'reg';
-    document.getElementById('tab-reg').classList.toggle('active', isReg);
-    document.getElementById('tab-log').classList.toggle('active', !isReg);
-    document.getElementById('tab-reg').setAttribute('aria-selected', isReg);
-    document.getElementById('tab-log').setAttribute('aria-selected', !isReg);
-    document.getElementById('panel-reg').classList.toggle('active', isReg);
-    document.getElementById('panel-log').classList.toggle('active', !isReg);
-  }
-  document.getElementById('tab-reg').addEventListener('click', () => showTab('reg'));
-  document.getElementById('tab-log').addEventListener('click', () => showTab('log'));
-  document.getElementById('link-to-log').addEventListener('click', e => { e.preventDefault(); showTab('log'); });
-  document.getElementById('link-to-reg').addEventListener('click', e => { e.preventDefault(); showTab('reg'); });
-
-  document.querySelectorAll('.btn-tog').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const inp = document.getElementById(this.dataset.target);
-      const ico = this.querySelector('i');
-      inp.type = inp.type === 'password' ? 'text' : 'password';
-      ico.className = inp.type === 'password' ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash';
-    });
-  });
-
-  const pwLevels = [
-    { l: '',         c: '',        w: '0%'   },
-    { l: 'Fraca',    c: '#e74c3c', w: '25%'  },
-    { l: 'Razoável', c: '#e67e22', w: '50%'  },
-    { l: 'Boa',      c: '#f1c40f', w: '75%'  },
-    { l: 'Forte',    c: '#27ae60', w: '100%' },
-  ];
-  function scorePass(pw) {
-    let s = 0;
-    if (pw.length >= 8) s++;
-    if (pw.length >= 12) s++;
-    if (/[A-Z]/.test(pw) && /[a-z]/.test(pw)) s++;
-    if (/\d/.test(pw)) s++;
-    if (/[^A-Za-z0-9]/.test(pw)) s++;
-    return Math.min(4, s);
-  }
-  document.getElementById('r-senha').addEventListener('input', function() {
-    const s = this.value.length ? scorePass(this.value) : 0;
-    document.getElementById('pw-fill').style.width = pwLevels[s].w;
-    document.getElementById('pw-fill').style.background = pwLevels[s].c;
-    document.getElementById('pw-lbl').textContent = pwLevels[s].l;
-    document.getElementById('pw-lbl').style.color = pwLevels[s].c;
-  });
-
-  function showErr(id, v) { document.getElementById(id)?.classList.toggle('show', v); }
-  function markErr(id, v) { document.getElementById(id)?.classList.toggle('err', v); }
-
-  document.getElementById('btn-registrar').addEventListener('click', function() {
-    const nome  = document.getElementById('r-nome').value.trim();
-    const user  = document.getElementById('r-user').value.trim();
-    const data  = document.getElementById('r-data').value;
-    const email = document.getElementById('r-email').value.trim();
-    const senha = document.getElementById('r-senha').value;
-    const conf  = document.getElementById('r-conf').value;
-    const terms = document.getElementById('r-termos').checked;
-    const al    = document.getElementById('alert-reg');
-    al.classList.remove('show');
-    let ok = true;
-    const nOk = nome.length >= 3;   showErr('err-nome',  !nOk); markErr('r-nome',  !nOk); if (!nOk) ok = false;
-    const uOk = /^[a-zA-Z0-9_\-]{3,24}$/.test(user); showErr('err-user', !uOk); markErr('r-user', !uOk); if (!uOk) ok = false;
-    const dOk = !!data;             showErr('err-data',  !dOk); markErr('r-data',  !dOk); if (!dOk) ok = false;
-    const eOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); showErr('err-email', !eOk); markErr('r-email', !eOk); if (!eOk) ok = false;
-    const sOk = senha.length >= 8;  showErr('err-senha', !sOk); markErr('r-senha', !sOk); if (!sOk) ok = false;
-    const cOk = conf === senha && conf.length > 0; showErr('err-conf', !cOk); markErr('r-conf', !cOk); if (!cOk) ok = false;
-    if (!terms) { document.getElementById('alert-reg-msg').textContent = 'Aceite os Termos de Uso para continuar.'; al.classList.add('show'); ok = false; }
-    if (!ok) return;
-    this.classList.add('loading'); this.disabled = true;
-    fetch('/api/auth/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nome, username: user, data_nascimento: data, email, senha, escola: document.getElementById('r-escola').value })
-    })
-    .then(r => r.json())
-    .then(d => {
-      this.classList.remove('loading'); this.disabled = false;
-      if (d.ok) {
-        al.className = 'auth-alert auth-alert-ok show';
-        document.getElementById('alert-reg-msg').textContent = 'Conta criada! Aguarde um momento...';
-        setTimeout(() => window.location.href = d.redirect || 'dashboard.html', 1500);
-      } else {
-        document.getElementById('alert-reg-msg').textContent = d.message || 'Erro ao criar conta.';
-        al.classList.add('show');
-      }
-    })
-    .catch(() => {
-      this.classList.remove('loading'); this.disabled = false;
-      document.getElementById('alert-reg-msg').textContent = 'Erro de conexão. Tente novamente.';
-      al.classList.add('show');
-    });
-  });
-
-  document.getElementById('btn-entrar').addEventListener('click', function() {
-    const email = document.getElementById('l-email').value.trim();
-    const senha = document.getElementById('l-senha').value;
-    const al = document.getElementById('alert-log');
-    al.classList.remove('show');
-    if (!email || !senha) { al.classList.add('show'); return; }
-    this.classList.add('loading'); this.disabled = true;
-    fetch('/api/auth/entrar', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, senha })
-    })
-    .then(r => r.json())
-    .then(d => {
-      this.classList.remove('loading'); this.disabled = false;
-      if (d.ok) window.location.href = d.redirect || 'dashboard.html';
-      else al.classList.add('show');
-    })
-    .catch(() => { this.classList.remove('loading'); this.disabled = false; al.classList.add('show'); });
-  });
-
-  document.querySelectorAll('[id^="btn-google"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      window.location.href = '/api/auth/google';
-    });
-  });
-
-  document.querySelectorAll('[id^="btn-github"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      window.location.href = '/api/auth/github';
-    });
-  });
 
   const hamburger = document.getElementById('hamburgerBtn');
   const drawer    = document.getElementById('navDrawer');
@@ -610,7 +319,6 @@
     }
   }
 
-
   document.getElementById('vlibrasBtn').addEventListener('click', function() {
     const accessBtn = document.querySelector('[vw-access-button]');
     if (accessBtn) {
@@ -618,6 +326,72 @@
       accessBtn.click();
       accessBtn.style.display = 'none';
     }
+  });
+
+  document.querySelectorAll('.btn-toggle-pw').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const input = document.getElementById(this.dataset.target);
+      const icon  = this.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'fa-solid fa-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'fa-solid fa-eye';
+      }
+    });
+  });
+
+  document.getElementById('btn-entrar').addEventListener('click', async function() {
+    const email    = document.getElementById('login-email').value.trim();
+    const senha    = document.getElementById('login-senha').value;
+    const alertEl  = document.getElementById('alert-login');
+    const alertMsg = document.getElementById('alert-login-msg');
+
+    alertEl.classList.remove('show');
+
+    if (!email || !senha) {
+      alertMsg.textContent = 'Preencha o e-mail e a senha.';
+      alertEl.classList.add('show');
+      return;
+    }
+
+    this.classList.add('loading');
+    this.disabled = true;
+
+    try {
+      const resposta = await fetch('/api/auth/login', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ email, senha }),
+      });
+
+      const dados = await resposta.json();
+
+      if (dados.ok && dados.usuario) {
+        localStorage.setItem('usuario_logado', JSON.stringify({
+          nome:     dados.usuario.nome,
+          username: dados.usuario.username,
+          escola:   dados.usuario.escola,
+        }));
+        window.location.href = 'dashboard.html';
+      } else {
+        alertMsg.textContent = dados.message || 'E-mail ou senha incorretos.';
+        alertEl.classList.add('show');
+      }
+
+    } catch {
+      alertMsg.textContent = 'Erro de conexão. Tente novamente.';
+      alertEl.classList.add('show');
+
+    } finally {
+      this.classList.remove('loading');
+      this.disabled = false;
+    }
+  });
+
+  document.getElementById('btn-google-login').addEventListener('click', () => {
+    window.location.href = '/api/auth/google';
   });
 </script>
 </body>
