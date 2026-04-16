@@ -229,7 +229,7 @@
     .game-thumb.arts    { background: #fce4ec; color: #c62828; }
     .game-thumb.phys    { background: #f3e5f5; color: #4a148c; }
     .game-thumb.english { background: #f3e5f5; color: #6a1b9a; }
-    .game-thumb.prod    { background: #e8f5e9; color: #2e7d32; }
+    .game-thumb.prod    { background: #e0f7fa; color: #00695c; }
     .game-thumb.def     { background: var(--cei-gray); color: var(--cei-muted); }
     .game-card-body { padding: 18px; flex: 1; }
     .game-meta { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
