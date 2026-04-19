@@ -7,13 +7,15 @@ const supabase = createClient(
 );
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST')
+  if (req.method !== 'POST') {
     return res.status(405).json({ ok: false, message: 'Método não permitido.' });
+  }
 
   const { nome, username, email, senha, data_nascimento, escola } = req.body;
 
-  if (!nome || !username || !email || !senha)
+  if (!nome || !username || !email || !senha) {
     return res.status(400).json({ ok: false, message: 'Campos obrigatórios faltando.' });
+  }
 
   try {
     const senha_hash = await bcrypt.hash(senha, 12);
@@ -28,11 +30,10 @@ export default async function handler(req, res) {
       provider: 'email'
     });
 
-if (error) {
+    if (error) {
       console.log("Erro crítico:", JSON.stringify(error));
-
+      
       let msg = 'Erro ao criar conta.';
-    
       const errorString = JSON.stringify(error).toUpperCase();
 
       if (errorString.includes('USUARIO_BANIDO')) {
@@ -46,17 +47,11 @@ if (error) {
 
       return res.status(400).json({ ok: false, message: msg });
     }
-      if (error.message.includes('unique')) {
-        msg = 'E-mail ou nome de usuário já cadastrado.';
-      }
-
-      return res.status(400).json({ ok: false, message: msg });
-    }
 
     return res.status(200).json({ ok: true, redirect: '/entrar.html' });
 
   } catch (err) {
-    console.error("Erro interno:", err);
+    console.error("Erro interno no servidor:", err);
     return res.status(500).json({ ok: false, message: 'Erro interno no servidor.' });
   }
 }
