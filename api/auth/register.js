@@ -28,14 +28,24 @@ export default async function handler(req, res) {
       provider: 'email'
     });
 
-    if (error) {
+if (error) {
+      console.log("Erro crítico:", JSON.stringify(error));
+
       let msg = 'Erro ao criar conta.';
-      
-      if (error.message.includes('USUARIO_BANIDO')) {
+    
+      const errorString = JSON.stringify(error).toUpperCase();
+
+      if (errorString.includes('USUARIO_BANIDO')) {
         msg = 'Este e-mail está permanentemente banido da plataforma por violação das regras.';
         return res.status(403).json({ ok: false, message: msg });
       }
 
+      if (errorString.includes('UNIQUE')) {
+        msg = 'E-mail ou nome de usuário já cadastrado.';
+      }
+
+      return res.status(400).json({ ok: false, message: msg });
+    }
       if (error.message.includes('unique')) {
         msg = 'E-mail ou nome de usuário já cadastrado.';
       }
