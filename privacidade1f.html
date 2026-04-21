@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidade - Centro Educacional de Itaboraí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/privacidade1f.css" />
+  <link rel="icon" type="image/png" href="img/favicon.ico">
+  
+</head>
+<body>
+
+<div class="topbar" role="banner">
+  <div class="container">
+    <div class="topbar-left">
+      <span><i class="fa-solid fa-triangle-exclamation"></i> <strong>ATENÇÃO:</strong> Plataforma em fase de testes. Projeto não-oficial sem ligação com órgãos públicos municipais.</span>
+    </div>
+    <div class="topbar-right">
+      <div class="accessibility-bar" aria-label="Ferramentas de acessibilidade">
+        <button aria-label="Aumentar fonte" onclick="changeFontSize(1)"><i class="fa-solid fa-a"></i> A+</button>
+        <button aria-label="Diminuir fonte" onclick="changeFontSize(-1)"><i class="fa-solid fa-a"></i> A-</button>
+        <button aria-label="Alto contraste" onclick="toggleContrast()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      </div>
+      <a href="mailto:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a>
+      <a href="suporte1f.html"><i class="fa-solid fa-circle-question"></i> Ajuda</a>
+    </div>
+  </div>
+</div>
+
+<header class="header" role="navigation" aria-label="Menu principal">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Centro Educacional de Itaboraí">
+      <div class="logo-emblem" aria-hidden="true"><i class="fa-solid fa-c"></i></div>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-bar" role="search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" placeholder="Pesquisar..." aria-label="Pesquisar" />
+      </div>
+      <a href="entrar.html" class="btn btn-outline btn-login"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a>
+      <a href="junte-se.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Juntar-se</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <div class="logo">
+        <div class="logo-emblem" style="width:38px;height:38px;" aria-hidden="true">
+          <i class="fa-solid fa-graduation-cap" style="font-size:16px;"></i>
+        </div>
+        <div class="logo-text"><span class="abbr"></span></div>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Fechar menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="drawer-footer">
+      <a href="junte-se.html" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fa-solid fa-right-to-bracket"></i> Junte-se a nós!</a>
+    </div>
+  </div>
+</div>
+
+<section class="doc-hero" aria-label="Política de Privacidade">
+  <div class="container">
+    <div class="doc-hero-inner">
+      <div class="doc-hero-text">
+        <div class="doc-kicker"><i class="fa-solid fa-shield-halved"></i> Documento Legal</div>
+        <h1>Política de<br>Privacidade</h1>
+        <p class="doc-hero-desc">Aqui explicamos de forma clara e direta como o Centro Educacional de Itaboraí coleta, usa, armazena e protege seus dados pessoais.</p>
+      </div>
+      <div class="doc-meta">
+        <div class="doc-meta-chip">
+          <i class="fa-solid fa-calendar-check"></i>
+          <div><span>Última atualização</span><strong>21 de abril de 2026</strong></div>
+        </div>
+        <div class="doc-meta-chip">
+          <i class="fa-solid fa-gavel"></i>
+          <div><span>Aplicável a</span><strong>Todos os usuários</strong></div>
+        </div>
+        <div class="doc-meta-chip">
+          <i class="fa-solid fa-globe"></i>
+          <div><span>Jurisdição</span><strong>Brasil — LGPD (Lei 13.709/2018)</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="quickbar" aria-label="Ir para seção">
+  <div class="container">
+    <a href="#coleta"           class="quick-item"><i class="fa-solid fa-database"></i> Dados Coletados</a>
+    <a href="#uso"              class="quick-item"><i class="fa-solid fa-gears"></i> Como Usamos</a>
+    <a href="#sensiveis"        class="quick-item"><i class="fa-solid fa-lock"></i> Dados Sensíveis</a>
+    <a href="#compartilhamento" class="quick-item"><i class="fa-solid fa-share-nodes"></i> Compartilhamento</a>
+    <a href="#armazenamento"    class="quick-item"><i class="fa-solid fa-server"></i> Armazenamento</a>
+    <a href="#cookies"          class="quick-item"><i class="fa-solid fa-cookie-bite"></i> Cookies</a>
+    <a href="#menores"          class="quick-item"><i class="fa-solid fa-child"></i> Menores</a>
+    <a href="#direitos"         class="quick-item"><i class="fa-solid fa-hand-fist"></i> Seus Direitos</a>
+  </div>
+</nav>
+
+<div class="doc-layout">
+
+  <aside class="doc-sidebar" aria-label="Navegação do documento">
+    <nav class="doc-nav">
+      <div class="sidebar-group">Nesta página</div>
+      <a href="#coleta"           class="active"><i class="fa-solid fa-database"></i> Dados Coletados</a>
+      <a href="#uso">             <i class="fa-solid fa-gears"></i> Como Usamos</a>
+      <a href="#sensiveis">       <i class="fa-solid fa-lock"></i> Dados sensíveis</a>
+      <a href="#compartilhamento"><i class="fa-solid fa-share-nodes"></i> Compartilhamento</a>
+      <a href="#armazenamento">   <i class="fa-solid fa-server"></i> Armazenamento</a>
+      <a href="#cookies">         <i class="fa-solid fa-cookie-bite"></i> Cookies</a>
+      <a href="#menores">         <i class="fa-solid fa-child"></i> Menores</a>
+      <a href="#direitos">        <i class="fa-solid fa-hand-fist"></i> Seus direitos</a>
+      <a href="#seguranca">       <i class="fa-solid fa-shield-halved"></i> Segurança</a>
+      <a href="#alteracoes">      <i class="fa-solid fa-rotate"></i> Alterações</a>
+      <div class="sidebar-group">Documentos</div>
+      <a href="termos1f.html">        <i class="fa-solid fa-file-contract"></i> Termos de Uso</a>
+      <a href="acessibilidade1f.html"><i class="fa-solid fa-universal-access"></i> Acessibilidade</a>
+      <a href="suporte1f.html">       <i class="fa-solid fa-headset"></i> Suporte</a>
+    </nav>
+  </aside>
+
+  <main class="doc-content">
+
+    <div class="doc-card doc-card-info" style="margin-bottom:40px;">
+      <i class="fa-solid fa-circle-info"></i>
+      <div class="doc-card-bd">
+        <strong>Resumo Rápido</strong>
+        <p>Coletamos apenas o mínimo necessário para o funcionamento da plataforma. Não vendemos dados. Não exibimos anúncios personalizados. <b>Dados sensíveis como orientação sexual, religião e etnia jamais são coletados ou publicados.</b> Você pode solicitar a exclusão dos seus dados a qualquer momento.</p>
+      </div>
+    </div>
+
+    <section class="doc-section" id="coleta" aria-labelledby="h-coleta">
+      <div class="doc-section-header">
+        <h2 id="h-coleta"><i class="fa-solid fa-database"></i> 1. Dados que coletamos</h2>
+        <p>Divididos em dados que você nos fornece e dados gerados pelo uso da plataforma.</p>
+      </div>
+      <div class="doc-body">
+        <p><strong>1.1 Dados fornecidos ao se cadastrar:</strong></p>
+        <ul class="doc-list">
+          <li><strong>Nome completo</strong> — exibido no perfil público e no Ranking.</li>
+          <li><strong>Nome de usuário (username)</strong> — identificador único público na plataforma.</li>
+          <li><strong>E-mail</strong> — usado para autenticação e comunicações da plataforma.</li>
+          <li><strong>Data de nascimento</strong> — verificação de faixa etária; não é exibida publicamente.</li>
+          <li><strong>Escola / Instituição</strong> — exibida no perfil; opcional após o cadastro.</li>
+          <li><strong>Papel (role)</strong> — aluno, professor, coordenador, orientador ou administrador.</li>
+        </ul>
+        <p style="margin-top:14px;"><strong>1.2 Dados gerados pelo uso:</strong></p>
+        <ul class="doc-list">
+          <li><strong>Resultados de Minigames</strong> — pontuação, percentual de acerto e data de cada partida.</li>
+          <li><strong>Publicações no Fórum</strong> — tópicos, respostas e votos vinculados ao username.</li>
+          <li><strong>Pontos acumulados</strong> — contador visível publicamente no Ranking.</li>
+          <li><strong>Data de criação da conta</strong> — armazenada para fins de moderação.</li>
+        </ul>
+        <p style="margin-top:14px;"><strong>1.3 Dados que NÃO coletamos:</strong></p>
+        <ul class="doc-list">
+          <li>Orientação sexual, identidade de gênero, religião, etnia ou qualquer dado sensível (ver Seção 3).</li>
+          <li>Localização geográfica em tempo real ou endereço residencial.</li>
+          <li>Dados de pagamento (a plataforma é gratuita).</li>
+          <li>Fotos, arquivos ou documentos pessoais.</li>
+          <li>Histórico de navegação em outros sites.</li>
+        </ul>
+        <div class="doc-card doc-card-warn" style="margin-top:14px;">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <div class="doc-card-bd">
+            <strong>Login com Google</strong>
+            <p>Se você optar pelo login via Google OAuth, o Google compartilha conosco apenas nome, e-mail e foto de perfil pública. Não temos acesso a outros dados da sua conta Google.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc-section" id="uso" aria-labelledby="h-uso">
+      <div class="doc-section-header">
+        <h2 id="h-uso"><i class="fa-solid fa-gears"></i> 2. Como usamos seus dados</h2>
+        <p>Cada dado coletado tem uma finalidade específica e bem definida.</p>
+      </div>
+      <div class="doc-body">
+        <div class="table-wrap">
+          <table class="doc-table">
+            <thead><tr><th>Dado</th><th>Finalidade</th><th>Base legal (LGPD)</th></tr></thead>
+            <tbody>
+              <tr><td>Nome e username</td><td>Identificação no perfil, Fórum e Rankings</td><td>Execução de contrato (art. 7º, V)</td></tr>
+              <tr><td>E-mail</td><td>Autenticação, recuperação de senha, comunicações</td><td>Execução de contrato (art. 7º, V)</td></tr>
+              <tr><td>Data de nascimento</td><td>Verificação de faixa etária</td><td>Legítimo interesse / Proteção ao menor (art. 14)</td></tr>
+              <tr><td>Escola e papel</td><td>Exibição no perfil e filtros de conteúdo</td><td>Consentimento (art. 7º, I)</td></tr>
+              <tr><td>Resultados de minigames</td><td>Histórico pessoal, cálculo de pontos, ranking</td><td>Execução de contrato (art. 7º, V)</td></tr>
+              <tr><td>Publicações no fórum</td><td>Funcionamento colaborativo e moderação</td><td>Execução de contrato (art. 7º, V)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="doc-card doc-card-ok" style="margin-top:14px;">
+          <i class="fa-solid fa-circle-check"></i>
+          <div class="doc-card-bd">
+            <strong>Sem anúncios, sem perfis comportamentais</strong>
+            <p>O Centro Educacional de Itaboraí não exibe anúncios personalizados, não cria perfis comportamentais para fins comerciais e não usa seus dados em decisões automatizadas que afetem direitos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc-section" id="sensiveis" aria-labelledby="h-sens">
+      <div class="doc-section-header">
+        <h2 id="h-sens"><i class="fa-solid fa-lock"></i> 3. Dados sensíveis — nunca coletamos</h2>
+        <p>O Centro Educacional de Itaboraí é um espaço educacional seguro e inclusivo. Nenhuma informação da lista abaixo é coletada, armazenada, perguntada no cadastro ou tornada pública em qualquer situação.</p>
+      </div>
+      <div class="doc-body">
+        <div class="doc-card doc-card-priv" style="margin-bottom:18px;">
+          <i class="fa-solid fa-shield-halved"></i>
+          <div class="doc-card-bd">
+            <strong>Compromisso de não coleta</strong>
+            <p>Os dados listados abaixo são classificados como <b>dados sensíveis</b> pelo Art. 5º, II da LGPD e pelo Art. 9º do RGPD europeu. O Centro Educacional de Itaboraí <b>nunca</b> solicita, armazena, exibe, vende ou compartilha nenhum deles, independentemente do contexto.</p>
+          </div>
+        </div>
+        <div class="sensitive-grid">
+          <div class="sensitive-card">
+            <div class="sensitive-icon si-purple"><i class="fa-solid fa-rainbow"></i></div>
+            <div>
+              <h4>Orientação sexual</h4>
+              <p>Nunca perguntamos, nunca armazenamos. Cada pessoa é livre para ser quem é, sem que isso apareça em qualquer parte da plataforma.</p>
+            </div>
+          </div>
+          <div class="sensitive-card">
+            <div class="sensitive-icon si-pink"><i class="fa-solid fa-venus-mars"></i></div>
+            <div>
+              <h4>Identidade de gênero</h4>
+              <p>Não coletamos, não classificamos e não fazemos qualquer inferência sobre identidade de gênero de usuários.</p>
+            </div>
+          </div>
+          <div class="sensitive-card">
+            <div class="sensitive-icon si-blue"><i class="fa-solid fa-church"></i></div>
+            <div>
+              <h4>Religião e crença</h4>
+              <p>Crenças religiosas, práticas espirituais ou convicções filosóficas são estritamente pessoais e não fazem parte do cadastro.</p>
+            </div>
+          </div>
+          <div class="sensitive-card">
+            <div class="sensitive-icon si-teal"><i class="fa-solid fa-earth-americas"></i></div>
+            <div>
+              <h4>Raça e etnia</h4>
+              <p>Nenhum campo do cadastro solicita ou infere raça, etnia ou cor. Todos os usuários são iguais na plataforma.</p>
+            </div>
+          </div>
+          <div class="sensitive-card">
+            <div class="sensitive-icon si-red"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div>
+              <h4>Saúde e condições médicas</h4>
+              <p>Dados de saúde, diagnósticos, deficiências ou qualquer informação médica nunca são coletados nem inferidos.</p>
+            </div>
+          </div>
+          <div class="sensitive-card">
+            <div class="sensitive-icon si-orange"><i class="fa-solid fa-landmark-dome"></i></div>
+            <div>
+              <h4>Opiniões políticas</h4>
+              <p>Filiações, preferências ou opiniões políticas não são objeto de coleta. O Centro Educacional de Itaboraí é um espaço apartidário.</p>
+            </div>
+          </div>
+          <div class="sensitive-card">
+            <div class="sensitive-icon si-green"><i class="fa-solid fa-fingerprint"></i></div>
+            <div>
+              <h4>Dados biométricos</h4>
+              <p>Impressões digitais, reconhecimento facial, padrões de voz ou qualquer dado biométrico jamais são coletados.</p>
+            </div>
+          </div>
+          <div class="sensitive-card">
+            <div class="sensitive-icon si-blue"><i class="fa-solid fa-scale-balanced"></i></div>
+            <div>
+              <h4>Antecedentes criminais</h4>
+              <p>Histórico criminal, processos judiciais ou condenações não são coletados nem consultados em nenhuma circunstância.</p>
+            </div>
+          </div>
+        </div>
+        <div class="doc-card doc-card-ok" style="margin-top:18px;">
+          <i class="fa-solid fa-circle-check"></i>
+          <div class="doc-card-bd">
+            <strong>O Centro Educacional de Itaboraí é um espaço inclusivo</strong>
+            <p>Qualquer forma de discriminação por orientação sexual, gênero, raça, religião ou qualquer outra característica pessoal é proibida pelos nossos <a href="termos1f.html">Termos de Uso</a> e sujeita à suspensão ou exclusão imediata da conta.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc-section" id="compartilhamento" aria-labelledby="h-comp">
+      <div class="doc-section-header">
+        <h2 id="h-comp"><i class="fa-solid fa-share-nodes"></i> 4. Compartilhamento de Dados</h2>
+        <p>Seus dados não são vendidos. O compartilhamento ocorre apenas nos casos abaixo.</p>
+      </div>
+      <div class="doc-body">
+        <p><strong>4.1 Dados públicos por design</strong></p>
+        <ul class="doc-list">
+          <li>Nome, username e inicial do avatar no diretório de usuários.</li>
+          <li>Escola e papel (se informados no perfil).</li>
+          <li>Pontuação e posição no Ranking.</li>
+          <li>Tópicos e respostas publicados no Fórum.</li>
+        </ul>
+        <p style="margin-top:14px;"><strong>4.2 Provedores de serviço essenciais</strong></p>
+        <ul class="doc-list">
+          <li><strong>Supabase</strong> (autenticação e banco de dados) — <a href="https://supabase.com/privacy" target="_blank" rel="noopener">política de privacidade</a></li>
+          <li><strong>Vercel</strong> (hospedagem) — <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">política de privacidade</a></li>
+          <li><strong>Google Fonts e Google OAuth</strong> (fontes e login opcional) — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">política de privacidade</a></li>
+          <li><strong>VLibras / RNPD</strong> (acessibilidade em Libras) — projeto público federal</li>
+          <li><strong>FontAwesome via Cloudflare CDN</strong> (icones) — sem coleta de dados pessoais</li>
+        </ul>
+        <p style="margin-top:14px;"><strong>4.3 Obrigações legais</strong></p>
+        <p>Compartilhamos dados com autoridades apenas quando houver determinação legal formal ou ordem judicial. Nunca por vontade própria.</p>
+        <div class="doc-card doc-card-info" style="margin-top:14px;">
+          <i class="fa-solid fa-circle-info"></i>
+          <div class="doc-card-bd">
+            <strong>Nunca vendemos dados</strong>
+            <p>O Centro Educacional de Itaboraí não comercializa, aluga, troca ou vende dados pessoais de usuários para terceiros sob nenhuma circunstância.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc-section" id="armazenamento" aria-labelledby="h-arm">
+      <div class="doc-section-header">
+        <h2 id="h-arm"><i class="fa-solid fa-server"></i> 5. Armazenamento e Retenção</h2>
+        <p>Onde seus dados ficam e por quanto tempo.</p>
+      </div>
+      <div class="doc-body">
+        <p><strong>5.1 Localização</strong><br>
+        Dados armazenados no <strong>Supabase</strong>, região <strong>sa-east-1 (São Paulo, Brasil)</strong> — dentro do território nacional, em conformidade com a LGPD.</p>
+        <p style="margin-top:14px;"><strong>5.2 Tempo de retenção</strong></p>
+        <ul class="doc-list">
+          <li><strong>Conta ativa:</strong> dados mantidos enquanto a conta existir.</li>
+          <li><strong>Após exclusão:</strong> removidos em até 30 dias, exceto os necessários por obrigação legal (até 5 anos).</li>
+          <li><strong>Preferências de tema/fonte:</strong> armazenadas apenas no <code>localStorage</code> do navegador. Não vão ao servidor.</li>
+        </ul>
+        <p style="margin-top:14px;"><strong>5.3 Senhas</strong><br>
+        Nunca armazenadas em texto puro. O Supabase Auth usa hashing <strong>bcrypt</strong>. Nem a equipe do Centro Educacional de Itaboraí tem acesso à sua senha e sua conta.</p>
+      </div>
+    </section>
+
+    <section class="doc-section" id="cookies" aria-labelledby="h-cook">
+      <div class="doc-section-header">
+        <h2 id="h-cook"><i class="fa-solid fa-cookie-bite"></i> 6. Cookies e Armazenamento Local</h2>
+        <p>O que salvamos no seu dispositivo e para quê.</p>
+      </div>
+      <div class="doc-body">
+        <p>Usamos <strong>localStorage</strong> e cookies de sessão do Supabase. Não usamos cookies de rastreamento ou publicidade.</p>
+        <div class="table-wrap" style="margin-top:14px;">
+          <table class="doc-table">
+            <thead><tr><th>Chave / Cookie</th><th>Tipo</th><th>Finalidade</th><th>Expira</th></tr></thead>
+            <tbody>
+              <tr><td><code>usuario_logado</code></td><td>localStorage</td><td>Perfil do usuário logado (nome, username, escola, papel)</td><td>Até o logout</td></tr>
+              <tr><td><code>cei_theme</code></td><td>localStorage</td><td>Preferência de tema visual</td><td>Indefinido</td></tr>
+              <tr><td><code>cei_fontsize</code></td><td>localStorage</td><td>Tamanho de fonte preferido</td><td>Indefinido</td></tr>
+              <tr><td><code>cei_dark</code></td><td>localStorage</td><td>Estado do alto contraste</td><td>Indefinido</td></tr>
+              <tr><td><code>sb-*</code> (Supabase)</td><td>Cookie de sessão</td><td>Gerenciamento da sessão autenticada</td><td>Conforme Supabase</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="doc-card doc-card-info" style="margin-top:14px;">
+          <i class="fa-solid fa-circle-info"></i>
+          <div class="doc-card-bd">
+            <strong>Como limpar preferências</strong>
+            <p>Acesse <a href="configs2f.html">Configurações → Limpar preferências locais</a>, ou limpe os dados do site no seu navegador (Configurações → Privacidade → Limpar dados de navegação).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc-section" id="menores" aria-labelledby="h-men">
+      <div class="doc-section-header">
+        <h2 id="h-men"><i class="fa-solid fa-child"></i> 7. Menores de Idade</h2>
+        <p>Proteção especial conforme a LGPD (Art. 14) e o E.C.A..</p>
+      </div>
+      <div class="doc-body">
+        <p>O Centro Educacional de Itaboraí foi feito para o ambiente escolar. Menores são bem-vindos e recebem proteção adicional:</p>
+        <ul class="doc-list">
+          <li>Dados de menores são tratados exclusivamente com finalidade educacional, sem fins comerciais.</li>
+          <li>Nenhum dado sensível é coletado de nenhum usuário, especialmente menores.</li>
+          <li>O Fórum de Discussão é supervisionado por coordenadores que removem conteúdo inadequado.</li>
+          <li>Menores entre 13 e 17 anos podem se cadastrar; recomendamos ciência do responsável legal.</li>
+          <li>Crianças menores de 13 anos devem ter o cadastro supervisionado por pais ou responsáveis.</li>
+        </ul>
+        <div class="doc-card doc-card-warn" style="margin-top:14px;">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <div class="doc-card-bd">
+            <strong>Responsável legal</strong>
+            <p>Pais ou responsáveis podem solicitar acesso, correção ou exclusão dos dados de seu(sua) filho(a) pelo e-mail <a href="mailto:centroeducacionaldeitaborai@gmail.com">centroeducacionaldeitaborai@gmail.com</a>. Respondemos em até 15 dias.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc-section" id="direitos" aria-labelledby="h-dir">
+      <div class="doc-section-header">
+        <h2 id="h-dir"><i class="fa-solid fa-hand-fist"></i> 8. Seus Direitos (LGPD)</h2>
+        <p>A Lei Geral de Proteção de Dados (Lei 13.709/2018) garante estes direitos a você.</p>
+      </div>
+      <div class="doc-body">
+        <div class="rights-grid">
+          <div class="right-card">
+            <div class="right-icon"><i class="fa-solid fa-eye"></i></div>
+            <div><h4>Acesso</h4><p>Ver quais dados pessoais temos sobre você a qualquer momento, sem justificativa.</p></div>
+          </div>
+          <div class="right-card">
+            <div class="right-icon"><i class="fa-solid fa-pen"></i></div>
+            <div><h4>Correção</h4><p>Solicitar correção de dados incompletos, inexatos ou desatualizados.</p></div>
+          </div>
+          <div class="right-card">
+            <div class="right-icon"><i class="fa-solid fa-trash"></i></div>
+            <div><h4>Exclusão</h4><p>Solicitar a remoção de dados desnecessários ou tratados em desconformidade com a lei.</p></div>
+          </div>
+          <div class="right-card">
+            <div class="right-icon"><i class="fa-solid fa-file-export"></i></div>
+            <div><h4>Portabilidade</h4><p>Receber seus dados em formato estruturado para migração a outro serviço.</p></div>
+          </div>
+          <div class="right-card">
+            <div class="right-icon"><i class="fa-solid fa-ban"></i></div>
+            <div><h4>Oposição</h4><p>Opor-se a qualquer tratamento que você julgue inadequado ou sem base legal válida.</p></div>
+          </div>
+          <div class="right-card">
+            <div class="right-icon"><i class="fa-solid fa-circle-info"></i></div>
+            <div><h4>Informação</h4><p>Saber com quais entidades compartilhamos seus dados, por quê e por quanto tempo.</p></div>
+          </div>
+          <div class="right-card">
+            <div class="right-icon" style="background:#7C3AED;"><i class="fa-solid fa-shield-halved"></i></div>
+            <div><h4>Não discriminação</h4><p>Recusar o tratamento e não sofrer nenhuma consequência negativa por isso. Seus dados não serão usados para discriminar você com base em qualquer característica pessoal — orientação sexual, gênero, raça, religião, opinião política ou condição de saúde.</p></div>
+          </div>
+          <div class="right-card">
+            <div class="right-icon" style="background:#D97706;"><i class="fa-solid fa-rotate-left"></i></div>
+            <div><h4>Revogação do consentimento</h4><p>Retirar seu consentimento a qualquer momento para tratamentos baseados nele. A revogação não afeta tratamentos já realizados enquanto o consentimento era válido.</p></div>
+          </div>
+        </div>
+        <p style="margin-top:18px; font-size:14px;">Para exercer qualquer desses direitos, envie e-mail para <strong><a href="mailto:centroeducacionaldeitaborai@gmail.com">centroeducacionaldeitaborai@gmail.com</a></strong> com assunto <strong>"Direitos LGPD — [sua solicitação]"</strong>. Respondemos em até <strong>15 dias úteis</strong>.</p>
+      </div>
+    </section>
+
+    <section class="doc-section" id="seguranca" aria-labelledby="h-seg">
+      <div class="doc-section-header">
+        <h2 id="h-seg"><i class="fa-solid fa-shield-halved"></i> 9. Segurança dos Dados</h2>
+        <p>Medidas técnicas e organizacionais adotadas.</p>
+      </div>
+      <div class="doc-body">
+        <ul class="doc-list">
+          <li><strong>HTTPS em todas as páginas</strong> — comunicação criptografada via TLS entre seu navegador e a plataforma.</li>
+          <li><strong>Hashing bcrypt para senhas</strong> — senhas nunca armazenadas em texto legível.</li>
+          <li><strong>Supabase Auth</strong> — serviço especializado com proteção contra ataques de força bruta.</li>
+          <li><strong>Row-Level Security (RLS)</strong> — cada usuário acessa apenas os próprios dados privados.</li>
+          <li><strong>Chave anon pública com permissões mínimas</strong> — operações sensíveis exigem autenticação.</li>
+          <li><strong>Sem dados financeiros</strong> — a plataforma não processa pagamentos.</li>
+        </ul>
+        <div class="doc-card doc-card-warn" style="margin-top:14px;">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <div class="doc-card-bd">
+            <strong>Nenhum sistema é 100% seguro</strong>
+            <p>Em caso de incidente que afete seus dados, notificaremos os usuários impactados por e-mail em até <b>72 horas</b> após a identificação, conforme exigido pela LGPD.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc-section" id="alteracoes" aria-labelledby="h-alt">
+      <div class="doc-section-header">
+        <h2 id="h-alt"><i class="fa-solid fa-rotate"></i> 10. Alterações nesta Política</h2>
+        <p>Como comunicaremos mudanças importantes.</p>
+      </div>
+      <div class="doc-body">
+        <p>Esta política pode ser atualizada para refletir mudanças na plataforma ou em exigências legais. Toda alteração relevante será comunicada:</p>
+        <ul class="doc-list">
+          <li>Por aviso em destaque na topbar da plataforma durante 30 dias após a publicação.</li>
+          <li>Por e-mail para usuários ativos quando as mudanças afetarem direitos ou finalidades de tratamento.</li>
+        </ul>
+        <p style="margin-top:14px;">O uso continuado da plataforma após a entrada em vigor implica aceitação da nova versão.</p>
+      </div>
+    </section>
+
+    <section class="doc-section" id="contato" aria-labelledby="h-dpo">
+      <div class="doc-section-header">
+        <h2 id="h-dpo"><i class="fa-solid fa-envelope"></i> 11. Contato e Encarregado de Dados (DPO)</h2>
+        <p>Como falar com o responsável pela proteção de dados do Centro Educacional de Itaboraí.</p>
+      </div>
+      <div class="doc-body">
+        <ul class="doc-list">
+          <li><strong>Responsável:</strong> Luiz Miguel (fundador e desenvolvedor)</li>
+          <li><strong>E-mail:</strong> <a href="mailto:centroeducacionaldeitaborai@gmail.com">centroeducacionaldeitaborai@gmail.com</a>/<a href="malito:contato.luiz404@gmail.com">contato.luiz404@gmail.com</a></li>
+          <li><strong>Assunto Recomendado:</strong> "Privacidade — [sua solicitação]"</li>
+          <li><strong>Prazo de Resposta:</strong> até 15 dias úteis</li>
+        </ul>
+        <div class="contact-row">
+          <p><strong>Tem uma dúvida ou solicitação sobre seus dados?</strong> Respondemos em até 15 dias úteis.</p>
+          <a href="mailto:centroeducacionaldeitaborai@gmail.com?subject=Privacidade%20%E2%80%94%20Solicita%C3%A7%C3%A3o">
+            <i class="fa-solid fa-envelope"></i> Enviar e-mail
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<section class="cta-banner" aria-label="Acesse a plataforma">
+  <div class="container">
+    <div class="cta-text">
+      <h2><i class="fa-solid fa-rocket"></i> Faça parte do Centro Educacional de Itaboraí!</h2>
+      <p>Professores, coordenadores e alunos — a plataforma educacional é para todos.</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a href="junte-se.html" class="btn btn-dark"><i class="fa-solid fa-user-plus"></i> Junte-se a nós!</a>
+      <a href="sobre1f.html" class="btn" style="background:rgba(15,9,74,.12);color:var(--cei-dark);border:2px solid rgba(15,9,74,.25);"><i class="fa-solid fa-circle-info"></i> Saiba mais</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-main"><div class="container"><div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-emblem" aria-hidden="true" style="width:52px;height:52px;border-radius:6px;background-color:var(--cei-green);background-image:url('LOGO_CEI');background-size:contain;background-repeat:no-repeat;background-position:center;flex-shrink:0;"><i class="fa-solid fa-cubes-stacked" style="display:none;"></i></div>
+        <div class="logo-text"><span class="abbr">"O amanhã, hoje."</span><span class="full"><i>- Luiz Miguel</i></span></div>
+      </div>
+      <p>Plataforma pedagógica digital desenvolvida para fortalecer o ensino e a aprendizagem nas escolas municipais de Itaboraí, Rio de Janeiro.</p>
+      <div class="footer-socials">
+        <a href="https://www.youtube.com/@CentroEducacionaldeItaborai" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://instagram.com/centroeducacionaldeitaborai" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="mailto:centroeducacionaldeitaborai@gmail.com" aria-label="E-mail"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h5>Plataforma</h5><ul>
+      <li><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
+      <li><a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a></li>
+      <li><a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a></li>
+      <li><a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a></li>
+      <li><a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a></li>
+      <li><a href="calendario1f.html"><i class="fa-solid fa-calendar-days"></i> Calendário</a></li>
+      <li><a href="doacao1f.html"><i class="fa-solid fa-hand-holding-heart"></i> Apoie este projeto</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Acesso</h5><ul>
+      <li><a href="entrar.html"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a></li>
+      <li><a href="junte-se.html"><i class="fa-solid fa-user-plus"></i> Juntar-se</a></li>
+      <li><a href="privacidade1f.html"><i class="fa-solid fa-shield-halved"></i> Privacidade</a></li>
+      <li><a href="termos1f.html"><i class="fa-solid fa-file-contract"></i> Termos de uso</a></li>
+      <li><a href="suporte1f.html"><i class="fa-solid fa-headset"></i> Suporte</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Institucional</h5><ul>
+      <li><a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre Nós</a></li>
+      <li><a href="https://site.ib.itaborai.rj.gov.br/orgaos_municipais/educacao/"><i class="fa-solid fa-school"></i> Secretaria de Educação</a></li>
+      <li><a href="https://site.ib.itaborai.rj.gov.br"><i class="fa-solid fa-landmark"></i> Prefeitura de Itaboraí</a></li>
+      <li><a href="acessibilidade1f.html"><i class="fa-solid fa-universal-access"></i> Acessibilidade</a></li>
+      <li><a href="mailto:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a></li>
+    </ul></div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="container">
+    <p>© <span id="currentYear"></span> <span class="gold">Centro Educacional de Itaboraí</span>. Todos os direitos reservados.</p>
+  </div></div>
+</footer>
+
+<button class="vlibras-btn" id="vlibrasBtn" aria-label="Ativar VLibras"><i class="fa-solid fa-hands"></i></button>
+<div class="vlibras-tooltip" aria-hidden="true">Ativar VLibras</div>
+<div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+<script>
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  const hamburger = document.getElementById('hamburgerBtn');
+  const drawer    = document.getElementById('navDrawer');
+  const overlay   = document.getElementById('drawerOverlay');
+  const closeBtn  = document.getElementById('drawerClose');
+  function openDrawer()  { drawer.classList.add('open');    hamburger.setAttribute('aria-expanded','true');  document.body.style.overflow='hidden'; }
+  function closeDrawer() { drawer.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  hamburger.addEventListener('click', openDrawer);
+  overlay.addEventListener('click',   closeDrawer);
+  closeBtn.addEventListener('click',  closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  let fontSize = parseInt(localStorage.getItem('cei_fontsize') || '15', 10);
+  function applyFont() { document.body.style.fontSize = fontSize + 'px'; }
+  function changeFontSize(d) { fontSize = Math.min(22, Math.max(12, fontSize + d)); localStorage.setItem('cei_fontsize', fontSize); applyFont(); }
+  applyFont();
+
+  const DARK = {'--cei-white':'#0E1117','--cei-text':'#E8ECF0','--cei-gray':'#1A1F28','--cei-border':'#2E3440','--cei-muted':'#8B9AAB'};
+  let darkOn = localStorage.getItem('cei_dark') === '1';
+  function applyDark(on) {
+    Object.keys(DARK).forEach(v => on ? document.documentElement.style.setProperty(v, DARK[v]) : document.documentElement.style.removeProperty(v));
+    localStorage.setItem('cei_dark', on ? '1' : '0');
+  }
+  function toggleContrast() { darkOn = !darkOn; applyDark(darkOn); }
+  applyDark(darkOn);
+
+  document.getElementById('vlibrasBtn').addEventListener('click', function() {
+    const ab = document.querySelector('[vw-access-button]');
+    if (ab) { ab.style.display='flex'; ab.click(); ab.style.display='none'; }
+  });
+
+  const sections = document.querySelectorAll('.doc-section[id]');
+  const navLinks  = document.querySelectorAll('.doc-nav a[href^="#"]');
+  function updateNav() {
+    let cur = '';
+    sections.forEach(s => { if (s.offsetTop <= window.scrollY + 100) cur = s.id; });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+</script>
+</body>
+</html>
